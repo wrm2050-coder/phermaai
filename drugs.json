@@ -146,10 +146,26 @@
       "Meningitis",
       "Sepsis and other appropriate infections"
     ],
-    "routes": [
-      "Intravenous",
-      "Intramuscular"
-    ],
+ "routes": [
+  "Intravenous",
+  "Intramuscular"
+],
+
+"dosage": {
+  "adult": [
+    "Usual adult daily dose: 1–2 g once daily, or divided into two doses, depending on infection and severity.",
+    "Maximum total daily dose: 4 g."
+  ],
+  "pediatric": [
+    "Many pediatric infections: 50–75 mg/kg/day, depending on infection.",
+    "Meningitis: initial dose 100 mg/kg, followed by 100 mg/kg/day.",
+    "Pediatric maximum for meningitis: 4 g/day."
+  ],
+  "renalAdjustment": "Usually no dosage adjustment is required for renal impairment when usual doses are used.",
+  "hepaticAdjustment": "Usually no dosage adjustment is required for hepatic impairment. If significant renal and hepatic dysfunction coexist, caution and closer monitoring are required.",
+  "duration": "Common treatment duration is 4–14 days, depending on infection and clinical response.",
+  "reference": "DailyMed ceftriaxone prescribing information"
+},
     "contraindications": [
       "Known serious hypersensitivity to ceftriaxone or relevant cephalosporins"
     ],
