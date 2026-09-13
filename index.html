@@ -327,19 +327,7 @@ function searchDrug() {
       </div>
 
 
-      <div class="section">
-
-        <h3>💉 Routes</h3>
-
-        <ul>
-
-          ${drug.routes
-            .map(item => `<li>${item}</li>`)
-            .join("")}
-
-        </ul>
-
-      </div>${drug.dosage ? `
+      <${drug.dosage ? `
 
 <div class="section">
 
@@ -357,8 +345,7 @@ function searchDrug() {
   <select id="doseIndication" onchange="updateDoseResult()">
   </select>
 
-  <div id="doseResult">
-  </div>
+  <div id="doseResult"></div>
 
   <h4>Duration</h4>
   <ul>
@@ -372,6 +359,13 @@ function searchDrug() {
   <p>${drug.dosage.hepaticAdjustment}</p>
 
   <p class="source">
+    📚 <strong>Dosing reference:</strong>
+    ${drug.dosage.reference}
+  </p>
+
+</div>
+
+` : ""}
     📚 <strong>Dosing reference:</strong>
     ${drug.dosage.reference}
   </p>
