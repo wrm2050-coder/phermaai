@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>PharmaAI</title>
 
@@ -174,6 +177,7 @@ header p{
   border-radius:9px;
   font-size:13px;
   color:#486267;
+  line-height:1.5;
 }
 
 .warning{
@@ -186,14 +190,14 @@ header p{
   font-size:13px;
 }
 
-.not-found{
-  text-align:center;
-}
-
 .loading{
   text-align:center;
   padding:30px;
   color:#547075;
+}
+
+.not-found{
+  text-align:center;
 }
 
 .badge{
@@ -209,7 +213,7 @@ header p{
 
 .external-link{
   display:inline-block;
-  margin-top:8px;
+  margin-top:10px;
   background:#008f83;
   color:white;
   padding:9px 12px;
@@ -218,29 +222,19 @@ header p{
   font-size:13px;
 }
 
-.product{
-  background:#f8fbfb;
-  border:1px solid #e1ecec;
-  padding:12px;
-  border-radius:9px;
-  margin-top:8px;
-}
-
-.product-name{
-  font-weight:bold;
-  color:#17343a;
-}
-
-.product-type{
-  font-size:12px;
-  color:#718487;
-  margin-top:3px;
-}
-
 .small-note{
   color:#687b7f;
   font-size:13px;
   line-height:1.5;
+}
+
+.fda-dose{
+  background:#f8fbfb;
+  border:1px solid #e0ebeb;
+  border-radius:10px;
+  padding:14px;
+  line-height:1.6;
+  margin-top:8px;
 }
 
 @media(max-width:600px){
@@ -268,9 +262,12 @@ header p{
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -306,7 +303,7 @@ header p{
     </div>
 
     <div class="hint">
-      Search by generic drug name. Example: paracetamol, warfarin, amoxicillin
+      Search by generic or brand name
     </div>
 
   </div>
@@ -319,7 +316,7 @@ header p{
 
     ⚠️ <strong>Educational use only.</strong><br>
 
-    This tool is intended for pharmacology learning.
+    PharmaAI is intended for pharmacology learning.
     It is not a substitute for official prescribing information,
     clinical guidelines, or professional medical advice.
 
@@ -329,62 +326,66 @@ header p{
 </div>
 
 
+
 <script>
 
 
-/* =========================================================
-   GLOBAL VARIABLES
-========================================================= */
+/* =====================================================
+   DATABASE
+===================================================== */
 
 let drugs = [];
 
 let currentDrug = null;
 
 
-/* =========================================================
+/* =====================================================
    LOAD LOCAL DATABASE
-========================================================= */
+===================================================== */
 
 fetch("drugs.json")
 
-  .then(response => {
+.then(response => {
 
-    if(!response.ok){
+  if(!response.ok){
 
-      throw new Error("Database could not be loaded");
+    throw new Error("Database could not be loaded");
 
-    }
+  }
 
-    return response.json();
+  return response.json();
 
-  })
+})
 
-  .then(data => {
+.then(data => {
 
-    drugs = data;
+  drugs = data;
 
-    console.log(
-      "Loaded local drugs:",
-      drugs.length
-    );
+  console.log(
+    "Loaded drugs:",
+    drugs.length
+  );
 
-  })
+})
 
-  .catch(error => {
+.catch(error => {
 
-    console.error(error);
+  console.error(error);
 
-  });
+});
 
 
-/* =========================================================
-   HTML ESCAPE
-   Protects the page when displaying external data.
-========================================================= */
+
+/* =====================================================
+   HTML SECURITY
+===================================================== */
 
 function escapeHtml(value){
 
-  if(value === null || value === undefined){
+  if(
+    value === null ||
+    value === undefined
+  ){
 
     return "";
 
@@ -393,25 +394,38 @@ function escapeHtml(value){
   return String(value)
 
     .replace(/&/g,"&amp;")
+
     .replace(/</g,"&lt;")
+
     .replace(/>/g,"&gt;")
+
     .replace(/"/g,"&quot;")
+
     .replace(/'/g,"&#039;");
 
 }
 
 
-/* =========================================================
-   ARRAY TO BULLETS
-========================================================= */
+
+/* =====================================================
+   CREATE BULLET LIST
+===================================================== */
 
 function makeList(items){
 
-  if(!Array.isArray(items) || items.length === 0){
+  if(
+    !Array.isArray(items) ||
+    items.length === 0
+  ){
 
-    return "<p>Not available.</p>";
+    return `
+      <p class="small-note">
+        Not available in this source.
+      </p>
+    `;
 
   }
+
 
   return `
 
@@ -430,9 +444,10 @@ function makeList(items){
 }
 
 
-/* =========================================================
-   SEARCH DRUG
-========================================================= */
+
+/* =====================================================
+   SEARCH
+===================================================== */
 
 async function searchDrug(){
 
@@ -459,7 +474,7 @@ async function searchDrug(){
         <h2>Search for a drug</h2>
 
         <p>
-          Enter a generic drug name above.
+          Enter a drug name above.
         </p>
 
       </div>
@@ -472,22 +487,24 @@ async function searchDrug(){
 
 
   /* ==============================================
-     FIRST: SEARCH LOCAL CURATED DATABASE
+     SEARCH LOCAL DATABASE FIRST
   ============================================== */
 
-  const drug = drugs.find(d =>
+  const drug =
+    drugs.find(d =>
 
-    d.name &&
-    d.name.toLowerCase() === searchText.toLowerCase()
+      d.name &&
+      d.name.toLowerCase() ===
+      searchText.toLowerCase()
 
-  );
+    );
 
 
   if(drug){
 
     currentDrug = drug;
 
-    displayDrug(drug);
+    displayLocalDrug(drug);
 
     return;
 
@@ -495,15 +512,14 @@ async function searchDrug(){
 
 
   /* ==============================================
-     NOT IN LOCAL DATABASE
-     USE RxNorm + DailyMed
+     SEARCH FDA
   ============================================== */
 
   result.innerHTML = `
 
     <div class="card loading">
 
-      🔎 Searching RxNorm and DailyMed...
+      🔎 Searching FDA drug labeling...
 
     </div>
 
@@ -515,15 +531,15 @@ async function searchDrug(){
 
   try{
 
-    const response = await fetch(
+    const response =
+      await fetch(
+        "/api/drug?drug=" +
+        encodeURIComponent(searchText)
+      );
 
-      "/api/drug?drug=" +
-      encodeURIComponent(searchText)
 
-    );
-
-
-    const data = await response.json();
+    const data =
+      await response.json();
 
 
     if(!response.ok){
@@ -537,8 +553,7 @@ async function searchDrug(){
     }
 
 
-    displayExternalDrug(data);
-
+    displayFDADrug(data);
 
   }
 
@@ -554,14 +569,12 @@ async function searchDrug(){
         <h2>Drug not found</h2>
 
         <p>
-          We could not find a matching drug in
-          the local database or RxNorm.
+          No matching drug information was found.
         </p>
 
         <p class="small-note">
 
-          Try the generic name, for example:
-          warfarin, metoprolol, amlodipine.
+          Try searching using the generic name.
 
         </p>
 
@@ -580,11 +593,12 @@ async function searchDrug(){
 }
 
 
-/* =========================================================
-   DISPLAY LOCAL CURATED DRUG
-========================================================= */
 
-function displayDrug(drug){
+/* =====================================================
+   LOCAL DRUG DISPLAY
+===================================================== */
+
+function displayLocalDrug(drug){
 
   const result =
     document.getElementById("result");
@@ -638,8 +652,6 @@ function displayDrug(drug){
 
       </div>
 
-
-      <!-- DOSAGE -->
 
       <div class="section">
 
@@ -696,7 +708,6 @@ function displayDrug(drug){
             class="dose-result"
           ></div>
 
-
         </div>
 
       </div>
@@ -741,7 +752,12 @@ function displayDrug(drug){
       <div class="source">
 
         <strong>Source:</strong>
-        ${escapeHtml(drug.dosage?.reference || drug.source || "Curated reference")}
+
+        ${escapeHtml(
+          drug.dosage?.reference ||
+          drug.source ||
+          "Curated reference"
+        )}
 
       </div>
 
@@ -755,13 +771,17 @@ function displayDrug(drug){
 }
 
 
-/* =========================================================
-   DOSAGE INDICATION DROPDOWN
-========================================================= */
+
+/* =====================================================
+   DOSAGE DROPDOWN
+===================================================== */
 
 function populateDoseIndications(){
 
-  if(!currentDrug || !currentDrug.dosage){
+  if(
+    !currentDrug ||
+    !currentDrug.dosage
+  ){
 
     return;
 
@@ -769,11 +789,15 @@ function populateDoseIndications(){
 
 
   const group =
-    document.getElementById("patientGroup").value;
+    document.getElementById(
+      "patientGroup"
+    ).value;
 
 
   const select =
-    document.getElementById("doseIndication");
+    document.getElementById(
+      "doseIndication"
+    );
 
 
   const doses =
@@ -800,19 +824,29 @@ function populateDoseIndications(){
   }
 
 
-  doses.forEach((dose,index) => {
+  doses.forEach(
+    (dose,index) => {
 
-    const option =
-      document.createElement("option");
+      const option =
+        document.createElement(
+          "option"
+        );
 
-    option.value = index;
 
-    option.textContent =
-      dose.indication || "Dose";
+      option.value = index;
 
-    select.appendChild(option);
 
-  });
+      option.textContent =
+        dose.indication ||
+        "Dose";
+
+
+      select.appendChild(
+        option
+      );
+
+    }
+  );
 
 
   updateDoseResult();
@@ -820,13 +854,17 @@ function populateDoseIndications(){
 }
 
 
-/* =========================================================
-   UPDATE DOSAGE RESULT
-========================================================= */
+
+/* =====================================================
+   SHOW SELECTED DOSE
+===================================================== */
 
 function updateDoseResult(){
 
-  if(!currentDrug || !currentDrug.dosage){
+  if(
+    !currentDrug ||
+    !currentDrug.dosage
+  ){
 
     return;
 
@@ -834,15 +872,21 @@ function updateDoseResult(){
 
 
   const group =
-    document.getElementById("patientGroup").value;
+    document.getElementById(
+      "patientGroup"
+    ).value;
 
 
   const select =
-    document.getElementById("doseIndication");
+    document.getElementById(
+      "doseIndication"
+    );
 
 
-  const doseResult =
-    document.getElementById("doseResult");
+  const output =
+    document.getElementById(
+      "doseResult"
+    );
 
 
   const doses =
@@ -851,10 +895,10 @@ function updateDoseResult(){
 
   if(doses.length === 0){
 
-    doseResult.innerHTML = `
+    output.innerHTML = `
 
       <p>
-        No structured ${group} dose is available.
+        No structured dose available.
       </p>
 
     `;
@@ -879,13 +923,16 @@ function updateDoseResult(){
   }
 
 
-  doseResult.innerHTML = `
+  output.innerHTML = `
 
     <p>
 
       <strong>Dose:</strong><br>
 
-      ${escapeHtml(dose.dose || "Not specified")}
+      ${escapeHtml(
+        dose.dose ||
+        "Not specified"
+      )}
 
     </p>
 
@@ -901,7 +948,9 @@ function updateDoseResult(){
 
         <strong>Maximum:</strong><br>
 
-        ${escapeHtml(dose.maximum)}
+        ${escapeHtml(
+          dose.maximum
+        )}
 
       </p>
 
@@ -925,7 +974,9 @@ function updateDoseResult(){
 
         <strong>Duration:</strong><br>
 
-        ${escapeHtml(dose.duration)}
+        ${escapeHtml(
+          dose.duration
+        )}
 
       </p>
 
@@ -950,7 +1001,8 @@ function updateDoseResult(){
         <strong>Renal adjustment:</strong><br>
 
         ${escapeHtml(
-          currentDrug.dosage.renalAdjustment
+          currentDrug.dosage
+            .renalAdjustment
         )}
 
       </p>
@@ -976,7 +1028,8 @@ function updateDoseResult(){
         <strong>Hepatic adjustment:</strong><br>
 
         ${escapeHtml(
-          currentDrug.dosage.hepaticAdjustment
+          currentDrug.dosage
+            .hepaticAdjustment
         )}
 
       </p>
@@ -994,188 +1047,47 @@ function updateDoseResult(){
 }
 
 
-/* =========================================================
-   DISPLAY RXNORM + DAILYMED FALLBACK
-========================================================= */
 
-function displayExternalDrug(data){
+/* =====================================================
+   FDA DRUG DISPLAY
+===================================================== */
+
+function displayFDADrug(data){
 
   const result =
-    document.getElementById("result");
-
-
-  const products =
-    Array.isArray(data.products)
-      ? data.products
-      : [];
-
-
-  const labels =
-    Array.isArray(data.labels)
-      ? data.labels
-      : [];
-
-
-  let productsHTML = "";
-
-
-  if(products.length){
-
-    productsHTML = `
-
-      <div class="section">
-
-        <h3>💊 Available products / formulations</h3>
-
-        ${products.slice(0,15).map(product => `
-
-          <div class="product">
-
-            <div class="product-name">
-
-              ${escapeHtml(product.name)}
-
-            </div>
-
-            <div class="product-type">
-
-              RxNorm type:
-              ${escapeHtml(product.type || "")}
-
-              ${
-                product.rxcui
-                  ? " • RxCUI " + escapeHtml(product.rxcui)
-                  : ""
-              }
-
-            </div>
-
-          </div>
-
-        `).join("")}
-
-      </div>
-
-    `;
-
-  }
-
-
-  let labelsHTML = "";
-
-
-  if(labels.length){
-
-    labelsHTML = `
-
-      <div class="section">
-
-        <h3>📄 Official DailyMed labels</h3>
-
-        <p class="small-note">
-
-          Open the official label for complete
-          prescribing information.
-
-        </p>
-
-
-        ${labels.slice(0,10).map(label => {
-
-          const setid =
-            label.setid;
-
-
-          if(!setid){
-
-            return "";
-
-          }
-
-
-          const url =
-            "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=" +
-            encodeURIComponent(setid);
-
-
-          return `
-
-            <div class="product">
-
-              <div class="product-name">
-
-                ${escapeHtml(
-                  label.title || "DailyMed label"
-                )}
-
-              </div>
-
-
-              ${
-                label.labeler
-
-                ?
-
-                `<div class="product-type">
-                  ${escapeHtml(label.labeler)}
-                </div>`
-
-                :
-
-                ""
-
-              }
-
-
-              <a
-                class="external-link"
-                href="${url}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-
-                View official label ↗
-
-              </a>
-
-            </div>
-
-          `;
-
-        }).join("")}
-
-      </div>
-
-    `;
-
-  }
+    document.getElementById(
+      "result"
+    );
 
 
   result.innerHTML = `
 
     <div class="card">
 
+
       <span class="badge">
-        RxNorm / DailyMed result
+        FDA Label Data
       </span>
 
 
       <h2>
 
         ${escapeHtml(
-          data.genericName || data.searchTerm
+          data.genericName ||
+          data.searchTerm
         )}
 
       </h2>
 
 
       ${
-        data.prescribableName
+        data.brandName
 
         ?
 
         `<p class="small-note">
-          ${escapeHtml(data.prescribableName)}
+          Brand:
+          ${escapeHtml(data.brandName)}
         </p>`
 
         :
@@ -1185,84 +1097,406 @@ function displayExternalDrug(data){
       }
 
 
+      ${
+        data.manufacturer
+
+        ?
+
+        `<p class="small-note">
+          Manufacturer:
+          ${escapeHtml(data.manufacturer)}
+        </p>`
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- MECHANISM -->
+
+      ${
+        data.mechanism?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            🧬 Mechanism of action
+          </h3>
+
+          ${makeList(data.mechanism)}
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- INDICATIONS -->
+
+      ${
+        data.indications?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            🎯 Indications
+          </h3>
+
+          ${makeList(data.indications)}
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- ROUTES -->
+
+      ${
+        data.route?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            💉 Routes of administration
+          </h3>
+
+          ${makeList(data.route)}
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- DOSAGE -->
+
+      ${
+        data.dosage?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            💊 Dosage & Administration
+          </h3>
+
+
+          <div class="dose-box">
+
+            ${data.dosage.map(item => `
+
+              <div class="fda-dose">
+
+                ${escapeHtml(item)}
+
+              </div>
+
+            `).join("")}
+
+          </div>
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- DOSAGE FORMS -->
+
+      ${
+        data.dosageForms?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            💊 Dosage forms & strengths
+          </h3>
+
+          ${makeList(data.dosageForms)}
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- CONTRAINDICATIONS -->
+
+      ${
+        data.contraindications?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            🚫 Contraindications
+          </h3>
+
+          ${makeList(
+            data.contraindications
+          )}
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- ADVERSE EFFECTS -->
+
+      ${
+        data.adverseEffects?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            ⚠️ Adverse effects
+          </h3>
+
+          ${makeList(
+            data.adverseEffects
+          )}
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- INTERACTIONS -->
+
+      ${
+        data.interactions?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            🔄 Drug interactions
+          </h3>
+
+          ${makeList(
+            data.interactions
+          )}
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- WARNINGS -->
+
+      ${
+        data.warnings?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            ⚠️ Warnings & precautions
+          </h3>
+
+          ${makeList(
+            data.warnings
+          )}
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- MONITORING -->
+
+      ${
+        data.monitoring?.length
+
+        ?
+
+        `
+
+        <div class="section">
+
+          <h3>
+            🩺 Monitoring / laboratory tests
+          </h3>
+
+          ${makeList(
+            data.monitoring
+          )}
+
+        </div>
+
+        `
+
+        :
+
+        ""
+
+      }
+
+
+      <!-- OFFICIAL LABEL -->
+
       <div class="section">
 
-        <h3>🔎 Drug identification</h3>
-
-        <p>
-
-          <strong>Generic name:</strong>
-          ${escapeHtml(data.genericName || "—")}
-
-        </p>
-
-
-        ${
-          data.rxcui
-
-          ?
-
-          `<p>
-            <strong>RxCUI:</strong>
-            ${escapeHtml(data.rxcui)}
-          </p>`
-
-          :
-
-          ""
-
-        }
-
-
-        ${
-          data.termType
-
-          ?
-
-          `<p>
-            <strong>RxNorm type:</strong>
-            ${escapeHtml(data.termType)}
-          </p>`
-
-          :
-
-          ""
-
-        }
-
-      </div>
-
-
-      ${productsHTML}
-
-
-      ${labelsHTML}
-
-
-      <div class="section">
-
-        <h3>⚠️ Why is there no dosage section?</h3>
+        <h3>
+          📄 Official information
+        </h3>
 
         <p class="small-note">
 
-          RxNorm is being used here to identify the drug
-          and its products. DailyMed provides the official
-          product labeling. This fallback does not guess
-          doses, contraindications, or indications from
-          raw label text.
+          This information is derived from
+          FDA labeling. Check the current
+          official label for the complete
+          product-specific information.
 
         </p>
+
+
+        ${
+          data.labelURL
+
+          ?
+
+          `
+
+          <a
+            class="external-link"
+            href="${escapeHtml(
+              data.labelURL
+            )}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+
+            View official label ↗
+
+          </a>
+
+          `
+
+          :
+
+          ""
+
+        }
 
       </div>
 
 
       <div class="source">
 
-        <strong>Data sources:</strong>
+        <strong>Source:</strong>
+        FDA openFDA drug labeling.
 
-        RxNorm (NLM) and DailyMed (NLM).
+        ${
+          data.effectiveTime
+
+          ?
+
+          `<br>
+          Label effective date:
+          ${escapeHtml(
+            data.effectiveTime
+          )}`
+
+          :
+
+          ""
+
+        }
+
+        <br><br>
+
+        ⚠️ FDA label data is product-specific
+        and is provided here for educational use.
+        Verify the current official label and
+        applicable clinical guidelines.
 
       </div>
+
 
     </div>
 
@@ -1271,24 +1505,29 @@ function displayExternalDrug(data){
 }
 
 
-/* =========================================================
-   ENTER KEY SEARCH
-========================================================= */
+
+/* =====================================================
+   ENTER KEY
+===================================================== */
 
 document
   .getElementById("drugSearch")
-  .addEventListener("keydown", function(event){
+  .addEventListener(
+    "keydown",
+    function(event){
 
-    if(event.key === "Enter"){
+      if(event.key === "Enter"){
 
-      searchDrug();
+        searchDrug();
+
+      }
 
     }
-
-  });
+  );
 
 
 </script>
+
 
 </body>
 </html>
