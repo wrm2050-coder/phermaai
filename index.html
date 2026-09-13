@@ -20,13 +20,13 @@ body {
 header {
   background: #0b6b68;
   color: white;
-  padding: 25px 20px;
+  padding: 28px 20px;
   text-align: center;
 }
 
 header h1 {
   margin: 0;
-  font-size: 30px;
+  font-size: 32px;
 }
 
 header p {
@@ -34,29 +34,36 @@ header p {
 }
 
 .container {
-  max-width: 800px;
+  max-width: 850px;
   margin: 30px auto;
   padding: 20px;
+}
+
+.search-card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
 }
 
 .search-box {
   display: flex;
   gap: 10px;
-  margin-bottom: 25px;
 }
 
 input {
   flex: 1;
-  padding: 14px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 15px;
+  border: 1px solid #ccd6dd;
+  border-radius: 9px;
+  font-size: 17px;
 }
 
 button {
-  padding: 14px 20px;
+  padding: 15px 22px;
   border: none;
-  border-radius: 8px;
+  border-radius: 9px;
   background: #0b6b68;
   color: white;
   font-size: 16px;
@@ -69,35 +76,75 @@ button:hover {
 
 .card {
   background: white;
-  padding: 22px;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-  margin-bottom: 20px;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
 }
 
 .card h2 {
   color: #0b6b68;
   margin-top: 0;
+  font-size: 29px;
 }
 
-.card h3 {
-  margin-bottom: 5px;
+.section {
+  margin-top: 24px;
+}
+
+.section h3 {
+  margin-bottom: 8px;
+  color: #34495e;
+  font-size: 19px;
+}
+
+.section p {
+  line-height: 1.6;
 }
 
 ul {
-  padding-left: 20px;
+  padding-left: 22px;
+  line-height: 1.7;
+}
+
+.source {
+  margin-top: 25px;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: #555;
 }
 
 .warning {
-  background: #fff4d6;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 14px;
   margin-top: 20px;
+  background: #fff4d6;
+  padding: 16px;
+  border-radius: 9px;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
-#result {
-  display: none;
+.not-found {
+  text-align: center;
+  padding: 25px;
+}
+
+@media (max-width: 600px) {
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 20px;
+  }
 }
 </style>
 </head>
@@ -111,21 +158,34 @@ ul {
 
 <div class="container">
 
-  <div class="search-box">
-    <input
-      type="text"
-      id="drugSearch"
-      placeholder="Search a drug e.g. Paracetamol"
-    >
-    <button onclick="searchDrug()">Search</button>
+  <div class="search-card">
+
+    <div class="search-box">
+
+      <input
+        type="text"
+        id="drugSearch"
+        placeholder="Search drug e.g. Paracetamol"
+      >
+
+      <button onclick="searchDrug()">
+        Search Drug
+      </button>
+
+    </div>
+
   </div>
 
   <div id="result"></div>
 
   <div class="warning">
+
     ⚠️ <strong>Educational use only.</strong><br>
-    This tool is for pharmacology learning and should not be used as a substitute
-    for prescribing information or professional medical advice.
+
+    This tool is intended for pharmacology learning.
+    It is not a substitute for official prescribing information,
+    clinical guidelines, or professional medical advice.
+
   </div>
 
 </div>
@@ -134,53 +194,96 @@ ul {
 
 let drugs = [];
 
-/* Load drug database */
+
+/* Load database */
+
 fetch("drugs.json")
+
   .then(response => {
+
     if (!response.ok) {
-      throw new Error("Could not load drug database");
+      throw new Error("Database could not be loaded");
     }
+
     return response.json();
+
   })
+
   .then(data => {
+
     drugs = data;
-    console.log("Drug database loaded:", drugs.length);
+
+    console.log("Loaded drugs:", drugs.length);
+
   })
+
   .catch(error => {
+
     console.error(error);
+
   });
 
+
+/* Search drug */
 
 function searchDrug() {
 
   const searchText =
-    document.getElementById("drugSearch").value.trim().toLowerCase();
+    document
+      .getElementById("drugSearch")
+      .value
+      .trim()
+      .toLowerCase();
 
   const result =
     document.getElementById("result");
 
+
   if (!searchText) {
-    result.style.display = "block";
-    result.innerHTML = "<div class='card'>Please enter a drug name.</div>";
-    return;
-  }
 
-  const drug = drugs.find(
-    d => d.name.toLowerCase() === searchText
-  );
-
-  if (!drug) {
-    result.style.display = "block";
     result.innerHTML = `
-      <div class="card">
-        <h2>Drug not found</h2>
-        <p>Try searching for Paracetamol, Amoxicillin, or Metformin.</p>
+      <div class="card not-found">
+        <h2>Search for a drug</h2>
+        <p>Enter a generic drug name above.</p>
       </div>
     `;
+
     return;
+
   }
 
-  result.style.display = "block";
+
+  const drug = drugs.find(
+
+    d => d.name.toLowerCase() === searchText
+
+  );
+
+
+  if (!drug) {
+
+    result.innerHTML = `
+      <div class="card not-found">
+
+        <h2>Drug not found</h2>
+
+        <p>
+          Try one of the available drugs:
+        </p>
+
+        <p>
+          Paracetamol • Ibuprofen • Amoxicillin •
+          Azithromycin • Ceftriaxone • Metformin •
+          Insulin • Furosemide • Omeprazole • Salbutamol
+        </p>
+
+      </div>
+    `;
+
+    return;
+
+  }
+
 
   result.innerHTML = `
 
@@ -188,51 +291,139 @@ function searchDrug() {
 
       <h2>${drug.name}</h2>
 
-      <h3>Drug class</h3>
-      <p>${drug.class}</p>
 
-      <h3>When is it given?</h3>
-      <ul>
-        ${drug.uses.map(item => `<li>${item}</li>`).join("")}
-      </ul>
+      <div class="section">
 
-      <h3>Route</h3>
-      <ul>
-        ${drug.routes.map(item => `<li>${item}</li>`).join("")}
-      </ul>
+        <h3>💊 Drug class</h3>
 
-      <h3>Contraindications / major cautions</h3>
-      <ul>
-        ${drug.contraindications.map(item => `<li>${item}</li>`).join("")}
-      </ul>
+        <p>${drug.class}</p>
 
-      <h3>Adverse effects</h3>
-      <ul>
-        ${drug.adverseEffects.map(item => `<li>${item}</li>`).join("")}
-      </ul>
+      </div>
 
-      <h3>Monitoring</h3>
-      <ul>
-        ${drug.monitoring.map(item => `<li>${item}</li>`).join("")}
-      </ul>
 
-      <p>
-        <strong>Source:</strong> ${drug.source}
-      </p>
+      <div class="section">
+
+        <h3>🧬 Mechanism of action</h3>
+
+        <p>${drug.mechanism}</p>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>🎯 Indications / uses</h3>
+
+        <ul>
+
+          ${drug.uses
+            .map(item => `<li>${item}</li>`)
+            .join("")}
+
+        </ul>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>💉 Routes</h3>
+
+        <ul>
+
+          ${drug.routes
+            .map(item => `<li>${item}</li>`)
+            .join("")}
+
+        </ul>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>⚠️ Contraindications / major cautions</h3>
+
+        <ul>
+
+          ${drug.contraindications
+            .map(item => `<li>${item}</li>`)
+            .join("")}
+
+        </ul>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>🚨 Adverse effects</h3>
+
+        <ul>
+
+          ${drug.adverseEffects
+            .map(item => `<li>${item}</li>`)
+            .join("")}
+
+        </ul>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>🔄 Drug interactions</h3>
+
+        <ul>
+
+          ${drug.interactions
+            .map(item => `<li>${item}</li>`)
+            .join("")}
+
+        </ul>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>🧪 Monitoring</h3>
+
+        <ul>
+
+          ${drug.monitoring
+            .map(item => `<li>${item}</li>`)
+            .join("")}
+
+        </ul>
+
+      </div>
+
+
+      <div class="source">
+
+        📚 <strong>Reference:</strong>
+        ${drug.source}
+
+      </div>
 
     </div>
 
   `;
+
 }
 
 
-/* Allow pressing Enter to search */
+/* Enter key search */
+
 document
   .getElementById("drugSearch")
   .addEventListener("keypress", function(event) {
 
     if (event.key === "Enter") {
+
       searchDrug();
+
     }
 
   });
