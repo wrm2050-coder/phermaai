@@ -447,26 +447,7 @@ function populateDoseIndications() {
 }
 
                             
-/* Dose selector functions */
 
-function populateDoseIndications() {
-
-  if (!currentDrug || !currentDrug.dosage) return;
-
-  const group = document.getElementById("patientGroup").value;
-  const indicationSelect = document.getElementById("doseIndication");
-  const doses = currentDrug.dosage[group];
-
-  indicationSelect.innerHTML = doses
-    .map((item, index) =>
-      `<option value="${index}">${item.indication}</option>`
-    )
-    .join("");
-
-  updateDoseResult();
-}
-
-function updateDoseResult() {
 
   if (!currentDrug || !currentDrug.dosage) return;
 
