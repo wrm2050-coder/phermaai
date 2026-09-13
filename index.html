@@ -1,198 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>PharmaAI</title>
+<title>PharmaAI</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f8fb;
-      color: #17202a;
-    }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f8fb;
+  color: #17202a;
+}
 
-    header {
-      background: #087f8c;
-      color: white;
-      text-align: center;
-      padding: 24px 16px;
-    }
+header {
+  background: #087f8c;
+  color: white;
+  text-align: center;
+  padding: 24px 16px;
+}
 
-    header h1 {
-      margin: 0;
-      font-size: 30px;
-    }
+header h1 {
+  margin: 0;
+  font-size: 30px;
+}
 
-    header p {
-      margin: 7px 0 0;
-      font-size: 14px;
-    }
+header p {
+  margin: 7px 0 0;
+  font-size: 14px;
+}
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 18px;
-    }
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 18px;
+}
 
-    .card {
-      background: white;
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 18px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
 
-    .search-row {
-      display: flex;
-      gap: 8px;
-    }
+.search-row {
+  display: flex;
+  gap: 8px;
+}
 
-    input,
-    textarea,
-    select {
-      width: 100%;
-      border: 1px solid #ccd6dc;
-      border-radius: 9px;
-      padding: 12px;
-      font-size: 15px;
-      background: white;
-    }
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid #ccd6dc;
+  border-radius: 9px;
+  padding: 12px;
+  font-size: 15px;
+  background: white;
+}
 
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
 
-    button {
-      border: none;
-      border-radius: 9px;
-      padding: 12px 17px;
-      background: #087f8c;
-      color: white;
-      font-size: 15px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+button {
+  border: none;
+  border-radius: 9px;
+  padding: 12px 17px;
+  background: #087f8c;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    button:hover {
-      opacity: 0.9;
-    }
+button:disabled {
+  opacity: 0.6;
+}
 
-    h2 {
-      color: #087f8c;
-      margin-top: 0;
-    }
+h2 {
+  color: #087f8c;
+  margin-top: 0;
+}
 
-    h3 {
-      margin-bottom: 6px;
-      color: #243746;
-    }
+h3 {
+  margin-bottom: 6px;
+  color: #243746;
+}
 
-    .drug-title {
-      font-size: 25px;
-      color: #087f8c;
-      margin-bottom: 5px;
-    }
+.drug-title {
+  font-size: 25px;
+  color: #087f8c;
+  margin-bottom: 5px;
+}
 
-    .class {
-      color: #667781;
-      font-weight: bold;
-      margin-bottom: 18px;
-    }
+.class {
+  color: #667781;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
 
-    .section {
-      border-top: 1px solid #e5eaee;
-      padding-top: 12px;
-      margin-top: 14px;
-    }
+.section {
+  border-top: 1px solid #e5eaee;
+  padding-top: 12px;
+  margin-top: 14px;
+}
 
-    ul {
-      padding-left: 22px;
-    }
+ul {
+  padding-left: 22px;
+}
 
-    li {
-      margin-bottom: 6px;
-    }
+li {
+  margin-bottom: 6px;
+}
 
-    .dose-box {
-      background: #eef8f8;
-      border-left: 4px solid #087f8c;
-      padding: 14px;
-      border-radius: 8px;
-      margin-top: 12px;
-    }
+.info-box {
+  background: #eef8f8;
+  border-left: 4px solid #087f8c;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 12px;
+}
 
-    .warning {
-      background: #fff7d6;
-      border-left: 4px solid #e0a800;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      margin-top: 15px;
-    }
+.warning {
+  background: #fff7d6;
+  border-left: 4px solid #e0a800;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-top: 15px;
+}
 
-    .ai-card {
-      border: 2px solid #087f8c;
-    }
+.ai-card {
+  border: 2px solid #087f8c;
+}
 
-    .ai-answer {
-      margin-top: 14px;
-      background: #f0f7f8;
-      border-radius: 10px;
-      padding: 15px;
-      white-space: pre-wrap;
-      line-height: 1.55;
-      display: none;
-    }
+.ai-answer {
+  margin-top: 14px;
+  background: #f0f7f8;
+  border-radius: 10px;
+  padding: 15px;
+  white-space: pre-wrap;
+  line-height: 1.55;
+  display: none;
+}
 
-    .loading {
-      color: #087f8c;
-      font-weight: bold;
-    }
+.loading {
+  color: #087f8c;
+  font-weight: bold;
+}
 
-    .error {
-      color: #b42318;
-      background: #fff0ee;
-      padding: 12px;
-      border-radius: 8px;
-    }
+.error {
+  color: #b42318;
+  background: #fff0ee;
+  padding: 12px;
+  border-radius: 8px;
+}
 
-    .small {
-      font-size: 12px;
-      color: #667781;
-    }
+.small {
+  font-size: 12px;
+  color: #667781;
+}
 
-    .not-found {
-      text-align: center;
-      color: #667781;
-      padding: 15px;
-    }
+.not-found {
+  text-align: center;
+  color: #667781;
+  padding: 15px;
+}
 
-    @media (max-width: 600px) {
-      .search-row {
-        flex-direction: column;
-      }
+.result-count {
+  color: #667781;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
 
-      button {
-        width: 100%;
-      }
+.source {
+  font-size: 12px;
+  color: #667781;
+  word-break: break-word;
+}
 
-      header h1 {
-        font-size: 26px;
-      }
+@media (max-width: 600px) {
+  .search-row {
+    flex-direction: column;
+  }
 
-      .container {
-        padding: 12px;
-      }
-    }
-  </style>
+  button {
+    width: 100%;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+}
+</style>
 </head>
 
 <body>
@@ -204,29 +216,41 @@
 
 <div class="container">
 
-  <!-- DRUG SEARCH -->
+  <!-- SEARCH -->
+
   <div class="card">
 
     <div class="search-row">
+
       <input
         id="drugSearch"
         type="text"
-        placeholder="Search drug e.g. Paracetamol"
+        placeholder="Search almost any drug e.g. amlodipine"
       >
 
-      <button onclick="searchDrug()">
+      <button
+        onclick="searchDrug()"
+        id="searchButton"
+      >
         Search Drug
       </button>
+
     </div>
+
+    <p class="small">
+      Search by generic or brand name.
+    </p>
 
   </div>
 
 
-  <!-- DRUG RESULT -->
+  <!-- RESULTS -->
+
   <div id="result"></div>
 
 
   <!-- AI TUTOR -->
+
   <div class="card ai-card">
 
     <h2>🤖 AI Pharmacology Tutor</h2>
@@ -251,9 +275,9 @@
 
     <div class="warning">
       <strong>Educational use only.</strong><br>
-      PharmaAI is designed for pharmacology learning. AI-generated
-      information should be checked against authoritative drug references
-      and current clinical guidelines before clinical use.
+      PharmaAI is designed for pharmacology learning. Information should
+      be checked against authoritative drug references and current
+      clinical guidelines before clinical use.
     </div>
 
   </div>
@@ -263,613 +287,856 @@
 
 <script>
 
-  let drugs = [];
+/* =====================================================
+   LOCAL DATABASE
+   ===================================================== */
+
+let localDrugs = [];
 
 
-  // =========================
-  // LOAD DRUG DATABASE
-  // =========================
+/* =====================================================
+   LOAD LOCAL DATABASE
+   ===================================================== */
 
-  async function loadDrugs() {
+async function loadLocalDrugs() {
 
-    try {
+  try {
 
-      const response = await fetch("drugs.json");
+    const response = await fetch("drugs.json");
 
-      if (!response.ok) {
-        throw new Error("Could not load drugs.json");
-      }
+    if (response.ok) {
 
-      drugs = await response.json();
+      localDrugs = await response.json();
 
-      console.log("PharmaAI database loaded:", drugs.length, "drugs");
-
-    } catch (error) {
-
-      console.error(error);
-
-      document.getElementById("result").innerHTML = `
-        <div class="card error">
-          Could not load the pharmacology database.
-          Please check that <strong>drugs.json</strong> exists.
-        </div>
-      `;
+      console.log(
+        "Local database loaded:",
+        localDrugs.length
+      );
 
     }
+
+  } catch (error) {
+
+    console.log("Local database unavailable.");
+
+  }
+
+}
+
+
+/* =====================================================
+   SEARCH DRUG
+   ===================================================== */
+
+async function searchDrug() {
+
+  const input =
+    document.getElementById("drugSearch");
+
+  const button =
+    document.getElementById("searchButton");
+
+  const result =
+    document.getElementById("result");
+
+  const drug =
+    input.value.trim();
+
+
+  if (!drug) {
+
+    result.innerHTML = `
+      <div class="card not-found">
+        Please enter a drug name.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  button.disabled = true;
+
+  button.textContent = "Searching...";
+
+
+  result.innerHTML = `
+    <div class="card">
+      <p class="loading">
+        🔎 Searching the drug database...
+      </p>
+    </div>
+  `;
+
+
+  try {
+
+    /*
+      First search our large backend database.
+    */
+
+    const response =
+      await fetch(
+        "/api/drug?drug=" +
+        encodeURIComponent(drug)
+      );
+
+
+    const data =
+      await response.json();
+
+
+    if (response.ok && data.results) {
+
+      displayFDAResults(
+        data.results,
+        drug
+      );
+
+    } else {
+
+      /*
+        If the large database doesn't find it,
+        search the local database.
+      */
+
+      searchLocalDrug(drug);
+
+    }
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    /*
+      Fallback to local database.
+    */
+
+    searchLocalDrug(drug);
 
   }
 
 
-  // =========================
-  // SEARCH DRUG
-  // =========================
+  button.disabled = false;
 
-  function searchDrug() {
+  button.textContent = "Search Drug";
 
-    const query =
-      document.getElementById("drugSearch").value.trim().toLowerCase();
+}
 
-    if (!query) {
 
-      document.getElementById("result").innerHTML = `
-        <div class="card not-found">
-          Enter a drug name.
+/* =====================================================
+   DISPLAY FDA RESULTS
+   ===================================================== */
+
+function displayFDAResults(results, query) {
+
+  const result =
+    document.getElementById("result");
+
+
+  if (!results || results.length === 0) {
+
+    searchLocalDrug(query);
+
+    return;
+  }
+
+
+  let html = `
+
+    <div class="card">
+
+      <h2>Drug Search Results</h2>
+
+      <p class="result-count">
+        ${results.length} result(s) found for
+        <strong>${escapeHTML(query)}</strong>
+      </p>
+
+    </div>
+
+  `;
+
+
+  results.forEach((drug, index) => {
+
+    html += createFDAResult(drug, index);
+
+  });
+
+
+  result.innerHTML = html;
+
+}
+
+
+/* =====================================================
+   CREATE FDA RESULT
+   ===================================================== */
+
+function createFDAResult(drug, index) {
+
+  const brand =
+    joinArray(drug.brandName);
+
+  const generic =
+    joinArray(drug.genericName);
+
+  const manufacturer =
+    joinArray(drug.manufacturer);
+
+  const ingredients =
+    joinArray(drug.activeIngredient);
+
+  const classes =
+    joinArray(drug.drugClass);
+
+  const routes =
+    joinArray(drug.route);
+
+
+  return `
+
+    <div class="card">
+
+      <div class="drug-title">
+
+        ${
+          escapeHTML(
+            generic ||
+            brand ||
+            "Unknown drug"
+          )
+        }
+
+      </div>
+
+
+      ${
+        brand
+        ?
+        `
+        <div class="class">
+          Brand: ${escapeHTML(brand)}
         </div>
-      `;
+        `
+        :
+        ""
+      }
 
-      return;
-    }
+
+      ${
+        manufacturer
+        ?
+        `
+        <div class="section">
+
+          <h3>🏭 Manufacturer</h3>
+
+          <p>
+            ${escapeHTML(manufacturer)}
+          </p>
+
+        </div>
+        `
+        :
+        ""
+      }
 
 
-    const drug = drugs.find(d =>
-      d.name.toLowerCase() === query
+      ${
+        ingredients
+        ?
+        `
+        <div class="section">
+
+          <h3>🧪 Active Ingredient</h3>
+
+          <p>
+            ${escapeHTML(ingredients)}
+          </p>
+
+        </div>
+        `
+        :
+        ""
+      }
+
+
+      ${
+        classes
+        ?
+        `
+        <div class="section">
+
+          <h3>💊 Drug Class</h3>
+
+          <p>
+            ${escapeHTML(classes)}
+          </p>
+
+        </div>
+        `
+        :
+        ""
+      }
+
+
+      ${
+        routes
+        ?
+        `
+        <div class="section">
+
+          <h3>💉 Route</h3>
+
+          <p>
+            ${escapeHTML(routes)}
+          </p>
+
+        </div>
+        `
+        :
+        ""
+      }
+
+
+      ${makeSection(
+        "🎯 Indications & Usage",
+        drug.indications
+      )}
+
+
+      ${makeSection(
+        "💉 Dosage & Administration",
+        drug.dosage
+      )}
+
+
+      ${makeSection(
+        "🚫 Contraindications",
+        drug.contraindications
+      )}
+
+
+      ${makeSection(
+        "⚠️ Warnings",
+        drug.warnings
+      )}
+
+
+      ${makeSection(
+        "⚠️ Adverse Reactions",
+        drug.adverseReactions
+      )}
+
+
+      ${makeSection(
+        "🔄 Drug Interactions",
+        drug.interactions
+      )}
+
+
+      ${makeSection(
+        "🧬 Clinical Pharmacology",
+        drug.clinicalPharmacology
+      )}
+
+
+      ${makeSection(
+        "🤰 Pregnancy",
+        drug.pregnancy
+      )}
+
+
+      ${makeSection(
+        "👶 Pediatric Use",
+        drug.pediatricUse
+      )}
+
+
+      ${makeSection(
+        "👴 Geriatric Use",
+        drug.geriatricUse
+      )}
+
+
+      <div class="section">
+
+        <h3>📚 Source</h3>
+
+        <p class="source">
+          FDA / openFDA drug labeling database
+        </p>
+
+      </div>
+
+
+      <div class="warning">
+
+        <strong>Educational information only.</strong><br>
+
+        Drug labeling can vary by product, formulation,
+        country and indication. Always verify current
+        official labeling and clinical guidelines before
+        making clinical decisions.
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   LOCAL DRUG SEARCH
+   ===================================================== */
+
+function searchLocalDrug(query) {
+
+  const result =
+    document.getElementById("result");
+
+
+  const found =
+    localDrugs.find(d =>
+      d.name &&
+      d.name.toLowerCase() ===
+      query.toLowerCase()
     );
 
 
-    if (!drug) {
+  if (!found) {
 
-      document.getElementById("result").innerHTML = `
-        <div class="card not-found">
+    result.innerHTML = `
 
-          <h3>Drug not found</h3>
+      <div class="card not-found">
 
-          <p>
-            Try one of the drugs currently in the database:
-          </p>
+        <h3>Drug not found</h3>
 
-          <p>
-            ${drugs.map(d => d.name).join(", ")}
-          </p>
+        <p>
+          No matching drug was found.
+        </p>
 
-        </div>
-      `;
+        <p class="small">
+          Try the generic name or another brand name.
+        </p>
 
-      return;
-    }
+      </div>
 
+    `;
 
-    displayDrug(drug);
-
+    return;
   }
 
 
-  // =========================
-  // DISPLAY DRUG
-  // =========================
+  displayLocalDrug(found);
 
-  function displayDrug(drug) {
-
-    document.getElementById("result").innerHTML = `
-
-      <div class="card">
-
-        <div class="drug-title">
-          ${escapeHTML(drug.name)}
-        </div>
-
-        <div class="class">
-          ${escapeHTML(drug.class || "")}
-        </div>
+}
 
 
-        <div class="section">
+/* =====================================================
+   DISPLAY LOCAL DRUG
+   ===================================================== */
 
-          <h3>🧬 Mechanism of Action</h3>
+function displayLocalDrug(drug) {
 
-          <p>
-            ${escapeHTML(drug.mechanism || "Not available")}
-          </p>
-
-        </div>
-
-
-        <div class="section">
-
-          <h3>🎯 Indications</h3>
-
-          ${makeList(drug.uses)}
-
-        </div>
+  const result =
+    document.getElementById("result");
 
 
-        <div class="section">
+  result.innerHTML = `
 
-          <h3>💉 Routes</h3>
+    <div class="card">
 
-          ${makeList(drug.routes)}
+      <div class="drug-title">
+        ${escapeHTML(drug.name)}
+      </div>
 
-        </div>
+      <div class="class">
+        ${escapeHTML(drug.class || "")}
+      </div>
 
 
-        <!-- DOSAGE -->
+      ${makeTextSection(
+        "🧬 Mechanism of Action",
+        drug.mechanism
+      )}
 
+
+      ${makeListSection(
+        "🎯 Indications",
+        drug.uses
+      )}
+
+
+      ${makeListSection(
+        "💉 Routes",
+        drug.routes
+      )}
+
+
+      ${
+        drug.dosage
+        ?
+        `
         <div class="section">
 
           <h3>💊 Dosage</h3>
 
-          <div class="dose-box">
+          <div class="info-box">
 
-            <label>
-              <strong>Patient group</strong>
-            </label>
+            <p>
+              <strong>Adult:</strong>
+              ${formatDose(drug.dosage.adult)}
+            </p>
 
-            <br><br>
+            <p>
+              <strong>Pediatric:</strong>
+              ${formatDose(drug.dosage.pediatric)}
+            </p>
 
-            <select
-              id="patientGroup"
-              onchange="populateDoseIndications()"
-            >
+            <p>
+              <strong>Renal adjustment:</strong>
+              ${escapeHTML(
+                drug.dosage.renalAdjustment || "Not specified"
+              )}
+            </p>
 
-              <option value="adult">
-                Adult
-              </option>
-
-              <option value="pediatric">
-                Pediatric
-              </option>
-
-            </select>
-
-
-            <br><br>
-
-
-            <label>
-              <strong>Indication</strong>
-            </label>
-
-            <br><br>
-
-            <select
-              id="doseIndication"
-              onchange="updateDoseResult()"
-            ></select>
-
-
-            <div id="doseResult"></div>
+            <p>
+              <strong>Hepatic adjustment:</strong>
+              ${escapeHTML(
+                drug.dosage.hepaticAdjustment || "Not specified"
+              )}
+            </p>
 
           </div>
 
         </div>
+        `
+        :
+        ""
+      }
 
 
-        <!-- CONTRAINDICATIONS -->
+      ${makeListSection(
+        "🚫 Contraindications & Cautions",
+        drug.contraindications
+      )}
 
-        <div class="section">
 
-          <h3>🚫 Contraindications & Cautions</h3>
+      ${makeListSection(
+        "⚠️ Adverse Effects",
+        drug.adverseEffects
+      )}
 
-          ${makeList(drug.contraindications)}
 
-        </div>
+      ${makeListSection(
+        "🔄 Drug Interactions",
+        drug.interactions
+      )}
 
 
-        <!-- ADVERSE EFFECTS -->
+      ${makeListSection(
+        "📊 Monitoring",
+        drug.monitoring
+      )}
 
-        <div class="section">
 
-          <h3>⚠️ Adverse Effects</h3>
+      <div class="section">
 
-          ${makeList(drug.adverseEffects)}
+        <h3>📚 Reference</h3>
 
-        </div>
-
-
-        <!-- INTERACTIONS -->
-
-        <div class="section">
-
-          <h3>🔄 Drug Interactions</h3>
-
-          ${makeList(drug.interactions)}
-
-        </div>
-
-
-        <!-- MONITORING -->
-
-        <div class="section">
-
-          <h3>📊 Monitoring</h3>
-
-          ${makeList(drug.monitoring)}
-
-        </div>
-
-
-        <!-- SOURCE -->
-
-        <div class="section">
-
-          <h3>📚 Reference</h3>
-
-          <p class="small">
-            ${escapeHTML(drug.source || "Not specified")}
-          </p>
-
-        </div>
-
-
-        <div class="warning">
-
-          <strong>Educational information only.</strong><br>
-
-          Dosing and treatment decisions depend on the patient,
-          indication, formulation, age, organ function and current
-          clinical guidelines. Always verify with an authoritative
-          drug reference before clinical use.
-
-        </div>
-
-      </div>
-
-    `;
-
-
-    populateDoseIndications();
-
-  }
-
-
-  // =========================
-  // DOSE INDICATIONS
-  // =========================
-
-  function populateDoseIndications() {
-
-    const group =
-      document.getElementById("patientGroup").value;
-
-    const select =
-      document.getElementById("doseIndication");
-
-
-    const drugName =
-      document.querySelector(".drug-title").textContent.trim();
-
-
-    const drug =
-      drugs.find(d => d.name === drugName);
-
-
-    if (!drug || !drug.dosage) {
-      return;
-    }
-
-
-    const doseData =
-      drug.dosage[group] || [];
-
-
-    select.innerHTML = "";
-
-
-    if (!doseData.length) {
-
-      select.innerHTML =
-        `<option>No dosing data available</option>`;
-
-      updateDoseResult();
-
-      return;
-
-    }
-
-
-    doseData.forEach((item, index) => {
-
-      const option =
-        document.createElement("option");
-
-      option.value = index;
-
-      option.textContent =
-        item.indication || `Option ${index + 1}`;
-
-      select.appendChild(option);
-
-    });
-
-
-    updateDoseResult();
-
-  }
-
-
-  // =========================
-  // DISPLAY SELECTED DOSE
-  // =========================
-
-  function updateDoseResult() {
-
-    const groupElement =
-      document.getElementById("patientGroup");
-
-    const indicationElement =
-      document.getElementById("doseIndication");
-
-    const output =
-      document.getElementById("doseResult");
-
-
-    if (!groupElement || !indicationElement || !output) {
-      return;
-    }
-
-
-    const group =
-      groupElement.value;
-
-
-    const drugName =
-      document.querySelector(".drug-title").textContent.trim();
-
-
-    const drug =
-      drugs.find(d => d.name === drugName);
-
-
-    if (!drug || !drug.dosage) {
-      return;
-    }
-
-
-    const doseData =
-      drug.dosage[group] || [];
-
-
-    const index =
-      Number(indicationElement.value);
-
-
-    const selected =
-      doseData[index];
-
-
-    if (!selected) {
-
-      output.innerHTML = `
         <p class="small">
-          No dosing information available.
+          ${escapeHTML(drug.source || "Not specified")}
         </p>
-      `;
-
-      return;
-
-    }
-
-
-    output.innerHTML = `
-
-      <div style="margin-top:15px">
-
-        <p>
-          <strong>Dose:</strong>
-          ${escapeHTML(selected.dose || "Not specified")}
-        </p>
-
-        ${
-          selected.maximum
-          ?
-          `
-          <p>
-            <strong>Maximum:</strong>
-            ${escapeHTML(selected.maximum)}
-          </p>
-          `
-          :
-          ""
-        }
-
-        ${
-          selected.duration
-          ?
-          `
-          <p>
-            <strong>Duration:</strong>
-            ${escapeHTML(selected.duration)}
-          </p>
-          `
-          :
-          ""
-        }
-
-        ${
-          drug.dosage.renalAdjustment
-          ?
-          `
-          <p>
-            <strong>Renal adjustment:</strong>
-            ${escapeHTML(drug.dosage.renalAdjustment)}
-          </p>
-          `
-          :
-          ""
-        }
-
-        ${
-          drug.dosage.hepaticAdjustment
-          ?
-          `
-          <p>
-            <strong>Hepatic adjustment:</strong>
-            ${escapeHTML(drug.dosage.hepaticAdjustment)}
-          </p>
-          `
-          :
-          ""
-        }
-
-        ${
-          drug.dosage.reference
-          ?
-          `
-          <p class="small">
-            <strong>Dosing reference:</strong>
-            ${escapeHTML(drug.dosage.reference)}
-          </p>
-          `
-          :
-          ""
-        }
 
       </div>
 
-    `;
 
-  }
+      <div class="warning">
 
+        <strong>Educational information only.</strong><br>
 
-  // =========================
-  // AI PHARMACOLOGY TUTOR
-  // =========================
+        Always verify drug information with an authoritative
+        current reference before clinical use.
 
-  async function askAI() {
+      </div>
 
-    const question =
-      document.getElementById("aiQuestion").value.trim();
+    </div>
 
-    const answerBox =
-      document.getElementById("aiAnswer");
+  `;
 
-    const button =
-      document.getElementById("askButton");
+}
 
 
-    if (!question) {
+/* =====================================================
+   AI TUTOR
+   ===================================================== */
 
-      answerBox.style.display = "block";
+async function askAI() {
 
-      answerBox.innerHTML =
-        "Please enter a pharmacology question.";
+  const question =
+    document.getElementById("aiQuestion")
+      .value.trim();
 
-      return;
+  const answerBox =
+    document.getElementById("aiAnswer");
 
-    }
+  const button =
+    document.getElementById("askButton");
 
 
-    // Show loading
+  if (!question) {
 
     answerBox.style.display = "block";
 
     answerBox.innerHTML =
-      `<span class="loading">🤖 Thinking...</span>`;
+      "Please enter a pharmacology question.";
 
-    button.disabled = true;
-
-    button.textContent = "Thinking...";
-
-
-    try {
-
-      const response =
-        await fetch("/api/ask", {
-
-          method: "POST",
-
-          headers: {
-            "Content-Type": "application/json"
-          },
-
-          body: JSON.stringify({
-            question: question
-          })
-
-        });
+    return;
+  }
 
 
-      const data =
-        await response.json();
+  answerBox.style.display = "block";
+
+  answerBox.innerHTML =
+    `<span class="loading">🤖 Thinking...</span>`;
+
+  button.disabled = true;
+
+  button.textContent = "Thinking...";
 
 
-      if (!response.ok) {
+  try {
 
-        throw new Error(
-          data.error || "AI request failed."
-        );
+    const response =
+      await fetch("/api/ask", {
 
-      }
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+          question: question
+        })
+
+      });
 
 
-      answerBox.innerHTML =
-        escapeHTML(data.answer || "No answer received.");
+    const data =
+      await response.json();
 
 
-    } catch (error) {
+    if (!response.ok) {
 
-      console.error(error);
-
-      answerBox.innerHTML = `
-
-        <div class="error">
-
-          <strong>AI connection error</strong>
-
-          <p>
-            ${escapeHTML(error.message)}
-          </p>
-
-          <p class="small">
-            If this is the first deployment, wait a minute
-            and try again.
-          </p>
-
-        </div>
-
-      `;
+      throw new Error(
+        data.error ||
+        "AI request failed."
+      );
 
     }
 
 
-    button.disabled = false;
+    answerBox.innerHTML =
+      escapeHTML(
+        data.answer ||
+        "No answer received."
+      );
 
-    button.textContent = "Ask AI";
+
+  } catch (error) {
+
+    console.error(error);
+
+    answerBox.innerHTML = `
+
+      <div class="error">
+
+        <strong>AI connection error</strong>
+
+        <p>
+          ${escapeHTML(error.message)}
+        </p>
+
+        <p class="small">
+          AI requires an active API credit balance.
+        </p>
+
+      </div>
+
+    `;
 
   }
 
 
-  // =========================
-  // ENTER KEY SEARCH
-  // =========================
+  button.disabled = false;
 
-  document
-    .getElementById("drugSearch")
-    .addEventListener("keydown", function(event) {
+  button.textContent = "Ask AI";
+
+}
+
+
+/* =====================================================
+   HELPER FUNCTIONS
+   ===================================================== */
+
+function joinArray(array) {
+
+  if (!array || !Array.isArray(array)) {
+    return "";
+  }
+
+  return array.join(", ");
+
+}
+
+
+function makeSection(title, text) {
+
+  if (!text) {
+    return "";
+  }
+
+  return `
+
+    <div class="section">
+
+      <h3>${title}</h3>
+
+      <div class="info-box">
+        ${escapeHTML(text)}
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function makeTextSection(title, text) {
+
+  if (!text) {
+    return "";
+  }
+
+  return `
+
+    <div class="section">
+
+      <h3>${title}</h3>
+
+      <p>
+        ${escapeHTML(text)}
+      </p>
+
+    </div>
+
+  `;
+
+}
+
+
+function makeListSection(title, items) {
+
+  if (!items || !items.length) {
+    return "";
+  }
+
+  return `
+
+    <div class="section">
+
+      <h3>${title}</h3>
+
+      <ul>
+
+        ${
+          items.map(item =>
+            `<li>${escapeHTML(String(item))}</li>`
+          ).join("")
+        }
+
+      </ul>
+
+    </div>
+
+  `;
+
+}
+
+
+function formatDose(items) {
+
+  if (!items || !items.length) {
+    return "Not specified";
+  }
+
+  return items.map(item => {
+
+    if (typeof item === "string") {
+      return escapeHTML(item);
+    }
+
+    return escapeHTML(
+      (item.indication || "") +
+      ": " +
+      (item.dose || "")
+    );
+
+  }).join("<br><br>");
+
+}
+
+
+function escapeHTML(value) {
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    value == null
+    ? ""
+    : String(value);
+
+  return div.innerHTML;
+
+}
+
+
+/* =====================================================
+   ENTER KEY SEARCH
+   ===================================================== */
+
+document
+  .getElementById("drugSearch")
+  .addEventListener(
+    "keydown",
+    function(event) {
 
       if (event.key === "Enter") {
         searchDrug();
       }
 
-    });
+    }
+  );
 
 
-  // =========================
-  // ENTER KEY AI
-  // =========================
+/* =====================================================
+   ENTER KEY AI
+   ===================================================== */
 
-  document
-    .getElementById("aiQuestion")
-    .addEventListener("keydown", function(event) {
+document
+  .getElementById("aiQuestion")
+  .addEventListener(
+    "keydown",
+    function(event) {
 
       if (
         event.key === "Enter" &&
@@ -882,59 +1149,15 @@
 
       }
 
-    });
-
-
-  // =========================
-  // HELPER: LIST
-  // =========================
-
-  function makeList(items) {
-
-    if (!items || !items.length) {
-      return "<p>Not available</p>";
     }
+  );
 
 
-    return `
+/* =====================================================
+   START
+   ===================================================== */
 
-      <ul>
-
-        ${
-          items.map(item =>
-            `<li>${escapeHTML(String(item))}</li>`
-          ).join("")
-        }
-
-      </ul>
-
-    `;
-
-  }
-
-
-  // =========================
-  // SECURITY HELPER
-  // =========================
-
-  function escapeHTML(value) {
-
-    const div =
-      document.createElement("div");
-
-    div.textContent =
-      value == null ? "" : String(value);
-
-    return div.innerHTML;
-
-  }
-
-
-  // =========================
-  // START
-  // =========================
-
-  loadDrugs();
+loadLocalDrugs();
 
 </script>
 
