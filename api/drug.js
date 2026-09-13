@@ -1,91 +1,180 @@
 export default async function handler(req, res) {
-  if (req.method !== "GET") {
-    return res.status(405).json({
-      error: "Method not allowed"
-    });
-  }
+  const drugName = String(req.query.drug || "").trim();
 
-  const drug = (req.query.drug || "").trim();
-
-  if (!drug) {
+  if (!drugName) {
     return res.status(400).json({
-      error: "Please provide a drug name."
+      error: "Drug name is required"
     });
   }
 
   try {
-    const url =
-      "https://api.fda.gov/drug/label.json?search=" +
-      encodeURIComponent(
-        `openfda.brand_name:"${drug}" OR openfda.generic_name:"${drug}"`
-      ) +
-      "&limit=5";
+    /*
+      =========================================================
+      1. SEARCH RXNORM
+      =========================================================
+    */
 
-    const response = await fetch(url);
-    const data = await response.json();
+    const rxnormURL =
+      "https://rxnav.nlm.nih.gov/REST/drugs.json?name=" +
+      encodeURIComponent(drugName);
 
-    if (!response.ok || !data.results) {
+    const rxnormResponse = await fetch(rxnormURL);
+
+    if (!rxnormResponse.ok) {
+      throw new Error("RxNorm request failed");
+    }
+
+    const rxnormData = await rxnormResponse.json();
+
+    const conceptGroups =
+      rxnormData?.drugGroup?.conceptGroup || [];
+
+    const concepts = [];
+
+    for (const group of conceptGroups) {
+      if (!group.conceptProperties) continue;
+
+      for (const concept of group.conceptProperties) {
+        concepts.push({
+          rxcui: concept.rxcui,
+          name: concept.name,
+          synonym: concept.synonym || "",
+          tty: concept.tty,
+          psn: concept.psn || ""
+        });
+      }
+    }
+
+    if (concepts.length === 0) {
       return res.status(404).json({
-        error: "Drug not found in the FDA database."
+        error: "Drug not found",
+        message: "No matching drug was found in RxNorm."
       });
     }
 
-    const results = data.results.map(item => ({
-      brandName: item.openfda?.brand_name || [],
-      genericName: item.openfda?.generic_name || [],
-      manufacturer: item.openfda?.manufacturer_name || [],
+    /*
+      =========================================================
+      2. FIND THE MAIN DRUG / INGREDIENT
+      =========================================================
+    */
 
-      activeIngredient:
-        item.active_ingredient || [],
+    const ingredient =
+      concepts.find(c => c.tty === "IN") ||
+      concepts.find(c => c.tty === "PIN") ||
+      concepts.find(c => c.tty === "SCD") ||
+      concepts[0];
 
-      drugClass:
-        item.pharm_class || [],
+    const rxcui = ingredient.rxcui;
 
-      route:
-        item.openfda?.route || [],
+    /*
+      =========================================================
+      3. SEARCH DAILYMED USING RXCUI
+      =========================================================
+    */
 
-      indications:
-        item.indications_and_usage || [],
+    const dailyMedURL =
+      "https://dailymed.nlm.nih.gov/dailymed/services/v2/spls.json" +
+      "?rxcui=" +
+      encodeURIComponent(rxcui) +
+      "&pagesize=10";
 
-      dosage:
-        item.dosage_and_administration || [],
+    const dailyMedResponse =
+      await fetch(dailyMedURL);
 
-      contraindications:
-        item.contraindications || [],
+    let dailyMedData = null;
 
-      warnings:
-        item.warnings || [],
+    if (dailyMedResponse.ok) {
+      dailyMedData = await dailyMedResponse.json();
+    }
 
-      adverseReactions:
-        item.adverse_reactions || [],
+    /*
+      =========================================================
+      4. EXTRACT DAILYMED LABELS
+      =========================================================
+    */
 
-      interactions:
-        item.drug_interactions || [],
+    const labels =
+      dailyMedData?.data ||
+      dailyMedData?.spls ||
+      [];
 
-      clinicalPharmacology:
-        item.clinical_pharmacology || [],
+    const cleanLabels = labels.map(label => ({
+      setid:
+        label.setid ||
+        label.set_id ||
+        null,
 
-      pregnancy:
-        item.pregnancy || [],
+      title:
+        label.title ||
+        label.drug_name ||
+        label.drugName ||
+        "",
 
-      pediatricUse:
-        item.pediatric_use || [],
+      publishedDate:
+        label.published_date ||
+        label.publishedDate ||
+        "",
 
-      geriatricUse:
-        item.geriatric_use || []
+      labeler:
+        label.labeler ||
+        label.manufacturer ||
+        ""
     }));
 
+    /*
+      =========================================================
+      5. RETURN CLEAN DATA TO PHARMAAI
+      =========================================================
+    */
+
     return res.status(200).json({
-      query: drug,
-      results
+      found: true,
+
+      searchTerm: drugName,
+
+      genericName:
+        ingredient.name || drugName,
+
+      rxcui: rxcui,
+
+      synonym:
+        ingredient.synonym || "",
+
+      termType:
+        ingredient.tty || "",
+
+      prescribableName:
+        ingredient.psn || "",
+
+      products: concepts
+        .filter(c =>
+          ["SCD", "SBD", "GPCK", "BPCK"].includes(c.tty)
+        )
+        .slice(0, 30)
+        .map(c => ({
+          rxcui: c.rxcui,
+          name: c.name,
+          type: c.tty
+        })),
+
+      labels: cleanLabels,
+
+      sources: {
+        rxnorm:
+          "https://rxnav.nlm.nih.gov/",
+
+        dailymed:
+          "https://dailymed.nlm.nih.gov/"
+      }
     });
 
   } catch (error) {
 
-    console.error(error);
+    console.error("Drug API error:", error);
 
     return res.status(500).json({
-      error: "Unable to retrieve drug information."
+      error: "Drug lookup failed",
+      message: error.message
     });
   }
 }
