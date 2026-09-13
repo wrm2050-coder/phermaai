@@ -499,7 +499,58 @@ function updateDoseResult() {
     </div>
   `;
 }
-/* Enter key search */
+function populateDoseIndications() {
+  const patientGroup = document.getElementById("patientGroup");
+  const doseIndication = document.getElementById("doseIndication");
+
+  if (!patientGroup || !doseIndication) return;
+
+  const group = patientGroup.value;
+  const doses = drugs.find(
+    d => d.name.toLowerCase() === document.getElementById("drugInput").value.trim().toLowerCase()
+  )?.dosage?.[group];
+
+  doseIndication.innerHTML = "";
+
+  if (!doses) return;
+
+  doses.forEach((item, index) => {
+    const option = document.createElement("option");
+    option.value = index;
+    option.textContent = item.indication;
+    doseIndication.appendChild(option);
+  });
+
+  updateDoseResult();
+}
+
+function updateDoseResult() {
+  const patientGroup = document.getElementById("patientGroup");
+  const doseIndication = document.getElementById("doseIndication");
+  const doseResult = document.getElementById("doseResult");
+
+  if (!patientGroup || !doseIndication || !doseResult) return;
+
+  const drug = drugs.find(
+    d => d.name.toLowerCase() === document.getElementById("drugInput").value.trim().toLowerCase()
+  );
+
+  if (!drug || !drug.dosage) return;
+
+  const doses = drug.dosage[patientGroup.value];
+  const item = doses[doseIndication.value];
+
+  if (!item) return;
+
+  doseResult.innerHTML = `
+    <div class="section">
+      <strong>${item.indication}</strong>
+      <p><strong>Dose:</strong> ${item.dose}</p>
+      <p><strong>Maximum:</strong> ${item.maximum}</p>
+    </div>
+  `;
+}
+  /* Enter key search */
 
 document
   .getElementById("drugSearch")
