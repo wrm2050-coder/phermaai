@@ -337,7 +337,43 @@ function searchDrug() {
 
         </ul>
 
-      </div>
+      </div>${drug.dosage ? `
+
+<div class="section">
+
+  <h3>💊 Dosage & Administration</h3>
+
+  <h4>Adult</h4>
+  <ul>
+    ${drug.dosage.adult
+      .map(item => `<li>${item}</li>`)
+      .join("")}
+  </ul>
+
+  <h4>Pediatric</h4>
+  <ul>
+    ${drug.dosage.pediatric
+      .map(item => `<li>${item}</li>`)
+      .join("")}
+  </ul>
+
+  <h4>Renal adjustment</h4>
+  <p>${drug.dosage.renalAdjustment}</p>
+
+  <h4>Hepatic adjustment</h4>
+  <p>${drug.dosage.hepaticAdjustment}</p>
+
+  <h4>Duration</h4>
+  <p>${drug.dosage.duration}</p>
+
+  <p class="source">
+    📚 <strong>Dosing reference:</strong>
+    ${drug.dosage.reference}
+  </p>
+
+</div>
+
+` : ""}
 
 
       <div class="section">
