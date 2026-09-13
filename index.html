@@ -1,1223 +1,942 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PharmaAI</title>
-
-<style>
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f8fb;
-  color: #17212b;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-header {
-  background: #0b6b68;
-  color: white;
-  padding: 28px 20px;
-  text-align: center;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 32px;
-}
-
-header p {
-  margin: 8px 0 0;
-}
-
-
-/* =========================
-   MAIN CONTAINER
-========================= */
-
-.container {
-  max-width: 850px;
-  margin: 30px auto;
-  padding: 20px;
-}
-
-
-/* =========================
-   CARDS
-========================= */
-
-.search-card,
-.ai-card {
-  background: white;
-  padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-  margin-bottom: 25px;
-}
-
-.card {
-  background: white;
-  padding: 25px;
-  border-radius: 14px;
-  box-shadow: 0 3px 15px rgba(0,0,0,0.08);
-}
-
-
-/* =========================
-   SEARCH
-========================= */
-
-.search-box {
-  display: flex;
-  gap: 10px;
-}
-
-input {
-  flex: 1;
-  padding: 15px;
-  border: 1px solid #ccd6dd;
-  border-radius: 9px;
-  font-size: 17px;
-}
-
-button {
-  padding: 15px 22px;
-  border: none;
-  border-radius: 9px;
-  background: #0b6b68;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.9;
-}
-
-
-/* =========================
-   DROPDOWNS
-========================= */
-
-select {
-  width: 100%;
-  padding: 13px;
-  margin-top: 8px;
-  margin-bottom: 18px;
-  border: 1px solid #ccd6dd;
-  border-radius: 9px;
-  font-size: 16px;
-  background: white;
-}
-
-
-/* =========================
-   DRUG CARD
-========================= */
-
-.card h2 {
-  color: #0b6b68;
-  margin-top: 0;
-  font-size: 29px;
-}
-
-.section {
-  margin-top: 24px;
-}
-
-.section h3 {
-  margin-bottom: 8px;
-  color: #34495e;
-  font-size: 19px;
-}
-
-.section h4 {
-  margin-top: 22px;
-  color: #34495e;
-}
-
-.section p {
-  line-height: 1.6;
-}
-
-ul {
-  padding-left: 22px;
-  line-height: 1.7;
-}
-
-
-/* =========================
-   DOSE RESULT
-========================= */
-
-.dose-result {
-  background: #eef8f7;
-  padding: 16px;
-  border-radius: 10px;
-  margin-top: 5px;
-  margin-bottom: 20px;
-}
-
-
-/* =========================
-   SOURCE
-========================= */
-
-.source {
-  margin-top: 25px;
-  padding-top: 15px;
-  border-top: 1px solid #ddd;
-  font-size: 14px;
-  color: #555;
-}
-
-
-/* =========================
-   WARNING
-========================= */
-
-.warning {
-  margin-top: 20px;
-  background: #fff4d6;
-  padding: 16px;
-  border-radius: 9px;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-
-/* =========================
-   NOT FOUND
-========================= */
-
-.not-found {
-  text-align: center;
-  padding: 25px;
-}
-
-
-/* =========================
-   AI TUTOR
-========================= */
-
-.ai-card h2 {
-  color: #0b6b68;
-  margin-top: 0;
-}
-
-.ai-card p {
-  line-height: 1.6;
-}
-
-.ai-question {
-  width: 100%;
-  min-height: 110px;
-  padding: 15px;
-  border: 1px solid #ccd6dd;
-  border-radius: 9px;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
-  resize: vertical;
-  margin-bottom: 12px;
-}
-
-.ai-answer {
-  margin-top: 20px;
-  padding: 16px;
-  background: #f4f8fb;
-  border-radius: 10px;
-  line-height: 1.6;
-}
-
-.ai-note {
-  font-size: 13px;
-  color: #666;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 600px) {
-
-  .search-box {
-    flex-direction: column;
-  }
-
-  button {
-    width: 100%;
-  }
-
-  .container {
-    padding: 12px;
-  }
-
-  .card,
-  .search-card,
-  .ai-card {
-    padding: 20px;
-  }
-
-  header h1 {
-    font-size: 28px;
-  }
-
-}
-
-</style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PharmaAI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f8fb;
+      color: #17202a;
+    }
+
+    header {
+      background: #087f8c;
+      color: white;
+      text-align: center;
+      padding: 24px 16px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 7px 0 0;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .search-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid #ccd6dc;
+      border-radius: 9px;
+      padding: 12px;
+      font-size: 15px;
+      background: white;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      border: none;
+      border-radius: 9px;
+      padding: 12px 17px;
+      background: #087f8c;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    h2 {
+      color: #087f8c;
+      margin-top: 0;
+    }
+
+    h3 {
+      margin-bottom: 6px;
+      color: #243746;
+    }
+
+    .drug-title {
+      font-size: 25px;
+      color: #087f8c;
+      margin-bottom: 5px;
+    }
+
+    .class {
+      color: #667781;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .section {
+      border-top: 1px solid #e5eaee;
+      padding-top: 12px;
+      margin-top: 14px;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .dose-box {
+      background: #eef8f8;
+      border-left: 4px solid #087f8c;
+      padding: 14px;
+      border-radius: 8px;
+      margin-top: 12px;
+    }
+
+    .warning {
+      background: #fff7d6;
+      border-left: 4px solid #e0a800;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-top: 15px;
+    }
+
+    .ai-card {
+      border: 2px solid #087f8c;
+    }
+
+    .ai-answer {
+      margin-top: 14px;
+      background: #f0f7f8;
+      border-radius: 10px;
+      padding: 15px;
+      white-space: pre-wrap;
+      line-height: 1.55;
+      display: none;
+    }
+
+    .loading {
+      color: #087f8c;
+      font-weight: bold;
+    }
+
+    .error {
+      color: #b42318;
+      background: #fff0ee;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .small {
+      font-size: 12px;
+      color: #667781;
+    }
+
+    .not-found {
+      text-align: center;
+      color: #667781;
+      padding: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .search-row {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      header h1 {
+        font-size: 26px;
+      }
+
+      .container {
+        padding: 12px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
-
   <h1>💊 PharmaAI</h1>
-
-  <p>
-    Pharmacology learning simulator for medical students
-  </p>
-
+  <p>Pharmacology learning simulator for medical students</p>
 </header>
-
-
 
 <div class="container">
 
+  <!-- DRUG SEARCH -->
+  <div class="card">
 
-  <!-- =========================
-       DRUG SEARCH
-  ========================== -->
-
-  <div class="search-card">
-
-    <div class="search-box">
-
+    <div class="search-row">
       <input
-        type="text"
         id="drugSearch"
+        type="text"
         placeholder="Search drug e.g. Paracetamol"
       >
 
       <button onclick="searchDrug()">
         Search Drug
       </button>
-
     </div>
 
   </div>
 
 
-
-  <!-- =========================
-       DRUG RESULT
-  ========================== -->
-
+  <!-- DRUG RESULT -->
   <div id="result"></div>
 
 
+  <!-- AI TUTOR -->
+  <div class="card ai-card">
 
-  <!-- =========================
-       AI TUTOR
-  ========================== -->
+    <h2>🤖 AI Pharmacology Tutor</h2>
 
-  <div class="ai-card">
-
-    <h2>
-      🤖 AI Pharmacology Tutor
-    </h2>
-
-    <p>
-      Ask questions about the drugs in the PharmaAI database.
+    <p class="small">
+      Ask questions about pharmacology, mechanisms, adverse effects,
+      contraindications, drug interactions and clinical concepts.
     </p>
-
 
     <textarea
       id="aiQuestion"
-      class="ai-question"
       placeholder="Ask e.g. Why does furosemide cause hypokalemia?"
     ></textarea>
 
+    <br><br>
 
-    <button onclick="askAI()">
+    <button onclick="askAI()" id="askButton">
       Ask AI
     </button>
 
+    <div id="aiAnswer" class="ai-answer"></div>
 
-    <div
-      id="aiAnswer"
-      class="ai-answer"
-      style="display:none;"
-    ></div>
-
-
-    <p class="ai-note">
-      Educational use only. AI-generated explanations should
-      be checked against authoritative pharmacology references.
-    </p>
+    <div class="warning">
+      <strong>Educational use only.</strong><br>
+      PharmaAI is designed for pharmacology learning. AI-generated
+      information should be checked against authoritative drug references
+      and current clinical guidelines before clinical use.
+    </div>
 
   </div>
-
-
-
-  <!-- =========================
-       WARNING
-  ========================== -->
-
-  <div class="warning">
-
-    ⚠️ <strong>Educational use only.</strong><br>
-
-    This tool is intended for pharmacology learning.
-    It is not a substitute for official prescribing information,
-    clinical guidelines, or professional medical advice.
-
-  </div>
-
 
 </div>
 
 
-
 <script>
 
-
-/* =====================================
-   GLOBAL VARIABLES
-===================================== */
-
-let drugs = [];
-
-let currentDrug = null;
+  let drugs = [];
 
 
+  // =========================
+  // LOAD DRUG DATABASE
+  // =========================
 
-/* =====================================
-   LOAD DRUG DATABASE
-===================================== */
+  async function loadDrugs() {
 
-fetch("drugs.json")
+    try {
 
-  .then(response => {
+      const response = await fetch("drugs.json");
 
-    if (!response.ok) {
+      if (!response.ok) {
+        throw new Error("Could not load drugs.json");
+      }
 
-      throw new Error(
-        "Database could not be loaded"
-      );
+      drugs = await response.json();
+
+      console.log("PharmaAI database loaded:", drugs.length, "drugs");
+
+    } catch (error) {
+
+      console.error(error);
+
+      document.getElementById("result").innerHTML = `
+        <div class="card error">
+          Could not load the pharmacology database.
+          Please check that <strong>drugs.json</strong> exists.
+        </div>
+      `;
 
     }
 
-    return response.json();
+  }
 
-  })
 
-  .then(data => {
+  // =========================
+  // SEARCH DRUG
+  // =========================
 
-    drugs = data;
+  function searchDrug() {
 
-    console.log(
-      "Loaded drugs:",
-      drugs.length
+    const query =
+      document.getElementById("drugSearch").value.trim().toLowerCase();
+
+    if (!query) {
+
+      document.getElementById("result").innerHTML = `
+        <div class="card not-found">
+          Enter a drug name.
+        </div>
+      `;
+
+      return;
+    }
+
+
+    const drug = drugs.find(d =>
+      d.name.toLowerCase() === query
     );
 
-  })
 
-  .catch(error => {
+    if (!drug) {
 
-    console.error(
-      "Database error:",
-      error
-    );
+      document.getElementById("result").innerHTML = `
+        <div class="card not-found">
 
-  });
+          <h3>Drug not found</h3>
 
+          <p>
+            Try one of the drugs currently in the database:
+          </p>
 
+          <p>
+            ${drugs.map(d => d.name).join(", ")}
+          </p>
 
-/* =====================================
-   SEARCH DRUG
-===================================== */
+        </div>
+      `;
 
-function searchDrug() {
-
-
-  const searchText =
-    document
-      .getElementById("drugSearch")
-      .value
-      .trim()
-      .toLowerCase();
+      return;
+    }
 
 
-  const result =
-    document.getElementById("result");
+    displayDrug(drug);
+
+  }
 
 
-  if (!searchText) {
+  // =========================
+  // DISPLAY DRUG
+  // =========================
 
-    result.innerHTML = `
+  function displayDrug(drug) {
 
-      <div class="card not-found">
+    document.getElementById("result").innerHTML = `
 
-        <h2>
-          Search for a drug
-        </h2>
+      <div class="card">
 
-        <p>
-          Enter a generic drug name above.
-        </p>
+        <div class="drug-title">
+          ${escapeHTML(drug.name)}
+        </div>
+
+        <div class="class">
+          ${escapeHTML(drug.class || "")}
+        </div>
+
+
+        <div class="section">
+
+          <h3>🧬 Mechanism of Action</h3>
+
+          <p>
+            ${escapeHTML(drug.mechanism || "Not available")}
+          </p>
+
+        </div>
+
+
+        <div class="section">
+
+          <h3>🎯 Indications</h3>
+
+          ${makeList(drug.uses)}
+
+        </div>
+
+
+        <div class="section">
+
+          <h3>💉 Routes</h3>
+
+          ${makeList(drug.routes)}
+
+        </div>
+
+
+        <!-- DOSAGE -->
+
+        <div class="section">
+
+          <h3>💊 Dosage</h3>
+
+          <div class="dose-box">
+
+            <label>
+              <strong>Patient group</strong>
+            </label>
+
+            <br><br>
+
+            <select
+              id="patientGroup"
+              onchange="populateDoseIndications()"
+            >
+
+              <option value="adult">
+                Adult
+              </option>
+
+              <option value="pediatric">
+                Pediatric
+              </option>
+
+            </select>
+
+
+            <br><br>
+
+
+            <label>
+              <strong>Indication</strong>
+            </label>
+
+            <br><br>
+
+            <select
+              id="doseIndication"
+              onchange="updateDoseResult()"
+            ></select>
+
+
+            <div id="doseResult"></div>
+
+          </div>
+
+        </div>
+
+
+        <!-- CONTRAINDICATIONS -->
+
+        <div class="section">
+
+          <h3>🚫 Contraindications & Cautions</h3>
+
+          ${makeList(drug.contraindications)}
+
+        </div>
+
+
+        <!-- ADVERSE EFFECTS -->
+
+        <div class="section">
+
+          <h3>⚠️ Adverse Effects</h3>
+
+          ${makeList(drug.adverseEffects)}
+
+        </div>
+
+
+        <!-- INTERACTIONS -->
+
+        <div class="section">
+
+          <h3>🔄 Drug Interactions</h3>
+
+          ${makeList(drug.interactions)}
+
+        </div>
+
+
+        <!-- MONITORING -->
+
+        <div class="section">
+
+          <h3>📊 Monitoring</h3>
+
+          ${makeList(drug.monitoring)}
+
+        </div>
+
+
+        <!-- SOURCE -->
+
+        <div class="section">
+
+          <h3>📚 Reference</h3>
+
+          <p class="small">
+            ${escapeHTML(drug.source || "Not specified")}
+          </p>
+
+        </div>
+
+
+        <div class="warning">
+
+          <strong>Educational information only.</strong><br>
+
+          Dosing and treatment decisions depend on the patient,
+          indication, formulation, age, organ function and current
+          clinical guidelines. Always verify with an authoritative
+          drug reference before clinical use.
+
+        </div>
 
       </div>
 
     `;
 
-    return;
-
-  }
-
-
-
-  const drug = drugs.find(
-
-    d =>
-      d.name.toLowerCase() === searchText
-
-  );
-
-
-
-  if (!drug) {
-
-    result.innerHTML = `
-
-      <div class="card not-found">
-
-        <h2>
-          Drug not found
-        </h2>
-
-        <p>
-          Try one of the available drugs:
-        </p>
-
-        <p>
-          Paracetamol •
-          Ibuprofen •
-          Amoxicillin •
-          Azithromycin •
-          Ceftriaxone •
-          Metformin •
-          Insulin •
-          Furosemide •
-          Omeprazole •
-          Salbutamol
-        </p>
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-
-  currentDrug = drug;
-
-
-
-  /* =====================================
-     DISPLAY DRUG INFORMATION
-  ===================================== */
-
-  result.innerHTML = `
-
-    <div class="card">
-
-
-      <h2>
-        ${drug.name}
-      </h2>
-
-
-
-      <!-- DRUG CLASS -->
-
-      <div class="section">
-
-        <h3>
-          💊 Drug class
-        </h3>
-
-        <p>
-          ${drug.class}
-        </p>
-
-      </div>
-
-
-
-      <!-- MECHANISM -->
-
-      <div class="section">
-
-        <h3>
-          🧬 Mechanism of action
-        </h3>
-
-        <p>
-          ${drug.mechanism}
-        </p>
-
-      </div>
-
-
-
-      <!-- USES -->
-
-      <div class="section">
-
-        <h3>
-          🎯 Indications / uses
-        </h3>
-
-        <ul>
-
-          ${drug.uses
-            .map(
-              item =>
-                `<li>${item}</li>`
-            )
-            .join("")}
-
-        </ul>
-
-      </div>
-
-
-
-      <!-- ROUTES -->
-
-      <div class="section">
-
-        <h3>
-          💉 Routes of administration
-        </h3>
-
-        <ul>
-
-          ${drug.routes
-            .map(
-              item =>
-                `<li>${item}</li>`
-            )
-            .join("")}
-
-        </ul>
-
-      </div>
-
-
-
-      <!-- DOSAGE -->
-
-      ${
-        drug.dosage
-          ? `
-
-      <div class="section">
-
-
-        <h3>
-          💊 Dosage & Administration
-        </h3>
-
-
-
-        <label for="patientGroup">
-
-          <strong>
-            Patient group
-          </strong>
-
-        </label>
-
-
-        <select
-          id="patientGroup"
-          onchange="populateDoseIndications()"
-        >
-
-          <option value="adult">
-            Adult
-          </option>
-
-          <option value="pediatric">
-            Pediatric
-          </option>
-
-        </select>
-
-
-
-        <label for="doseIndication">
-
-          <strong>
-            Indication
-          </strong>
-
-        </label>
-
-
-        <select
-          id="doseIndication"
-          onchange="updateDoseResult()"
-        >
-
-        </select>
-
-
-
-        <div id="doseResult"></div>
-
-
-
-        <h4>
-          Duration
-        </h4>
-
-
-        <ul>
-
-          ${drug.dosage.duration
-            .map(
-              item =>
-                `<li>${item}</li>`
-            )
-            .join("")}
-
-        </ul>
-
-
-
-        <h4>
-          Renal adjustment
-        </h4>
-
-
-        <p>
-          ${drug.dosage.renalAdjustment}
-        </p>
-
-
-
-        <h4>
-          Hepatic adjustment
-        </h4>
-
-
-        <p>
-          ${drug.dosage.hepaticAdjustment}
-        </p>
-
-
-
-        <p class="source">
-
-          📚
-
-          <strong>
-            Dosing reference:
-          </strong>
-
-          ${drug.dosage.reference}
-
-        </p>
-
-
-      </div>
-
-      `
-          : ""
-      }
-
-
-
-      <!-- CONTRAINDICATIONS -->
-
-      <div class="section">
-
-
-        <h3>
-          ⚠️ Contraindications / major cautions
-        </h3>
-
-
-        <ul>
-
-          ${drug.contraindications
-            .map(
-              item =>
-                `<li>${item}</li>`
-            )
-            .join("")}
-
-        </ul>
-
-
-      </div>
-
-
-
-      <!-- ADVERSE EFFECTS -->
-
-      <div class="section">
-
-
-        <h3>
-          🚨 Adverse effects
-        </h3>
-
-
-        <ul>
-
-          ${drug.adverseEffects
-            .map(
-              item =>
-                `<li>${item}</li>`
-            )
-            .join("")}
-
-        </ul>
-
-
-      </div>
-
-
-
-      <!-- INTERACTIONS -->
-
-      <div class="section">
-
-
-        <h3>
-          🔄 Drug interactions
-        </h3>
-
-
-        <ul>
-
-          ${drug.interactions
-            .map(
-              item =>
-                `<li>${item}</li>`
-            )
-            .join("")}
-
-        </ul>
-
-
-      </div>
-
-
-
-      <!-- MONITORING -->
-
-      <div class="section">
-
-
-        <h3>
-          🧪 Monitoring
-        </h3>
-
-
-        <ul>
-
-          ${drug.monitoring
-            .map(
-              item =>
-                `<li>${item}</li>`
-            )
-            .join("")}
-
-        </ul>
-
-
-      </div>
-
-
-
-      <!-- SOURCE -->
-
-      <div class="section">
-
-
-        <p class="source">
-
-          📚
-
-          <strong>
-            Source:
-          </strong>
-
-          ${drug.source}
-
-        </p>
-
-
-      </div>
-
-
-    </div>
-
-  `;
-
-
-
-  /* =====================================
-     INITIALIZE DOSE SELECTOR
-  ===================================== */
-
-  if (drug.dosage) {
 
     populateDoseIndications();
 
   }
 
-}
+
+  // =========================
+  // DOSE INDICATIONS
+  // =========================
+
+  function populateDoseIndications() {
+
+    const group =
+      document.getElementById("patientGroup").value;
+
+    const select =
+      document.getElementById("doseIndication");
 
 
-
-/* =====================================
-   POPULATE DOSE INDICATIONS
-===================================== */
-
-function populateDoseIndications() {
+    const drugName =
+      document.querySelector(".drug-title").textContent.trim();
 
 
-  if (
-    !currentDrug ||
-    !currentDrug.dosage
-  ) {
-
-    return;
-
-  }
+    const drug =
+      drugs.find(d => d.name === drugName);
 
 
-
-  const patientGroup =
-    document.getElementById(
-      "patientGroup"
-    );
+    if (!drug || !drug.dosage) {
+      return;
+    }
 
 
-  const doseIndication =
-    document.getElementById(
-      "doseIndication"
-    );
+    const doseData =
+      drug.dosage[group] || [];
 
 
-  if (
-    !patientGroup ||
-    !doseIndication
-  ) {
-
-    return;
-
-  }
+    select.innerHTML = "";
 
 
+    if (!doseData.length) {
 
-  const group =
-    patientGroup.value;
+      select.innerHTML =
+        `<option>No dosing data available</option>`;
 
+      updateDoseResult();
 
-  const doses =
-    currentDrug.dosage[group];
-
-
-
-  doseIndication.innerHTML = "";
-
-
-
-  if (!doses) {
-
-    return;
-
-  }
-
-
-
-  doses.forEach(
-    (item, index) => {
-
-
-      const option =
-        document.createElement(
-          "option"
-        );
-
-
-      option.value =
-        index;
-
-
-      option.textContent =
-        item.indication;
-
-
-      doseIndication.appendChild(
-        option
-      );
-
+      return;
 
     }
-  );
 
 
+    doseData.forEach((item, index) => {
 
-  updateDoseResult();
+      const option =
+        document.createElement("option");
 
-}
+      option.value = index;
+
+      option.textContent =
+        item.indication || `Option ${index + 1}`;
+
+      select.appendChild(option);
+
+    });
 
 
-
-/* =====================================
-   UPDATE DOSE RESULT
-===================================== */
-
-function updateDoseResult() {
-
-
-  if (
-    !currentDrug ||
-    !currentDrug.dosage
-  ) {
-
-    return;
+    updateDoseResult();
 
   }
 
 
+  // =========================
+  // DISPLAY SELECTED DOSE
+  // =========================
 
-  const patientGroup =
-    document.getElementById(
-      "patientGroup"
-    );
+  function updateDoseResult() {
 
+    const groupElement =
+      document.getElementById("patientGroup");
 
-  const doseIndication =
-    document.getElementById(
-      "doseIndication"
-    );
+    const indicationElement =
+      document.getElementById("doseIndication");
 
-
-  const doseResult =
-    document.getElementById(
-      "doseResult"
-    );
+    const output =
+      document.getElementById("doseResult");
 
 
-  if (
-    !patientGroup ||
-    !doseIndication ||
-    !doseResult
-  ) {
-
-    return;
-
-  }
+    if (!groupElement || !indicationElement || !output) {
+      return;
+    }
 
 
-
-  const doses =
-    currentDrug.dosage[
-      patientGroup.value
-    ];
+    const group =
+      groupElement.value;
 
 
-
-  if (!doses) {
-
-    return;
-
-  }
+    const drugName =
+      document.querySelector(".drug-title").textContent.trim();
 
 
-
-  const selected =
-    doses[
-      Number(
-        doseIndication.value
-      )
-    ];
+    const drug =
+      drugs.find(d => d.name === drugName);
 
 
-
-  if (!selected) {
-
-    return;
-
-  }
+    if (!drug || !drug.dosage) {
+      return;
+    }
 
 
-
-  doseResult.innerHTML = `
-
-    <div class="dose-result">
+    const doseData =
+      drug.dosage[group] || [];
 
 
-      <p>
-
-        <strong>
-          Indication:
-        </strong>
-
-        ${selected.indication}
-
-      </p>
+    const index =
+      Number(indicationElement.value);
 
 
-      <p>
-
-        <strong>
-          💊 Dose:
-        </strong>
-
-        ${selected.dose}
-
-      </p>
+    const selected =
+      doseData[index];
 
 
-      <p>
+    if (!selected) {
 
-        <strong>
-          Maximum:
-        </strong>
+      output.innerHTML = `
+        <p class="small">
+          No dosing information available.
+        </p>
+      `;
 
-        ${selected.maximum}
+      return;
 
-      </p>
-
-
-    </div>
-
-  `;
-
-}
+    }
 
 
+    output.innerHTML = `
 
-/* =====================================
-   AI TUTOR
-===================================== */
+      <div style="margin-top:15px">
 
-function askAI() {
+        <p>
+          <strong>Dose:</strong>
+          ${escapeHTML(selected.dose || "Not specified")}
+        </p>
 
+        ${
+          selected.maximum
+          ?
+          `
+          <p>
+            <strong>Maximum:</strong>
+            ${escapeHTML(selected.maximum)}
+          </p>
+          `
+          :
+          ""
+        }
 
-  const question =
-    document
-      .getElementById("aiQuestion")
-      .value
-      .trim();
+        ${
+          selected.duration
+          ?
+          `
+          <p>
+            <strong>Duration:</strong>
+            ${escapeHTML(selected.duration)}
+          </p>
+          `
+          :
+          ""
+        }
 
+        ${
+          drug.dosage.renalAdjustment
+          ?
+          `
+          <p>
+            <strong>Renal adjustment:</strong>
+            ${escapeHTML(drug.dosage.renalAdjustment)}
+          </p>
+          `
+          :
+          ""
+        }
 
-  const answer =
-    document.getElementById(
-      "aiAnswer"
-    );
+        ${
+          drug.dosage.hepaticAdjustment
+          ?
+          `
+          <p>
+            <strong>Hepatic adjustment:</strong>
+            ${escapeHTML(drug.dosage.hepaticAdjustment)}
+          </p>
+          `
+          :
+          ""
+        }
 
+        ${
+          drug.dosage.reference
+          ?
+          `
+          <p class="small">
+            <strong>Dosing reference:</strong>
+            ${escapeHTML(drug.dosage.reference)}
+          </p>
+          `
+          :
+          ""
+        }
 
-  if (!question) {
+      </div>
 
-    answer.style.display = "block";
-
-    answer.innerHTML = `
-      Please enter a question first.
     `;
 
-    return;
-
   }
 
 
+  // =========================
+  // AI PHARMACOLOGY TUTOR
+  // =========================
 
-  answer.style.display = "block";
+  async function askAI() {
 
+    const question =
+      document.getElementById("aiQuestion").value.trim();
 
-  answer.innerHTML = `
+    const answerBox =
+      document.getElementById("aiAnswer");
 
-    <strong>
-      🤖 AI Pharmacology Tutor
-    </strong>
-
-    <p>
-      Your question has been received:
-    </p>
-
-    <p>
-      "${question}"
-    </p>
-
-    <p>
-      The secure AI connection will be added
-      in the next step.
-    </p>
-
-  `;
-
-}
+    const button =
+      document.getElementById("askButton");
 
 
+    if (!question) {
 
-/* =====================================
-   ENTER KEY SEARCH
-===================================== */
+      answerBox.style.display = "block";
 
-document
-  .getElementById("drugSearch")
-  .addEventListener(
-    "keypress",
-    function(event) {
+      answerBox.innerHTML =
+        "Please enter a pharmacology question.";
 
-      if (
-        event.key === "Enter"
-      ) {
+      return;
 
-        searchDrug();
+    }
+
+
+    // Show loading
+
+    answerBox.style.display = "block";
+
+    answerBox.innerHTML =
+      `<span class="loading">🤖 Thinking...</span>`;
+
+    button.disabled = true;
+
+    button.textContent = "Thinking...";
+
+
+    try {
+
+      const response =
+        await fetch("/api/ask", {
+
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json"
+          },
+
+          body: JSON.stringify({
+            question: question
+          })
+
+        });
+
+
+      const data =
+        await response.json();
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          data.error || "AI request failed."
+        );
 
       }
 
-    }
-  );
 
+      answerBox.innerHTML =
+        escapeHTML(data.answer || "No answer received.");
+
+
+    } catch (error) {
+
+      console.error(error);
+
+      answerBox.innerHTML = `
+
+        <div class="error">
+
+          <strong>AI connection error</strong>
+
+          <p>
+            ${escapeHTML(error.message)}
+          </p>
+
+          <p class="small">
+            If this is the first deployment, wait a minute
+            and try again.
+          </p>
+
+        </div>
+
+      `;
+
+    }
+
+
+    button.disabled = false;
+
+    button.textContent = "Ask AI";
+
+  }
+
+
+  // =========================
+  // ENTER KEY SEARCH
+  // =========================
+
+  document
+    .getElementById("drugSearch")
+    .addEventListener("keydown", function(event) {
+
+      if (event.key === "Enter") {
+        searchDrug();
+      }
+
+    });
+
+
+  // =========================
+  // ENTER KEY AI
+  // =========================
+
+  document
+    .getElementById("aiQuestion")
+    .addEventListener("keydown", function(event) {
+
+      if (
+        event.key === "Enter" &&
+        !event.shiftKey
+      ) {
+
+        event.preventDefault();
+
+        askAI();
+
+      }
+
+    });
+
+
+  // =========================
+  // HELPER: LIST
+  // =========================
+
+  function makeList(items) {
+
+    if (!items || !items.length) {
+      return "<p>Not available</p>";
+    }
+
+
+    return `
+
+      <ul>
+
+        ${
+          items.map(item =>
+            `<li>${escapeHTML(String(item))}</li>`
+          ).join("")
+        }
+
+      </ul>
+
+    `;
+
+  }
+
+
+  // =========================
+  // SECURITY HELPER
+  // =========================
+
+  function escapeHTML(value) {
+
+    const div =
+      document.createElement("div");
+
+    div.textContent =
+      value == null ? "" : String(value);
+
+    return div.innerHTML;
+
+  }
+
+
+  // =========================
+  // START
+  // =========================
+
+  loadDrugs();
 
 </script>
 
-
 </body>
-
 </html>
