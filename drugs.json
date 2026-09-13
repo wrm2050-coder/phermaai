@@ -153,17 +153,56 @@
 
 "dosage": {
   "adult": [
-    "Usual adult daily dose: 1–2 g once daily, or divided into two doses, depending on infection and severity.",
-    "Maximum total daily dose: 4 g."
+    {
+      "indication": "Usual adult infections",
+      "dose": "1–2 g once daily, or divided into two doses",
+      "maximum": "4 g/day"
+    },
+    {
+      "indication": "Uncomplicated gonococcal infection",
+      "dose": "250 mg intramuscularly as a single dose",
+      "maximum": "Single dose"
+    },
+    {
+      "indication": "Surgical prophylaxis",
+      "dose": "1 g intravenously as a single dose 1/2–2 hours before surgery",
+      "maximum": "Single dose"
+    }
   ],
+
   "pediatric": [
-    "Many pediatric infections: 50–75 mg/kg/day, depending on infection.",
-    "Meningitis: initial dose 100 mg/kg, followed by 100 mg/kg/day.",
-    "Pediatric maximum for meningitis: 4 g/day."
+    {
+      "indication": "Skin and skin-structure infections",
+      "dose": "50–75 mg/kg/day once daily or divided twice daily",
+      "maximum": "2 g/day"
+    },
+    {
+      "indication": "Acute bacterial otitis media",
+      "dose": "50 mg/kg intramuscularly as a single dose",
+      "maximum": "1 g"
+    },
+    {
+      "indication": "Serious infections other than meningitis",
+      "dose": "50–75 mg/kg/day divided every 12 hours",
+      "maximum": "2 g/day"
+    },
+    {
+      "indication": "Meningitis",
+      "dose": "Initial 100 mg/kg, followed by 100 mg/kg/day once daily or divided every 12 hours",
+      "maximum": "4 g/day"
+    }
   ],
-  "renalAdjustment": "Usually no dosage adjustment is required for renal impairment when usual doses are used.",
-  "hepaticAdjustment": "Usually no dosage adjustment is required for hepatic impairment. If significant renal and hepatic dysfunction coexist, caution and closer monitoring are required.",
-  "duration": "Common treatment duration is 4–14 days, depending on infection and clinical response.",
+
+  "duration": [
+    "Usual duration: 4–14 days depending on infection and clinical response.",
+    "Meningitis: usual duration 7–14 days.",
+    "For Streptococcus pyogenes infections, treatment should continue for at least 10 days."
+  ],
+
+  "renalAdjustment": "No dosage adjustment is generally necessary for renal impairment when used according to labeling; severe combined renal and hepatic impairment requires particular caution.",
+
+  "hepaticAdjustment": "No dosage adjustment is generally necessary for hepatic impairment when used according to labeling; severe combined renal and hepatic impairment requires particular caution.",
+
   "reference": "DailyMed ceftriaxone prescribing information"
 },
     "contraindications": [
