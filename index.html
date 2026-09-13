@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>PharmaAI</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -55,7 +60,8 @@ header p {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccd6dc;
@@ -90,7 +96,7 @@ h2 {
 }
 
 h3 {
-  margin: 0 0 7px;
+  margin: 0 0 8px;
   color: #263746;
 }
 
@@ -108,16 +114,16 @@ h3 {
 
 .section {
   border-top: 1px solid #e4eaed;
-  padding-top: 12px;
-  margin-top: 13px;
+  padding-top: 13px;
+  margin-top: 14px;
 }
 
 .info-box {
   background: #eef8f8;
   border-left: 4px solid #087f8c;
-  padding: 11px 13px;
+  padding: 13px;
   border-radius: 8px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .info-box ul {
@@ -127,6 +133,32 @@ h3 {
 
 .info-box li {
   margin-bottom: 7px;
+}
+
+.dose-box {
+  background: #eef8f8;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.dose-row {
+  margin-bottom: 14px;
+}
+
+.dose-row:last-child {
+  margin-bottom: 0;
+}
+
+.dose-label {
+  font-weight: bold;
+  color: #263746;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.dose-value {
+  line-height: 1.5;
 }
 
 .warning {
@@ -174,8 +206,6 @@ h3 {
   color: #687780;
 }
 
-/* COLLAPSIBLE SECTIONS */
-
 details {
   margin-top: 10px;
   border: 1px solid #dce7ea;
@@ -191,19 +221,15 @@ summary {
   color: #087f8c;
 }
 
-details .detail-content {
+.detail-content {
   padding: 0 12px 12px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
-
-/* SOURCE */
 
 .source {
   font-size: 12px;
   color: #687780;
 }
-
-/* MOBILE */
 
 @media(max-width:600px) {
 
@@ -220,11 +246,14 @@ details .detail-content {
   }
 
 }
+
 </style>
+
 </head>
 
 
 <body>
+
 
 <header>
 
@@ -240,83 +269,84 @@ details .detail-content {
 <div class="container">
 
 
-  <!-- SEARCH -->
+<!-- SEARCH -->
 
-  <div class="card">
+<div class="card">
 
-    <div class="search">
+  <div class="search">
 
-      <input
-        id="drugSearch"
-        placeholder="Search a drug e.g. Warfarin"
-      >
+    <input
+      id="drugSearch"
+      placeholder="Search a drug e.g. Warfarin"
+    >
 
-      <button
-        id="searchButton"
-        onclick="searchDrug()"
-      >
-        Search
-      </button>
-
-    </div>
-
-    <p class="small">
-      Search by generic or brand name.
-    </p>
+    <button
+      id="searchButton"
+      onclick="searchDrug()"
+    >
+      Search Drug
+    </button>
 
   </div>
 
+  <p class="small">
+    Search by generic or brand name.
+  </p>
 
-  <!-- RESULT -->
-
-  <div id="result"></div>
+</div>
 
 
-  <!-- AI TUTOR -->
+<!-- RESULTS -->
 
-  <div class="card ai">
+<div id="result"></div>
 
-    <h2>🤖 AI Pharmacology Tutor</h2>
 
-    <p class="small">
-      Ask questions about mechanisms, adverse effects,
-      contraindications, interactions and pharmacology.
-    </p>
+<!-- AI -->
 
-    <textarea
-      id="aiQuestion"
-      placeholder="Ask a pharmacology question..."
-    ></textarea>
+<div class="card ai">
 
-    <br><br>
+  <h2>🤖 AI Pharmacology Tutor</h2>
 
-    <button
-      id="askButton"
-      onclick="askAI()"
-    >
-      Ask AI
-    </button>
+  <p class="small">
+    Ask questions about pharmacology, mechanisms,
+    adverse effects, contraindications and interactions.
+  </p>
 
-    <div
-      id="aiAnswer"
-      class="answer"
-    ></div>
+  <textarea
+    id="aiQuestion"
+    placeholder="Ask a pharmacology question..."
+  ></textarea>
 
-    <div class="warning">
+  <br><br>
 
-      <strong>Educational use only.</strong><br>
+  <button
+    id="askButton"
+    onclick="askAI()"
+  >
+    Ask AI
+  </button>
 
-      Always verify drug information using authoritative
-      references and current clinical guidelines.
+  <div
+    id="aiAnswer"
+    class="answer"
+  ></div>
 
-    </div>
+  <div class="warning">
+
+    <strong>Educational use only.</strong><br>
+
+    Always verify drug information using authoritative
+    references and current clinical guidelines.
 
   </div>
 
 </div>
 
+</div>
+
 
 <script>
+
 
 /* =====================================================
    LOCAL DATABASE
@@ -351,7 +381,7 @@ async function loadLocalDrugs() {
 
 
 /* =====================================================
-   SEARCH DRUG
+   SEARCH
 ===================================================== */
 
 async function searchDrug() {
@@ -417,12 +447,7 @@ async function searchDrug() {
       data.results.length > 0
     ) {
 
-      /*
-       Use the first matching product.
-       This keeps the interface simple.
-      */
-
-      displayDrug(
+      displayLargeDrug(
         data.results[0]
       );
 
@@ -444,16 +469,16 @@ async function searchDrug() {
   button.disabled = false;
 
   button.textContent =
-    "Search";
+    "Search Drug";
 
 }
 
 
 /* =====================================================
-   DISPLAY LARGE DATABASE DRUG
+   LARGE DATABASE DRUG
 ===================================================== */
 
-function displayDrug(drug) {
+function displayLargeDrug(drug) {
 
   const result =
     document.getElementById("result");
@@ -472,17 +497,12 @@ function displayDrug(drug) {
 
 
   const drugClass =
-    cleanShort(
-      join(drug.drugClass),
-      2
-    );
+    first(drug.drugClass);
 
 
   result.innerHTML = `
 
     <div class="card">
-
-      <!-- NAME -->
 
       <div class="drug-name">
         ${safe(title)}
@@ -515,102 +535,75 @@ function displayDrug(drug) {
       }
 
 
-      <!-- MECHANISM -->
-
-      ${prettySection(
+      ${cleanSection(
         "🧬 Mechanism of Action",
         drug.clinicalPharmacology,
-        3
+        2
       )}
 
 
-      <!-- INDICATIONS -->
-
-      ${prettySection(
-        "🎯 Indications",
+      ${cleanSection(
+        "🎯 Indications / Uses",
         drug.indications,
         5
       )}
 
 
-      <!-- ROUTE -->
-
-      ${prettySection(
-        "💉 Routes of Administration",
-        drug.route,
-        3
+      ${routeSection(
+        drug.route
       )}
 
 
-      <!-- DOSAGE -->
-
-      ${prettySection(
-        "💊 Dosage & Administration",
-        drug.dosage,
-        5
+      ${largeDoseSection(
+        drug.dosage
       )}
 
 
-      <!-- CONTRAINDICATIONS -->
-
-      ${prettySection(
+      ${cleanSection(
         "🚫 Contraindications",
         drug.contraindications,
         5
       )}
 
 
-      <!-- ADVERSE EFFECTS -->
-
-      ${prettySection(
+      ${cleanSection(
         "⚠️ Adverse Effects",
         drug.adverseReactions,
         6
       )}
 
 
-      <!-- INTERACTIONS -->
-
-      ${prettySection(
+      ${cleanSection(
         "🔄 Drug Interactions",
         drug.interactions,
         6
       )}
 
 
-      <!-- WARNINGS -->
-
-      ${prettySection(
+      ${cleanSection(
         "⚠️ Important Warnings",
         drug.warnings,
         4
       )}
 
 
-      <!-- COLLAPSED SECTIONS -->
-
       ${collapsible(
         "🤰 Pregnancy",
-        drug.pregnancy,
-        4
+        drug.pregnancy
       )}
 
 
       ${collapsible(
         "👶 Pediatric Use",
-        drug.pediatricUse,
-        4
+        drug.pediatricUse
       )}
 
 
       ${collapsible(
         "👴 Geriatric Use",
-        drug.geriatricUse,
-        4
+        drug.geriatricUse
       )}
 
-
-      <!-- SOURCE -->
 
       <div class="section">
 
@@ -627,10 +620,9 @@ function displayDrug(drug) {
 
         <strong>Educational information only.</strong><br>
 
-        This information is summarized from drug
-        labeling. Dosing and other details can vary
-        by product, formulation, indication and country.
-        Verify current official labeling before clinical use.
+        Dosage and other information can vary by
+        formulation, indication, patient and country.
+        Verify the current official label before clinical use.
 
       </div>
 
@@ -642,10 +634,555 @@ function displayDrug(drug) {
 
 
 /* =====================================================
-   MAKE CLEAN SECTION
+   LARGE DATABASE DOSAGE
 ===================================================== */
 
-function prettySection(
+function largeDoseSection(textArray) {
+
+  if (
+    !textArray ||
+    !textArray.length
+  ) {
+
+    return "";
+
+  }
+
+
+  const raw =
+    textArray.join(" ");
+
+
+  const cleaned =
+    cleanLabel(raw);
+
+
+  const indications =
+    extractDoseIndications(
+      cleaned
+    );
+
+
+  const firstDose =
+    indications.length
+    ? indications[0]
+    : {
+        indication: "Label dosage",
+        dose: cleaned
+      };
+
+
+  const options =
+    indications.length
+    ? indications
+    : [firstDose];
+
+
+  const optionHTML =
+    options.map(
+      (item, index) => `
+
+        <option value="${index}">
+          ${safe(
+            item.indication ||
+            "Dosage information"
+          )}
+        </option>
+
+      `
+    ).join("");
+
+
+  const dataJSON =
+    JSON.stringify(options)
+      .replace(/</g, "\\u003c");
+
+
+  return `
+
+    <div class="section">
+
+      <h3>💊 Dosage & Administration</h3>
+
+
+      <div>
+
+        <label class="dose-label">
+          Patient group
+        </label>
+
+        <select
+          id="largePatientGroup"
+          onchange="updateLargeDose()"
+        >
+
+          <option value="adult">
+            Adult
+          </option>
+
+          <option value="pediatric">
+            Pediatric
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <br>
+
+
+      <div>
+
+        <label class="dose-label">
+          Indication
+        </label>
+
+        <select
+          id="largeDoseIndication"
+          onchange="updateLargeDose()"
+        >
+
+          ${optionHTML}
+
+        </select>
+
+      </div>
+
+
+      <div
+        id="largeDoseResult"
+        class="dose-box"
+      ></div>
+
+
+      <div class="small"
+           style="margin-top:10px">
+
+        Dosage shown here is extracted from the
+        available FDA label text. The label may contain
+        product-specific instructions.
+
+      </div>
+
+
+      <script>
+
+        window.largeDoseData =
+          ${dataJSON};
+
+        window.largeDoseRaw =
+          ${JSON.stringify(cleaned)};
+
+      <\/script>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   UPDATE LARGE DOSAGE
+===================================================== */
+
+function updateLargeDose() {
+
+  const box =
+    document.getElementById(
+      "largeDoseResult"
+    );
+
+  const select =
+    document.getElementById(
+      "largeDoseIndication"
+    );
+
+
+  if (!box || !select) {
+    return;
+  }
+
+
+  const index =
+    Number(select.value);
+
+
+  const item =
+    window.largeDoseData[index];
+
+
+  if (!item) {
+
+    box.innerHTML =
+      "Dosage information not available.";
+
+    return;
+
+  }
+
+
+  const dose =
+    item.dose ||
+    "See official label";
+
+
+  const maximum =
+    extractMaximum(dose);
+
+
+  const duration =
+    extractDuration(dose);
+
+
+  box.innerHTML = `
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        Indication
+      </span>
+
+      <div class="dose-value">
+        ${safe(
+          item.indication ||
+          "Label dosage"
+        )}
+      </div>
+
+    </div>
+
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        💊 Dose
+      </span>
+
+      <div class="dose-value">
+        ${safe(dose)}
+      </div>
+
+    </div>
+
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        Maximum
+      </span>
+
+      <div class="dose-value">
+
+        ${
+          maximum
+          ?
+          safe(maximum)
+          :
+          "Not specifically stated in the extracted section"
+        }
+
+      </div>
+
+    </div>
+
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        Duration
+      </span>
+
+      <div class="dose-value">
+
+        ${
+          duration
+          ?
+          safe(duration)
+          :
+          "Depends on indication; see official label"
+        }
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   EXTRACT DOSING INDICATIONS
+===================================================== */
+
+function extractDoseIndications(text) {
+
+  if (!text) {
+    return [];
+  }
+
+
+  const sentences =
+    text
+      .split(
+        /(?<=[.!?])\s+/
+      )
+      .map(
+        x => x.trim()
+      )
+      .filter(
+        x => x.length > 20
+      );
+
+
+  const doseSentences =
+    sentences.filter(
+      x =>
+        /\b\d+\s*(mg|g|mcg|mL|units?|IU|kg|%)/i
+          .test(x)
+    );
+
+
+  const useful =
+    doseSentences.slice(
+      0,
+      8
+    );
+
+
+  return useful.map(
+    sentence => {
+
+      let indication =
+        "Dosage information";
+
+
+      const lower =
+        sentence.toLowerCase();
+
+
+      if (
+        lower.includes("atrial fibrillation")
+      ) {
+
+        indication =
+          "Atrial fibrillation";
+
+      }
+      else if (
+        lower.includes("thrombosis")
+      ) {
+
+        indication =
+          "Thrombosis";
+
+      }
+      else if (
+        lower.includes("hypertension")
+      ) {
+
+        indication =
+          "Hypertension";
+
+      }
+      else if (
+        lower.includes("infection")
+      ) {
+
+        indication =
+          "Infection";
+
+      }
+      else if (
+        lower.includes("pain")
+      ) {
+
+        indication =
+          "Pain";
+
+      }
+      else if (
+        lower.includes("diabetes")
+      ) {
+
+        indication =
+          "Diabetes";
+
+      }
+      else if (
+        lower.includes("asthma")
+      ) {
+
+        indication =
+          "Asthma";
+
+      }
+      else if (
+        lower.includes("heart failure")
+      ) {
+
+        indication =
+          "Heart failure";
+
+      }
+
+
+      return {
+        indication:
+          indication,
+
+        dose:
+          sentence
+      };
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   EXTRACT MAXIMUM
+===================================================== */
+
+function extractMaximum(text) {
+
+  if (!text) {
+    return "";
+  }
+
+
+  const patterns = [
+
+    /maximum[^.]{0,150}/i,
+
+    /max(?:imum)?\s+(?:daily\s+)?dose[^.]{0,150}/i,
+
+    /not exceed[^.]{0,150}/i
+
+  ];
+
+
+  for (
+    const pattern of patterns
+  ) {
+
+    const match =
+      text.match(pattern);
+
+    if (match) {
+
+      return match[0]
+        .trim();
+
+    }
+
+  }
+
+
+  return "";
+
+}
+
+
+/* =====================================================
+   EXTRACT DURATION
+===================================================== */
+
+function extractDuration(text) {
+
+  if (!text) {
+    return "";
+  }
+
+
+  const patterns = [
+
+    /for\s+\d+\s*(?:to|-)?\s*\d*\s*(?:days?|weeks?|months?)/i,
+
+    /\d+\s*(?:to|-)\s*\d+\s*(?:days?|weeks?|months?)/i,
+
+    /\b\d+\s*(?:days?|weeks?|months?)\b/i
+
+  ];
+
+
+  for (
+    const pattern of patterns
+  ) {
+
+    const match =
+      text.match(pattern);
+
+    if (match) {
+
+      return match[0]
+        .trim();
+
+    }
+
+  }
+
+
+  return "";
+
+}
+
+
+/* =====================================================
+   ROUTES
+===================================================== */
+
+function routeSection(routes) {
+
+  if (
+    !routes ||
+    !routes.length
+  ) {
+
+    return "";
+
+  }
+
+
+  return `
+
+    <div class="section">
+
+      <h3>💉 Routes of Administration</h3>
+
+      <div class="info-box">
+
+        <ul>
+
+          ${
+            routes
+              .slice(0,5)
+              .map(
+                x =>
+                  `<li>${safe(x)}</li>`
+              )
+              .join("")
+          }
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   CLEAN SECTION
+===================================================== */
+
+function cleanSection(
   title,
   value,
   maxItems
@@ -661,8 +1198,8 @@ function prettySection(
 
 
   const bullets =
-    makeBullets(
-      text,
+    makeShortBullets(
+      cleanLabel(text),
       maxItems
     );
 
@@ -678,10 +1215,12 @@ function prettySection(
         <ul>
 
           ${
-            bullets.map(
-              item =>
-                `<li>${safe(item)}</li>`
-            ).join("")
+            bullets
+              .map(
+                x =>
+                  `<li>${safe(x)}</li>`
+              )
+              .join("")
           }
 
         </ul>
@@ -696,13 +1235,12 @@ function prettySection(
 
 
 /* =====================================================
-   COLLAPSIBLE SECTION
+   COLLAPSIBLE
 ===================================================== */
 
 function collapsible(
   title,
-  value,
-  maxItems
+  value
 ) {
 
   const text =
@@ -715,9 +1253,9 @@ function collapsible(
 
 
   const bullets =
-    makeBullets(
-      text,
-      maxItems
+    makeShortBullets(
+      cleanLabel(text),
+      5
     );
 
 
@@ -734,10 +1272,12 @@ function collapsible(
         <ul>
 
           ${
-            bullets.map(
-              item =>
-                `<li>${safe(item)}</li>`
-            ).join("")
+            bullets
+              .map(
+                x =>
+                  `<li>${safe(x)}</li>`
+              )
+              .join("")
           }
 
         </ul>
@@ -752,157 +1292,93 @@ function collapsible(
 
 
 /* =====================================================
-   TURN LONG LABEL INTO SHORT BULLETS
+   CLEAN FDA LABEL
 ===================================================== */
 
-function makeBullets(
+function cleanLabel(text) {
+
+  return String(text)
+
+    .replace(/\s+/g, " ")
+
+    .replace(
+      /\b\d+\.\d+\s+/g,
+      ""
+    )
+
+    .trim();
+
+}
+
+
+/* =====================================================
+   SHORT BULLETS
+===================================================== */
+
+function makeShortBullets(
   text,
-  maxItems
+  max
 ) {
 
-  if (!text) {
-    return [];
-  }
-
-
-  /*
-   Remove excessive spaces and
-   section-number clutter.
-  */
-
-  let clean =
-    String(text)
-      .replace(/\s+/g, " ")
-      .replace(
-        /\b\d+\.\d+\s+/g,
-        ""
-      )
-      .trim();
-
-
-  /*
-   Split the label into sentences.
-  */
-
-  let sentences =
-    clean
+  const sentences =
+    text
       .split(
         /(?<=[.!?])\s+/
       )
       .map(
-        s => s.trim()
+        x => x.trim()
       )
       .filter(
-        s => s.length > 25
+        x => x.length > 20
       );
 
 
-  /*
-   Remove repeated sentences.
-  */
-
-  sentences =
+  const unique =
     [...new Set(sentences)];
 
 
-  /*
-   Keep only the most useful
-   beginning points.
-  */
+  return unique
+    .slice(0, max)
+    .map(
+      x => {
 
-  if (
-    sentences.length >
-    maxItems
-  ) {
+        if (
+          x.length > 400
+        ) {
 
-    sentences =
-      sentences.slice(
-        0,
-        maxItems
-      );
+          return (
+            x.substring(0,397) +
+            "..."
+          );
 
-  }
+        }
 
-
-  /*
-   If sentence splitting fails,
-   create one readable item.
-  */
-
-  if (!sentences.length) {
-
-    sentences = [
-      clean.slice(0, 450)
-    ];
-
-  }
-
-
-  /*
-   Keep individual bullets
-   reasonably short.
-  */
-
-  return sentences.map(
-    sentence => {
-
-      if (
-        sentence.length >
-        420
-      ) {
-
-        return (
-          sentence.slice(0, 417) +
-          "..."
-        );
+        return x;
 
       }
-
-      return sentence;
-
-    }
-  );
+    );
 
 }
 
 
 /* =====================================================
-   SHORTEN CLASS
-===================================================== */
-
-function cleanShort(
-  text,
-  maxItems
-) {
-
-  if (!text) {
-    return "";
-  }
-
-
-  return text
-    .split(",")
-    .slice(0, maxItems)
-    .join(", ");
-
-}
-
-
-/* =====================================================
-   LOCAL DATABASE FALLBACK
+   LOCAL SEARCH
 ===================================================== */
 
 function searchLocal(query) {
 
-  const result =
-    document.getElementById("result");
-
-
   const drug =
-    localDrugs.find(d =>
-      d.name &&
-      d.name.toLowerCase() ===
-      query.toLowerCase()
+    localDrugs.find(
+      d =>
+        d.name &&
+        d.name.toLowerCase() ===
+        query.toLowerCase()
+    );
+
+
+  const result =
+    document.getElementById(
+      "result"
     );
 
 
@@ -915,7 +1391,7 @@ function searchLocal(query) {
         <h3>Drug not found</h3>
 
         <p>
-          No matching drug was found.
+          Try another generic or brand name.
         </p>
 
       </div>
@@ -923,6 +1399,7 @@ function searchLocal(query) {
     `;
 
     return;
+
   }
 
 
@@ -932,13 +1409,15 @@ function searchLocal(query) {
 
 
 /* =====================================================
-   DISPLAY LOCAL DRUG
+   LOCAL DRUG DISPLAY
 ===================================================== */
 
 function displayLocalDrug(drug) {
 
   const result =
-    document.getElementById("result");
+    document.getElementById(
+      "result"
+    );
 
 
   result.innerHTML = `
@@ -955,13 +1434,13 @@ function displayLocalDrug(drug) {
 
 
       ${textSection(
-        "🧬 Mechanism",
+        "🧬 Mechanism of Action",
         drug.mechanism
       )}
 
 
       ${listSection(
-        "🎯 Indications",
+        "🎯 Indications / Uses",
         drug.uses
       )}
 
@@ -972,57 +1451,13 @@ function displayLocalDrug(drug) {
       )}
 
 
-      ${
+      ${structuredDose(
         drug.dosage
-        ?
-        `
-        <div class="section">
-
-          <h3>💊 Dosage</h3>
-
-          <div class="info-box">
-
-            <p>
-              <strong>Adult:</strong><br>
-              ${formatDose(
-                drug.dosage.adult
-              )}
-            </p>
-
-            <p>
-              <strong>Pediatric:</strong><br>
-              ${formatDose(
-                drug.dosage.pediatric
-              )}
-            </p>
-
-            <p>
-              <strong>Renal adjustment:</strong><br>
-              ${safe(
-                drug.dosage.renalAdjustment ||
-                "Not specified"
-              )}
-            </p>
-
-            <p>
-              <strong>Hepatic adjustment:</strong><br>
-              ${safe(
-                drug.dosage.hepaticAdjustment ||
-                "Not specified"
-              )}
-            </p>
-
-          </div>
-
-        </div>
-        `
-        :
-        ""
-      }
+      )}
 
 
       ${listSection(
-        "🚫 Contraindications",
+        "🚫 Contraindications & Cautions",
         drug.contraindications
       )}
 
@@ -1044,6 +1479,30 @@ function displayLocalDrug(drug) {
         drug.monitoring
       )}
 
+
+      <div class="section">
+
+        <h3>📚 Reference</h3>
+
+        <p class="source">
+          ${safe(
+            drug.source ||
+            "Authoritative drug reference"
+          )}
+        </p>
+
+      </div>
+
+
+      <div class="warning">
+
+        <strong>Educational use only.</strong><br>
+
+        Verify current official labeling and
+        clinical guidelines before clinical use.
+
+      </div>
+
     </div>
 
   `;
@@ -1052,7 +1511,516 @@ function displayLocalDrug(drug) {
 
 
 /* =====================================================
-   AI TUTOR
+   STRUCTURED DOSAGE
+===================================================== */
+
+function structuredDose(dosage) {
+
+  if (!dosage) {
+    return "";
+  }
+
+
+  const adult =
+    dosage.adult || [];
+
+  const pediatric =
+    dosage.pediatric || [];
+
+  const duration =
+    dosage.duration || [];
+
+
+  const adultData =
+    JSON.stringify(adult)
+      .replace(/</g, "\\u003c");
+
+
+  const pediatricData =
+    JSON.stringify(pediatric)
+      .replace(/</g, "\\u003c");
+
+
+  const durationData =
+    JSON.stringify(duration)
+      .replace(/</g, "\\u003c");
+
+
+  return `
+
+    <div class="section">
+
+      <h3>💊 Dosage & Administration</h3>
+
+
+      <div>
+
+        <label class="dose-label">
+          Patient group
+        </label>
+
+        <select
+          id="localPatientGroup"
+          onchange="updateLocalDose()"
+        >
+
+          <option value="adult">
+            Adult
+          </option>
+
+          <option value="pediatric">
+            Pediatric
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <br>
+
+
+      <div>
+
+        <label class="dose-label">
+          Indication
+        </label>
+
+        <select
+          id="localDoseIndication"
+          onchange="updateLocalDose()"
+        ></select>
+
+      </div>
+
+
+      <div
+        id="localDoseResult"
+        class="dose-box"
+      ></div>
+
+
+      <script>
+
+        window.localAdult =
+          ${adultData};
+
+        window.localPediatric =
+          ${pediatricData};
+
+        window.localDuration =
+          ${durationData};
+
+        setTimeout(
+          updateLocalDose,
+          0
+        );
+
+      <\/script>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   UPDATE LOCAL DOSAGE
+===================================================== */
+
+function updateLocalDose() {
+
+  const group =
+    document.getElementById(
+      "localPatientGroup"
+    );
+
+  const indication =
+    document.getElementById(
+      "localDoseIndication"
+    );
+
+  const box =
+    document.getElementById(
+      "localDoseResult"
+    );
+
+
+  if (
+    !group ||
+    !indication ||
+    !box
+  ) {
+
+    return;
+
+  }
+
+
+  const data =
+    group.value === "pediatric"
+    ? window.localPediatric
+    : window.localAdult;
+
+
+  indication.innerHTML = "";
+
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
+    indication.innerHTML =
+      `<option>
+        Not specified
+      </option>`;
+
+    box.innerHTML =
+      "Dosage information not available.";
+
+    return;
+
+  }
+
+
+  data.forEach(
+    (item, index) => {
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+      option.value =
+        index;
+
+      option.textContent =
+        item.indication ||
+        "General dosage";
+
+      indication.appendChild(
+        option
+      );
+
+    }
+  );
+
+
+  showLocalDose();
+
+}
+
+
+/* =====================================================
+   SHOW LOCAL DOSE
+===================================================== */
+
+function showLocalDose() {
+
+  const group =
+    document.getElementById(
+      "localPatientGroup"
+    );
+
+  const indication =
+    document.getElementById(
+      "localDoseIndication"
+    );
+
+  const box =
+    document.getElementById(
+      "localDoseResult"
+    );
+
+
+  const data =
+    group.value === "pediatric"
+    ? window.localPediatric
+    : window.localAdult;
+
+
+  const item =
+    data[
+      Number(indication.value)
+    ];
+
+
+  if (!item) {
+
+    box.innerHTML =
+      "Dosage information not available.";
+
+    return;
+
+  }
+
+
+  const duration =
+    window.localDuration || [];
+
+
+  let durationText =
+    "Not specified";
+
+
+  if (
+    duration.length
+  ) {
+
+    const matching =
+      duration.find(
+        x =>
+          x.indication ===
+          item.indication
+      );
+
+
+    if (matching) {
+
+      durationText =
+        matching.duration;
+
+    }
+    else {
+
+      durationText =
+        duration[0].duration ||
+        "Not specified";
+
+    }
+
+  }
+
+
+  box.innerHTML = `
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        Indication
+      </span>
+
+      <div class="dose-value">
+        ${safe(
+          item.indication ||
+          "General dosage"
+        )}
+      </div>
+
+    </div>
+
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        💊 Dose
+      </span>
+
+      <div class="dose-value">
+        ${safe(
+          item.dose ||
+          "Not specified"
+        )}
+      </div>
+
+    </div>
+
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        Maximum
+      </span>
+
+      <div class="dose-value">
+        ${safe(
+          item.maximum ||
+          "Not specified"
+        )}
+      </div>
+
+    </div>
+
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        Duration
+      </span>
+
+      <div class="dose-value">
+        ${safe(
+          durationText
+        )}
+      </div>
+
+    </div>
+
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        Renal adjustment
+      </span>
+
+      <div class="dose-value">
+        ${safe(
+          window.renalAdjustment ||
+          "See reference"
+        )}
+      </div>
+
+    </div>
+
+
+    <div class="dose-row">
+
+      <span class="dose-label">
+        Hepatic adjustment
+      </span>
+
+      <div class="dose-value">
+        ${safe(
+          window.hepaticAdjustment ||
+          "See reference"
+        )}
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   BASIC HELPERS
+===================================================== */
+
+function first(array) {
+
+  if (
+    !Array.isArray(array) ||
+    !array.length
+  ) {
+
+    return "";
+
+  }
+
+  return array[0];
+
+}
+
+
+function join(array) {
+
+  if (
+    !Array.isArray(array)
+  ) {
+
+    return "";
+
+  }
+
+  return array.join(" ");
+
+}
+
+
+function textSection(
+  title,
+  text
+) {
+
+  if (!text) {
+    return "";
+  }
+
+
+  return `
+
+    <div class="section">
+
+      <h3>${title}</h3>
+
+      <div class="info-box">
+        ${safe(text)}
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function listSection(
+  title,
+  items
+) {
+
+  if (
+    !items ||
+    !items.length
+  ) {
+
+    return "";
+
+  }
+
+
+  return `
+
+    <div class="section">
+
+      <h3>${title}</h3>
+
+      <div class="info-box">
+
+        <ul>
+
+          ${
+            items
+              .map(
+                x =>
+                  `<li>${safe(x)}</li>`
+              )
+              .join("")
+          }
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+function safe(value) {
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+  div.textContent =
+    value == null
+    ? ""
+    : String(value);
+
+  return div.innerHTML;
+
+}
+
+
+/* =====================================================
+   AI
 ===================================================== */
 
 async function askAI() {
@@ -1174,165 +2142,7 @@ async function askAI() {
 
 
 /* =====================================================
-   HELPERS
-===================================================== */
-
-function first(array) {
-
-  if (
-    !Array.isArray(array) ||
-    array.length === 0
-  ) {
-
-    return "";
-
-  }
-
-  return array[0];
-
-}
-
-
-function join(array) {
-
-  if (
-    !Array.isArray(array)
-  ) {
-
-    return "";
-
-  }
-
-  return array.join(" ");
-
-}
-
-
-function textSection(
-  title,
-  text
-) {
-
-  if (!text) {
-    return "";
-  }
-
-  return `
-
-    <div class="section">
-
-      <h3>${title}</h3>
-
-      <div class="info-box">
-        ${safe(text)}
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-function listSection(
-  title,
-  items
-) {
-
-  if (
-    !items ||
-    !items.length
-  ) {
-
-    return "";
-
-  }
-
-
-  return `
-
-    <div class="section">
-
-      <h3>${title}</h3>
-
-      <div class="info-box">
-
-        <ul>
-
-          ${
-            items.map(
-              item =>
-                `<li>${safe(item)}</li>`
-            ).join("")
-          }
-
-        </ul>
-
-      </div>
-
-    </div>
-
-  `;
-
-}
-
-
-function formatDose(items) {
-
-  if (
-    !items ||
-    !items.length
-  ) {
-
-    return "Not specified";
-
-  }
-
-
-  return items
-    .map(item => {
-
-      if (
-        typeof item ===
-        "string"
-      ) {
-
-        return safe(item);
-
-      }
-
-
-      return safe(
-        (item.indication || "") +
-        ": " +
-        (item.dose || "")
-      );
-
-    })
-    .join("<br><br>");
-
-}
-
-
-function safe(value) {
-
-  const div =
-    document.createElement(
-      "div"
-    );
-
-  div.textContent =
-    value == null
-    ? ""
-    : String(value);
-
-  return div.innerHTML;
-
-}
-
-
-/* =====================================================
-   ENTER TO SEARCH
+   ENTER KEY
 ===================================================== */
 
 document
@@ -1354,7 +2164,7 @@ document
 
 
 /* =====================================================
-   LOAD
+   LOAD DATABASE
 ===================================================== */
 
 loadLocalDrugs();
@@ -1362,4 +2172,5 @@ loadLocalDrugs();
 </script>
 
 </body>
+
 </html>
