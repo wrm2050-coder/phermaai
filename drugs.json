@@ -1,1 +1,352 @@
+[
+  {
+    "name": "Paracetamol",
+    "class": "Analgesic / Antipyretic",
+    "mechanism": "Produces analgesic and antipyretic effects; its exact mechanism is not completely established.",
+    "uses": [
+      "Mild to moderate pain",
+      "Fever"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous",
+      "Rectal"
+    ],
+    "contraindications": [
+      "Known hypersensitivity",
+      "Severe hepatic impairment requires particular caution"
+    ],
+    "adverseEffects": [
+      "Nausea",
+      "Skin reactions",
+      "Hepatotoxicity in overdose"
+    ],
+    "interactions": [
+      "Warfarin and other medicines may require consideration of interaction depending on use and duration"
+    ],
+    "monitoring": [
+      "Clinical response",
+      "Total exposure from all paracetamol-containing products",
+      "Liver function when clinically appropriate"
+    ],
+    "source": "FDA-approved prescribing information / DailyMed"
+  },
 
+  {
+    "name": "Ibuprofen",
+    "class": "NSAID",
+    "mechanism": "Inhibits cyclooxygenase enzymes, reducing prostaglandin synthesis.",
+    "uses": [
+      "Pain",
+      "Fever",
+      "Inflammatory conditions"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "contraindications": [
+      "Known hypersensitivity to ibuprofen or relevant NSAIDs",
+      "History of aspirin/NSAID-induced asthma, urticaria or allergic-type reactions"
+    ],
+    "adverseEffects": [
+      "Dyspepsia",
+      "Gastritis",
+      "Gastrointestinal bleeding",
+      "Renal adverse effects"
+    ],
+    "interactions": [
+      "Anticoagulants",
+      "Other NSAIDs",
+      "ACE inhibitors or ARBs",
+      "Diuretics"
+    ],
+    "monitoring": [
+      "Gastrointestinal adverse effects",
+      "Renal function when clinically appropriate",
+      "Blood pressure when clinically appropriate"
+    ],
+    "source": "FDA-approved prescribing information / DailyMed"
+  },
+
+  {
+    "name": "Amoxicillin",
+    "class": "Aminopenicillin antibiotic",
+    "mechanism": "Inhibits bacterial cell-wall synthesis by binding penicillin-binding proteins.",
+    "uses": [
+      "Susceptible bacterial infections",
+      "Selected respiratory infections",
+      "Selected ear, nose and throat infections"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "contraindications": [
+      "Serious hypersensitivity to amoxicillin or other beta-lactam antibiotics"
+    ],
+    "adverseEffects": [
+      "Diarrhea",
+      "Nausea",
+      "Rash",
+      "Hypersensitivity reactions"
+    ],
+    "interactions": [
+      "Warfarin and other anticoagulants may require monitoring",
+      "Some bacteriostatic antibiotics may interact pharmacodynamically"
+    ],
+    "monitoring": [
+      "Clinical response",
+      "Allergic reactions",
+      "Adverse effects"
+    ],
+    "source": "FDA-approved prescribing information / DailyMed"
+  },
+
+  {
+    "name": "Azithromycin",
+    "class": "Macrolide antibiotic",
+    "mechanism": "Inhibits bacterial protein synthesis by binding to the 50S ribosomal subunit.",
+    "uses": [
+      "Selected susceptible bacterial infections",
+      "Community-acquired pneumonia in appropriate patients",
+      "Selected respiratory and other bacterial infections"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "contraindications": [
+      "Known hypersensitivity to azithromycin or other macrolides/ketolides",
+      "Previous azithromycin-associated cholestatic jaundice or hepatic dysfunction"
+    ],
+    "adverseEffects": [
+      "Nausea",
+      "Diarrhea",
+      "Abdominal discomfort",
+      "QT prolongation and arrhythmia risk in susceptible patients"
+    ],
+    "interactions": [
+      "Other medicines that prolong the QT interval",
+      "Selected medicines metabolized through hepatic pathways"
+    ],
+    "monitoring": [
+      "Clinical response",
+      "Hepatic adverse effects when clinically appropriate",
+      "Cardiac risk in susceptible patients"
+    ],
+    "source": "FDA-approved prescribing information / DailyMed"
+  },
+
+  {
+    "name": "Ceftriaxone",
+    "class": "Third-generation cephalosporin antibiotic",
+    "mechanism": "Inhibits bacterial cell-wall synthesis by binding penicillin-binding proteins.",
+    "uses": [
+      "Serious susceptible bacterial infections",
+      "Selected respiratory infections",
+      "Meningitis",
+      "Sepsis and other appropriate infections"
+    ],
+    "routes": [
+      "Intravenous",
+      "Intramuscular"
+    ],
+    "contraindications": [
+      "Known serious hypersensitivity to ceftriaxone or relevant cephalosporins"
+    ],
+    "adverseEffects": [
+      "Diarrhea",
+      "Rash",
+      "Hypersensitivity reactions",
+      "Biliary complications may occur"
+    ],
+    "interactions": [
+      "Important compatibility considerations with calcium-containing IV solutions in specific populations"
+    ],
+    "monitoring": [
+      "Clinical response",
+      "Allergic reactions",
+      "Liver and renal status when clinically appropriate"
+    ],
+    "source": "FDA-approved prescribing information / DailyMed"
+  },
+
+  {
+    "name": "Metformin",
+    "class": "Biguanide antidiabetic",
+    "mechanism": "Reduces hepatic glucose production and improves insulin sensitivity.",
+    "uses": [
+      "Type 2 diabetes mellitus",
+      "Improvement of glycemic control as part of an appropriate treatment plan"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "contraindications": [
+      "Severe renal impairment",
+      "Known hypersensitivity"
+    ],
+    "adverseEffects": [
+      "Diarrhea",
+      "Nausea",
+      "Abdominal discomfort",
+      "Vitamin B12 deficiency with long-term use",
+      "Lactic acidosis is a rare but serious adverse effect"
+    ],
+    "interactions": [
+      "Some drugs affecting renal tubular secretion may alter metformin exposure",
+      "Iodinated contrast procedures may require special consideration"
+    ],
+    "monitoring": [
+      "Renal function",
+      "Glycemic control",
+      "Vitamin B12 when clinically appropriate"
+    ],
+    "source": "FDA-approved prescribing information / DailyMed"
+  },
+
+  {
+    "name": "Insulin",
+    "class": "Antidiabetic hormone",
+    "mechanism": "Promotes glucose uptake and utilization and suppresses hepatic glucose production.",
+    "uses": [
+      "Type 1 diabetes mellitus",
+      "Type 2 diabetes mellitus when insulin therapy is required",
+      "Hyperglycemic emergencies using appropriate insulin protocols"
+    ],
+    "routes": [
+      "Subcutaneous",
+      "Intravenous for selected preparations and clinical situations"
+    ],
+    "contraindications": [
+      "Hypoglycemia",
+      "Known hypersensitivity to the specific insulin preparation or its components"
+    ],
+    "adverseEffects": [
+      "Hypoglycemia",
+      "Weight gain",
+      "Injection-site reactions",
+      "Hypokalemia in some circumstances"
+    ],
+    "interactions": [
+      "Other glucose-lowering medicines may increase hypoglycemia risk",
+      "Some medicines can alter glucose control or insulin requirements"
+    ],
+    "monitoring": [
+      "Blood glucose",
+      "HbA1c as appropriate",
+      "Signs and symptoms of hypoglycemia",
+      "Electrolytes in selected clinical situations"
+    ],
+    "source": "FDA-approved prescribing information / DailyMed"
+  },
+
+  {
+    "name": "Furosemide",
+    "class": "Loop diuretic",
+    "mechanism": "Inhibits the Na-K-2Cl cotransporter in the thick ascending limb of the loop of Henle.",
+    "uses": [
+      "Edema",
+      "Heart failure-associated fluid overload",
+      "Selected hypertensive or renal conditions"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous",
+      "Intramuscular"
+    ],
+    "contraindications": [
+      "Anuria",
+      "Known hypersensitivity to furosemide"
+    ],
+    "adverseEffects": [
+      "Hypokalemia",
+      "Hyponatremia",
+      "Dehydration",
+      "Hypotension",
+      "Ototoxicity with excessive exposure or rapid administration"
+    ],
+    "interactions": [
+      "Other medicines affecting blood pressure",
+      "Digoxin and other medicines affected by electrolyte disturbances",
+      "Other ototoxic medicines"
+    ],
+    "monitoring": [
+      "Fluid status",
+      "Blood pressure",
+      "Electrolytes",
+      "Renal function"
+    ],
+    "source": "FDA-approved prescribing information / DailyMed"
+  },
+
+  {
+    "name": "Omeprazole",
+    "class": "Proton pump inhibitor",
+    "mechanism": "Suppresses gastric acid secretion by inhibiting the gastric H+/K+-ATPase proton pump.",
+    "uses": [
+      "Gastroesophageal reflux disease",
+      "Peptic ulcer disease",
+      "Acid-related disorders",
+      "Part of selected Helicobacter pylori eradication regimens"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous in selected formulations and situations"
+    ],
+    "contraindications": [
+      "Known hypersensitivity to omeprazole or relevant proton pump inhibitors"
+    ],
+    "adverseEffects": [
+      "Headache",
+      "Diarrhea",
+      "Abdominal discomfort",
+      "Long-term use may be associated with specific nutrient and infection-related risks"
+    ],
+    "interactions": [
+      "Some medicines affected by gastric pH",
+      "Selected medicines metabolized through hepatic enzyme pathways"
+    ],
+    "monitoring": [
+      "Clinical response",
+      "Long-term therapy risks when applicable",
+      "Magnesium or vitamin status when clinically indicated"
+    ],
+    "source": "FDA-approved prescribing information / DailyMed"
+  },
+
+  {
+    "name": "Salbutamol",
+    "class": "Short-acting beta-2 adrenergic agonist",
+    "mechanism": "Stimulates beta-2 adrenergic receptors, producing relaxation of bronchial smooth muscle.",
+    "uses": [
+      "Relief of bronchospasm",
+      "Asthma",
+      "Reversible airflow obstruction"
+    ],
+    "routes": [
+      "Inhaled",
+      "Nebulized",
+      "Oral formulations exist in some settings"
+    ],
+    "contraindications": [
+      "Known hypersensitivity to salbutamol or formulation components"
+    ],
+    "adverseEffects": [
+      "Tremor",
+      "Palpitations",
+      "Tachycardia",
+      "Headache",
+      "Hypokalemia at higher systemic exposure"
+    ],
+    "interactions": [
+      "Other sympathomimetic medicines",
+      "Beta-blockers may reduce bronchodilator effect"
+    ],
+    "monitoring": [
+      "Respiratory response",
+      "Heart rate when clinically appropriate",
+      "Potassium in selected high-dose situations"
+    ],
+    "source": "Authoritative prescribing information / DailyMed"
+  }
+]
