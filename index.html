@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: #f4f8fb;
   color: #17202a;
 }
@@ -27,7 +27,7 @@ header {
 
 header h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 29px;
 }
 
 header p {
@@ -55,14 +55,18 @@ header p {
 }
 
 input,
-textarea,
-select {
+textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccd6dc;
   border-radius: 9px;
   font-size: 15px;
   background: white;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
 button {
@@ -73,6 +77,7 @@ button {
   padding: 12px 18px;
   font-weight: bold;
   font-size: 15px;
+  cursor: pointer;
 }
 
 button:disabled {
@@ -85,12 +90,12 @@ h2 {
 }
 
 h3 {
-  margin-bottom: 6px;
+  margin: 0 0 7px;
   color: #263746;
 }
 
 .drug-name {
-  font-size: 25px;
+  font-size: 26px;
   font-weight: bold;
   color: #087f8c;
 }
@@ -102,25 +107,26 @@ h3 {
 }
 
 .section {
-  border-top: 1px solid #e6ecef;
-  padding-top: 11px;
+  border-top: 1px solid #e4eaed;
+  padding-top: 12px;
   margin-top: 13px;
 }
 
-ul {
-  padding-left: 20px;
-}
-
-li {
-  margin-bottom: 5px;
-  line-height: 1.4;
-}
-
-.dose-box {
+.info-box {
   background: #eef8f8;
-  padding: 13px;
-  border-radius: 9px;
-  margin-top: 8px;
+  border-left: 4px solid #087f8c;
+  padding: 11px 13px;
+  border-radius: 8px;
+  line-height: 1.45;
+}
+
+.info-box ul {
+  margin: 0;
+  padding-left: 19px;
+}
+
+.info-box li {
+  margin-bottom: 7px;
 }
 
 .warning {
@@ -168,10 +174,45 @@ li {
   color: #687780;
 }
 
+/* COLLAPSIBLE SECTIONS */
+
+details {
+  margin-top: 10px;
+  border: 1px solid #dce7ea;
+  border-radius: 9px;
+  background: #f5fafb;
+  overflow: hidden;
+}
+
+summary {
+  padding: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #087f8c;
+}
+
+details .detail-content {
+  padding: 0 12px 12px;
+  line-height: 1.45;
+}
+
+/* SOURCE */
+
+.source {
+  font-size: 12px;
+  color: #687780;
+}
+
+/* MOBILE */
+
 @media(max-width:600px) {
 
   .search {
     flex-direction: column;
+  }
+
+  button {
+    width: 100%;
   }
 
   .drug-name {
@@ -182,14 +223,22 @@ li {
 </style>
 </head>
 
+
 <body>
 
 <header>
+
   <h1>💊 PharmaAI</h1>
-  <p>Pharmacology learning simulator for medical students</p>
+
+  <p>
+    Pharmacology learning simulator for medical students
+  </p>
+
 </header>
 
+
 <div class="container">
+
 
   <!-- SEARCH -->
 
@@ -218,20 +267,20 @@ li {
   </div>
 
 
-  <!-- DRUG RESULT -->
+  <!-- RESULT -->
 
   <div id="result"></div>
 
 
-  <!-- AI -->
+  <!-- AI TUTOR -->
 
   <div class="card ai">
 
     <h2>🤖 AI Pharmacology Tutor</h2>
 
     <p class="small">
-      Ask questions about pharmacology, mechanisms,
-      adverse effects, contraindications and interactions.
+      Ask questions about mechanisms, adverse effects,
+      contraindications, interactions and pharmacology.
     </p>
 
     <textarea
@@ -254,9 +303,12 @@ li {
     ></div>
 
     <div class="warning">
+
       <strong>Educational use only.</strong><br>
+
       Always verify drug information using authoritative
       references and current clinical guidelines.
+
     </div>
 
   </div>
@@ -266,9 +318,9 @@ li {
 
 <script>
 
-/* =========================================
+/* =====================================================
    LOCAL DATABASE
-========================================= */
+===================================================== */
 
 let localDrugs = [];
 
@@ -298,27 +350,20 @@ async function loadLocalDrugs() {
 }
 
 
-/* =========================================
-   SEARCH
-========================================= */
+/* =====================================================
+   SEARCH DRUG
+===================================================== */
 
 async function searchDrug() {
 
   const input =
-    document.getElementById(
-      "drugSearch"
-    );
+    document.getElementById("drugSearch");
 
   const result =
-    document.getElementById(
-      "result"
-    );
+    document.getElementById("result");
 
   const button =
-    document.getElementById(
-      "searchButton"
-    );
-
+    document.getElementById("searchButton");
 
   const query =
     input.value.trim();
@@ -347,7 +392,7 @@ async function searchDrug() {
   result.innerHTML = `
 
     <div class="card center">
-      🔎 Searching...
+      🔎 Searching drug database...
     </div>
 
   `;
@@ -372,7 +417,12 @@ async function searchDrug() {
       data.results.length > 0
     ) {
 
-      showDrug(
+      /*
+       Use the first matching product.
+       This keeps the interface simple.
+      */
+
+      displayDrug(
         data.results[0]
       );
 
@@ -381,7 +431,6 @@ async function searchDrug() {
       searchLocal(query);
 
     }
-
 
   } catch (error) {
 
@@ -400,25 +449,21 @@ async function searchDrug() {
 }
 
 
-/* =========================================
-   SHOW LARGE DATABASE RESULT
-========================================= */
+/* =====================================================
+   DISPLAY LARGE DATABASE DRUG
+===================================================== */
 
-function showDrug(drug) {
+function displayDrug(drug) {
 
   const result =
-    document.getElementById(
-      "result"
-    );
+    document.getElementById("result");
 
 
   const generic =
     first(drug.genericName);
 
-
   const brand =
     first(drug.brandName);
-
 
   const title =
     generic ||
@@ -426,17 +471,23 @@ function showDrug(drug) {
     "Drug information";
 
 
-  const classes =
-    join(drug.drugClass);
+  const drugClass =
+    cleanShort(
+      join(drug.drugClass),
+      2
+    );
 
 
   result.innerHTML = `
 
     <div class="card">
 
+      <!-- NAME -->
+
       <div class="drug-name">
         ${safe(title)}
       </div>
+
 
       ${
         brand
@@ -452,11 +503,11 @@ function showDrug(drug) {
 
 
       ${
-        classes
+        drugClass
         ?
         `
         <div class="drug-class">
-          ${safe(classes)}
+          ${safe(drugClass)}
         </div>
         `
         :
@@ -464,84 +515,109 @@ function showDrug(drug) {
       }
 
 
-      ${section(
-        "🧪 Active Ingredient",
-        join(drug.activeIngredient)
+      <!-- MECHANISM -->
+
+      ${prettySection(
+        "🧬 Mechanism of Action",
+        drug.clinicalPharmacology,
+        3
       )}
 
 
-      ${section(
-        "🧬 Mechanism / Clinical Pharmacology",
-        join(drug.clinicalPharmacology)
-      )}
+      <!-- INDICATIONS -->
 
-
-      ${section(
+      ${prettySection(
         "🎯 Indications",
-        join(drug.indications)
+        drug.indications,
+        5
       )}
 
 
-      ${section(
-        "💉 Routes",
-        join(drug.route)
+      <!-- ROUTE -->
+
+      ${prettySection(
+        "💉 Routes of Administration",
+        drug.route,
+        3
       )}
 
 
-      ${section(
+      <!-- DOSAGE -->
+
+      ${prettySection(
         "💊 Dosage & Administration",
-        join(drug.dosage)
+        drug.dosage,
+        5
       )}
 
 
-      ${section(
+      <!-- CONTRAINDICATIONS -->
+
+      ${prettySection(
         "🚫 Contraindications",
-        join(drug.contraindications)
+        drug.contraindications,
+        5
       )}
 
 
-      ${section(
-        "⚠️ Warnings",
-        join(drug.warnings)
-      )}
+      <!-- ADVERSE EFFECTS -->
 
-
-      ${section(
+      ${prettySection(
         "⚠️ Adverse Effects",
-        join(drug.adverseReactions)
+        drug.adverseReactions,
+        6
       )}
 
 
-      ${section(
+      <!-- INTERACTIONS -->
+
+      ${prettySection(
         "🔄 Drug Interactions",
-        join(drug.interactions)
+        drug.interactions,
+        6
       )}
 
 
-      ${section(
+      <!-- WARNINGS -->
+
+      ${prettySection(
+        "⚠️ Important Warnings",
+        drug.warnings,
+        4
+      )}
+
+
+      <!-- COLLAPSED SECTIONS -->
+
+      ${collapsible(
         "🤰 Pregnancy",
-        join(drug.pregnancy)
+        drug.pregnancy,
+        4
       )}
 
 
-      ${section(
+      ${collapsible(
         "👶 Pediatric Use",
-        join(drug.pediatricUse)
+        drug.pediatricUse,
+        4
       )}
 
 
-      ${section(
+      ${collapsible(
         "👴 Geriatric Use",
-        join(drug.geriatricUse)
+        drug.geriatricUse,
+        4
       )}
 
+
+      <!-- SOURCE -->
 
       <div class="section">
 
         <h3>📚 Source</h3>
 
-        <p class="small">
-          FDA / openFDA drug labeling
+        <p class="source">
+          FDA / openFDA drug labeling database
         </p>
 
       </div>
@@ -551,10 +627,10 @@ function showDrug(drug) {
 
         <strong>Educational information only.</strong><br>
 
-        Drug information can vary by product,
-        formulation, country and indication.
-        Verify current official labeling before
-        clinical use.
+        This information is summarized from drug
+        labeling. Dosing and other details can vary
+        by product, formulation, indication and country.
+        Verify current official labeling before clinical use.
 
       </div>
 
@@ -565,16 +641,261 @@ function showDrug(drug) {
 }
 
 
-/* =========================================
-   LOCAL FALLBACK
-========================================= */
+/* =====================================================
+   MAKE CLEAN SECTION
+===================================================== */
+
+function prettySection(
+  title,
+  value,
+  maxItems
+) {
+
+  const text =
+    join(value);
+
+
+  if (!text) {
+    return "";
+  }
+
+
+  const bullets =
+    makeBullets(
+      text,
+      maxItems
+    );
+
+
+  return `
+
+    <div class="section">
+
+      <h3>${title}</h3>
+
+      <div class="info-box">
+
+        <ul>
+
+          ${
+            bullets.map(
+              item =>
+                `<li>${safe(item)}</li>`
+            ).join("")
+          }
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =====================================================
+   COLLAPSIBLE SECTION
+===================================================== */
+
+function collapsible(
+  title,
+  value,
+  maxItems
+) {
+
+  const text =
+    join(value);
+
+
+  if (!text) {
+    return "";
+  }
+
+
+  const bullets =
+    makeBullets(
+      text,
+      maxItems
+    );
+
+
+  return `
+
+    <details>
+
+      <summary>
+        ${title}
+      </summary>
+
+      <div class="detail-content">
+
+        <ul>
+
+          ${
+            bullets.map(
+              item =>
+                `<li>${safe(item)}</li>`
+            ).join("")
+          }
+
+        </ul>
+
+      </div>
+
+    </details>
+
+  `;
+
+}
+
+
+/* =====================================================
+   TURN LONG LABEL INTO SHORT BULLETS
+===================================================== */
+
+function makeBullets(
+  text,
+  maxItems
+) {
+
+  if (!text) {
+    return [];
+  }
+
+
+  /*
+   Remove excessive spaces and
+   section-number clutter.
+  */
+
+  let clean =
+    String(text)
+      .replace(/\s+/g, " ")
+      .replace(
+        /\b\d+\.\d+\s+/g,
+        ""
+      )
+      .trim();
+
+
+  /*
+   Split the label into sentences.
+  */
+
+  let sentences =
+    clean
+      .split(
+        /(?<=[.!?])\s+/
+      )
+      .map(
+        s => s.trim()
+      )
+      .filter(
+        s => s.length > 25
+      );
+
+
+  /*
+   Remove repeated sentences.
+  */
+
+  sentences =
+    [...new Set(sentences)];
+
+
+  /*
+   Keep only the most useful
+   beginning points.
+  */
+
+  if (
+    sentences.length >
+    maxItems
+  ) {
+
+    sentences =
+      sentences.slice(
+        0,
+        maxItems
+      );
+
+  }
+
+
+  /*
+   If sentence splitting fails,
+   create one readable item.
+  */
+
+  if (!sentences.length) {
+
+    sentences = [
+      clean.slice(0, 450)
+    ];
+
+  }
+
+
+  /*
+   Keep individual bullets
+   reasonably short.
+  */
+
+  return sentences.map(
+    sentence => {
+
+      if (
+        sentence.length >
+        420
+      ) {
+
+        return (
+          sentence.slice(0, 417) +
+          "..."
+        );
+
+      }
+
+      return sentence;
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   SHORTEN CLASS
+===================================================== */
+
+function cleanShort(
+  text,
+  maxItems
+) {
+
+  if (!text) {
+    return "";
+  }
+
+
+  return text
+    .split(",")
+    .slice(0, maxItems)
+    .join(", ");
+
+}
+
+
+/* =====================================================
+   LOCAL DATABASE FALLBACK
+===================================================== */
 
 function searchLocal(query) {
 
   const result =
-    document.getElementById(
-      "result"
-    );
+    document.getElementById("result");
 
 
   const drug =
@@ -594,7 +915,7 @@ function searchLocal(query) {
         <h3>Drug not found</h3>
 
         <p>
-          Try another generic or brand name.
+          No matching drug was found.
         </p>
 
       </div>
@@ -605,21 +926,19 @@ function searchLocal(query) {
   }
 
 
-  showLocalDrug(drug);
+  displayLocalDrug(drug);
 
 }
 
 
-/* =========================================
-   SHOW LOCAL DRUG
-========================================= */
+/* =====================================================
+   DISPLAY LOCAL DRUG
+===================================================== */
 
-function showLocalDrug(drug) {
+function displayLocalDrug(drug) {
 
   const result =
-    document.getElementById(
-      "result"
-    );
+    document.getElementById("result");
 
 
   result.innerHTML = `
@@ -661,7 +980,7 @@ function showLocalDrug(drug) {
 
           <h3>💊 Dosage</h3>
 
-          <div class="dose-box">
+          <div class="info-box">
 
             <p>
               <strong>Adult:</strong><br>
@@ -703,7 +1022,7 @@ function showLocalDrug(drug) {
 
 
       ${listSection(
-        "🚫 Contraindications & Cautions",
+        "🚫 Contraindications",
         drug.contraindications
       )}
 
@@ -725,20 +1044,6 @@ function showLocalDrug(drug) {
         drug.monitoring
       )}
 
-
-      <div class="section">
-
-        <h3>📚 Source</h3>
-
-        <p class="small">
-          ${safe(
-            drug.source ||
-            "Not specified"
-          )}
-        </p>
-
-      </div>
-
     </div>
 
   `;
@@ -746,9 +1051,9 @@ function showLocalDrug(drug) {
 }
 
 
-/* =========================================
+/* =====================================================
    AI TUTOR
-========================================= */
+===================================================== */
 
 async function askAI() {
 
@@ -785,7 +1090,10 @@ async function askAI() {
     "block";
 
   answer.innerHTML =
-    `<span class="loading">🤖 Thinking...</span>`;
+    `<span class="loading">
+      🤖 Thinking...
+    </span>`;
+
 
   button.disabled = true;
 
@@ -799,6 +1107,7 @@ async function askAI() {
       await fetch(
         "/api/ask",
         {
+
           method: "POST",
 
           headers: {
@@ -809,6 +1118,7 @@ async function askAI() {
           body: JSON.stringify({
             question: question
           })
+
         }
       );
 
@@ -863,14 +1173,13 @@ async function askAI() {
 }
 
 
-/* =========================================
+/* =====================================================
    HELPERS
-========================================= */
+===================================================== */
 
 function first(array) {
 
   if (
-    !array ||
     !Array.isArray(array) ||
     array.length === 0
   ) {
@@ -887,7 +1196,6 @@ function first(array) {
 function join(array) {
 
   if (
-    !array ||
     !Array.isArray(array)
   ) {
 
@@ -895,12 +1203,15 @@ function join(array) {
 
   }
 
-  return array.join("\n\n");
+  return array.join(" ");
 
 }
 
 
-function section(title, text) {
+function textSection(
+  title,
+  text
+) {
 
   if (!text) {
     return "";
@@ -923,30 +1234,10 @@ function section(title, text) {
 }
 
 
-function textSection(title, text) {
-
-  if (!text) {
-    return "";
-  }
-
-  return `
-
-    <div class="section">
-
-      <h3>${title}</h3>
-
-      <p>
-        ${safe(text)}
-      </p>
-
-    </div>
-
-  `;
-
-}
-
-
-function listSection(title, items) {
+function listSection(
+  title,
+  items
+) {
 
   if (
     !items ||
@@ -964,16 +1255,20 @@ function listSection(title, items) {
 
       <h3>${title}</h3>
 
-      <ul>
+      <div class="info-box">
 
-        ${
-          items.map(
-            item =>
-              `<li>${safe(item)}</li>`
-          ).join("")
-        }
+        <ul>
 
-      </ul>
+          ${
+            items.map(
+              item =>
+                `<li>${safe(item)}</li>`
+            ).join("")
+          }
+
+        </ul>
+
+      </div>
 
     </div>
 
@@ -1036,9 +1331,9 @@ function safe(value) {
 }
 
 
-/* =========================================
+/* =====================================================
    ENTER TO SEARCH
-========================================= */
+===================================================== */
 
 document
   .getElementById("drugSearch")
@@ -1047,8 +1342,7 @@ document
     function(event) {
 
       if (
-        event.key ===
-        "Enter"
+        event.key === "Enter"
       ) {
 
         searchDrug();
@@ -1059,9 +1353,9 @@ document
   );
 
 
-/* =========================================
+/* =====================================================
    LOAD
-========================================= */
+===================================================== */
 
 loadLocalDrugs();
 
