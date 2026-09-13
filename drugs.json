@@ -1,696 +1,2827 @@
 [
   {
-    "name": "Paracetamol",
-    "class": "Analgesic and antipyretic",
-    "mechanism": "Primarily reduces central prostaglandin synthesis and produces analgesic and antipyretic effects; its exact mechanism is not completely established.",
+    "name": "Amlodipine",
+    "system": "CVS",
+    "class": "Dihydropyridine calcium-channel blocker",
+    "mechanism": "Calcium-channel blocker; reduces vascular smooth-muscle contraction.",
     "uses": [
-      "Fever",
-      "Mild to moderate pain"
-    ],
-    "routes": [
-      "Oral",
-      "Rectal",
-      "Intravenous"
-    ],
-    "dosage": {
-      "adult": [
-        {
-          "indication": "Pain or fever",
-          "dose": "650–1,000 mg every 4–6 hours as needed",
-          "maximum": "Do not exceed 4,000 mg in 24 hours from all acetaminophen-containing products"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Pain or fever",
-          "dose": "10–15 mg/kg every 4–6 hours as needed",
-          "maximum": "Maximum 5 doses in 24 hours; use product-specific pediatric maximums"
-        }
-      ],
-      "duration": [
-        "Use the lowest effective dose for the shortest appropriate duration."
-      ],
-      "renalAdjustment": "Dose interval may need extension in severe renal impairment; follow product-specific guidance.",
-      "hepaticAdjustment": "Use caution in hepatic impairment, chronic alcohol use, malnutrition, or dehydration.",
-      "reference": "Acetaminophen/Paracetamol official prescribing information; verify formulation-specific labeling before clinical use."
-    },
-    "contraindications": [
-      "Severe hypersensitivity to acetaminophen/paracetamol",
-      "Severe active liver disease is a major caution"
-    ],
-    "adverseEffects": [
-      "Rash or hypersensitivity reactions",
-      "Hepatotoxicity with overdose or excessive cumulative exposure"
-    ],
-    "interactions": [
-      "Warfarin with prolonged regular use may increase anticoagulant effect",
-      "Other acetaminophen-containing products increase overdose risk"
-    ],
-    "monitoring": [
-      "Total daily dose from all sources",
-      "Liver function when clinically indicated",
-      "Clinical response"
-    ],
-    "source": "FDA/DailyMed acetaminophen labeling"
-  },
-  {
-    "name": "Ibuprofen",
-    "class": "Nonsteroidal anti-inflammatory drug (NSAID)",
-    "mechanism": "Reversibly inhibits cyclooxygenase enzymes, reducing prostaglandin synthesis and producing analgesic, antipyretic, and anti-inflammatory effects.",
-    "uses": [
-      "Mild to moderate pain",
-      "Fever",
-      "Inflammatory conditions"
+      "Hypertension",
+      "angina"
     ],
     "routes": [
       "Oral"
     ],
     "dosage": {
-      "adult": [
-        {
-          "indication": "Mild to moderate pain",
-          "dose": "200–400 mg every 4–6 hours as needed for OTC use",
-          "maximum": "1,200 mg/day for OTC self-care; prescription dosing may differ"
-        },
-        {
-          "indication": "Inflammatory conditions",
-          "dose": "Individualized prescription dosing, commonly 400–800 mg three or four times daily",
-          "maximum": "3,200 mg/day under medical supervision"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Pain or fever in children 6 months and older",
-          "dose": "5–10 mg/kg every 6–8 hours as needed",
-          "maximum": "40 mg/kg/day"
-        }
-      ],
-      "duration": [
-        "Use the lowest effective dose for the shortest duration."
-      ],
-      "renalAdjustment": "Avoid or use great caution in significant renal impairment; NSAIDs can worsen renal function.",
-      "hepaticAdjustment": "Use caution in hepatic impairment.",
-      "reference": "DailyMed ibuprofen prescribing information"
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
     },
-    "contraindications": [
-      "Known serious hypersensitivity to ibuprofen/NSAIDs",
-      "History of aspirin/NSAID-induced asthma, urticaria, or allergic-type reactions",
-      "Perioperative use in CABG surgery"
-    ],
-    "adverseEffects": [
-      "Dyspepsia",
-      "Gastritis or gastrointestinal ulcer/bleeding",
-      "Renal impairment",
-      "Fluid retention and edema",
-      "Cardiovascular thrombotic events"
-    ],
-    "interactions": [
-      "Anticoagulants/antiplatelets may increase bleeding risk",
-      "ACE inhibitors/ARBs and diuretics may increase renal risk",
-      "Lithium levels may increase"
-    ],
-    "monitoring": [
-      "Blood pressure",
-      "Renal function when clinically indicated",
-      "GI bleeding symptoms",
-      "Long-term cardiovascular risk"
-    ],
-    "source": "DailyMed ibuprofen labeling"
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
   },
   {
-    "name": "Amoxicillin",
-    "class": "Aminopenicillin beta-lactam antibiotic",
-    "mechanism": "Binds penicillin-binding proteins and inhibits bacterial cell-wall synthesis, causing bacterial cell death in susceptible organisms.",
+    "name": "Nifedipine",
+    "system": "CVS",
+    "class": "Dihydropyridine calcium-channel blocker",
+    "mechanism": "Blocks L-type calcium channels, predominantly producing arterial vasodilation.",
     "uses": [
-      "Respiratory tract infections",
-      "Ear, nose and throat infections",
-      "Skin and skin-structure infections",
-      "Genitourinary infections",
-      "Selected susceptible bacterial infections"
+      "Hypertension",
+      "angina"
     ],
     "routes": [
       "Oral"
     ],
     "dosage": {
-      "adult": [
-        {
-          "indication": "Mild to moderate ENT, skin, or genitourinary infection",
-          "dose": "250 mg every 8 hours or 500 mg every 12 hours",
-          "maximum": "Follow indication-specific prescribing information"
-        },
-        {
-          "indication": "Severe ENT, skin, genitourinary, or lower respiratory infection",
-          "dose": "500 mg every 8 hours or 875 mg every 12 hours",
-          "maximum": "Follow indication-specific prescribing information"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Mild to moderate infection in children >3 months and <40 kg",
-          "dose": "20 mg/kg/day divided every 8 hours or 25 mg/kg/day divided every 12 hours",
-          "maximum": "Follow indication-specific labeling"
-        },
-        {
-          "indication": "Severe infection in children >3 months and <40 kg",
-          "dose": "40 mg/kg/day divided every 8 hours or 45 mg/kg/day divided every 12 hours",
-          "maximum": "Follow indication-specific labeling"
-        },
-        {
-          "indication": "Neonates and infants ≤12 weeks",
-          "dose": "Up to 30 mg/kg/day divided every 12 hours",
-          "maximum": "30 mg/kg/day"
-        }
-      ],
-      "duration": [
-        "Duration depends on infection and clinical response.",
-        "Streptococcus pyogenes infections generally require at least 10 days."
-      ],
-      "renalAdjustment": "Dose reduction or interval adjustment is required in significant renal impairment.",
-      "hepaticAdjustment": "No routine hepatic dose adjustment is generally required, but monitor clinically in significant hepatic disease.",
-      "reference": "DailyMed amoxicillin prescribing information"
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
     },
-    "contraindications": [
-      "Serious hypersensitivity to amoxicillin or other beta-lactam antibiotics"
-    ],
-    "adverseEffects": [
-      "Diarrhea",
-      "Nausea",
-      "Rash",
-      "Hypersensitivity reactions",
-      "Rare severe cutaneous reactions"
-    ],
-    "interactions": [
-      "Warfarin may have altered anticoagulant effect",
-      "Allopurinol may increase rash risk",
-      "Methotrexate toxicity may increase"
-    ],
-    "monitoring": [
-      "Clinical response",
-      "Allergic reactions",
-      "Renal function when prolonged therapy or renal impairment is present"
-    ],
-    "source": "DailyMed amoxicillin labeling"
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
   },
   {
-    "name": "Azithromycin",
-    "class": "Macrolide antibiotic",
-    "mechanism": "Binds the 50S ribosomal subunit and inhibits bacterial protein synthesis.",
+    "name": "Felodipine",
+    "system": "CVS",
+    "class": "Dihydropyridine calcium-channel blocker",
+    "mechanism": "Produces arterial vasodilation through L-type calcium-channel blockade.",
     "uses": [
-      "Selected respiratory infections",
-      "Acute bacterial exacerbations of chronic bronchitis",
-      "Community-acquired pneumonia",
-      "Pharyngitis/tonsillitis in selected patients",
-      "Selected sexually transmitted and other susceptible infections"
+      "Hypertension"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Cilnidipine",
+    "system": "CVS",
+    "class": "Calcium-channel blocker",
+    "mechanism": "Blocks calcium channels and reduces vascular tone.",
+    "uses": [
+      "Hypertension"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Verapamil",
+    "system": "CVS",
+    "class": "Non-dihydropyridine calcium-channel blocker",
+    "mechanism": "Reduces calcium entry into cardiac and vascular smooth muscle.",
+    "uses": [
+      "Hypertension",
+      "angina",
+      "selected arrhythmias"
     ],
     "routes": [
       "Oral",
       "Intravenous"
     ],
     "dosage": {
-      "adult": [
-        {
-          "indication": "Community-acquired pneumonia",
-          "dose": "500 mg once daily on day 1, then 250 mg once daily on days 2–5",
-          "maximum": "500 mg on day 1, then 250 mg/day in this regimen"
-        },
-        {
-          "indication": "Acute bacterial exacerbation of chronic bronchitis",
-          "dose": "500 mg once daily for 3 days, or 500 mg on day 1 followed by 250 mg daily on days 2–5",
-          "maximum": "Regimen dependent"
-        },
-        {
-          "indication": "Selected uncomplicated genital infection due to Chlamydia trachomatis",
-          "dose": "1 g orally as a single dose in labeling where applicable",
-          "maximum": "Single dose"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Acute bacterial otitis media",
-          "dose": "10 mg/kg on day 1, then 5 mg/kg/day on days 2–5, or other labeled regimens depending on age/indication",
-          "maximum": "Follow product-specific pediatric maximum"
-        },
-        {
-          "indication": "Community-acquired pneumonia",
-          "dose": "10 mg/kg on day 1, then 5 mg/kg/day on days 2–5",
-          "maximum": "500 mg on day 1; 250 mg/day thereafter"
-        }
-      ],
-      "duration": [
-        "Common oral regimens are 3–5 days depending on indication.",
-        "Use indication-specific treatment duration."
-      ],
-      "renalAdjustment": "No routine adjustment is generally required for mild to moderate renal impairment; severe impairment warrants caution.",
-      "hepaticAdjustment": "Use caution in hepatic disease because azithromycin is substantially hepatically handled.",
-      "reference": "DailyMed azithromycin prescribing information"
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
     },
-    "contraindications": [
-      "History of cholestatic jaundice/hepatic dysfunction associated with prior azithromycin use",
-      "Serious hypersensitivity to macrolides"
-    ],
-    "adverseEffects": [
-      "Diarrhea",
-      "Nausea",
-      "Abdominal pain",
-      "QT prolongation/arrhythmia risk",
-      "Hepatotoxicity"
-    ],
-    "interactions": [
-      "Other QT-prolonging drugs may increase arrhythmia risk",
-      "Warfarin effect may change",
-      "Digoxin levels may increase in some patients"
-    ],
-    "monitoring": [
-      "Clinical response",
-      "Liver function when clinically indicated",
-      "QT risk in susceptible patients"
-    ],
-    "source": "DailyMed azithromycin labeling"
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
   },
   {
-    "name": "Ceftriaxone",
-    "class": "Third-generation cephalosporin antibiotic",
-    "mechanism": "Inhibits bacterial cell-wall synthesis by binding penicillin-binding proteins.",
+    "name": "Diltiazem",
+    "system": "CVS",
+    "class": "Non-dihydropyridine calcium-channel blocker",
+    "mechanism": "Reduces calcium entry and slows AV nodal conduction.",
     "uses": [
-      "Serious susceptible bacterial infections",
-      "Meningitis",
-      "Community-acquired pneumonia",
-      "Intra-abdominal and urinary tract infections",
-      "Gonococcal infection in appropriate current guideline-based regimens",
-      "Surgical prophylaxis in selected settings"
+      "Hypertension",
+      "angina",
+      "selected arrhythmias"
     ],
     "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Enalapril",
+    "system": "CVS",
+    "class": "ACE inhibitor",
+    "mechanism": "Inhibits ACE, reducing angiotensin II and aldosterone formation.",
+    "uses": [
+      "Hypertension",
+      "heart failure"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Lisinopril",
+    "system": "CVS",
+    "class": "ACE inhibitor",
+    "mechanism": "Inhibits ACE and reduces angiotensin II-mediated vasoconstriction.",
+    "uses": [
+      "Hypertension",
+      "heart failure"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Ramipril",
+    "system": "CVS",
+    "class": "ACE inhibitor",
+    "mechanism": "Reduces angiotensin II formation through ACE inhibition.",
+    "uses": [
+      "Hypertension",
+      "cardiovascular risk reduction",
+      "heart failure"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Perindopril",
+    "system": "CVS",
+    "class": "ACE inhibitor",
+    "mechanism": "ACE inhibition reduces angiotensin II formation.",
+    "uses": [
+      "Hypertension",
+      "cardiovascular disease"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Captopril",
+    "system": "CVS",
+    "class": "ACE inhibitor",
+    "mechanism": "Inhibits ACE and reduces angiotensin II formation.",
+    "uses": [
+      "Hypertension",
+      "heart failure"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Losartan",
+    "system": "CVS",
+    "class": "Angiotensin II receptor blocker",
+    "mechanism": "Blocks the angiotensin II AT1 receptor.",
+    "uses": [
+      "Hypertension",
+      "diabetic kidney disease",
+      "heart failure"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Telmisartan",
+    "system": "CVS",
+    "class": "Angiotensin II receptor blocker",
+    "mechanism": "Blocks angiotensin II at AT1 receptors.",
+    "uses": [
+      "Hypertension",
+      "cardiovascular risk reduction"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Olmesartan",
+    "system": "CVS",
+    "class": "Angiotensin II receptor blocker",
+    "mechanism": "Blocks angiotensin II at AT1 receptors.",
+    "uses": [
+      "Hypertension"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Valsartan",
+    "system": "CVS",
+    "class": "Angiotensin II receptor blocker",
+    "mechanism": "Blocks angiotensin II at AT1 receptors.",
+    "uses": [
+      "Hypertension",
+      "heart failure"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Candesartan",
+    "system": "CVS",
+    "class": "Angiotensin II receptor blocker",
+    "mechanism": "Blocks angiotensin II at AT1 receptors.",
+    "uses": [
+      "Hypertension",
+      "heart failure"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Irbesartan",
+    "system": "CVS",
+    "class": "Angiotensin II receptor blocker",
+    "mechanism": "Blocks angiotensin II at AT1 receptors.",
+    "uses": [
+      "Hypertension",
+      "diabetic nephropathy"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Atenolol",
+    "system": "CVS",
+    "class": "Beta-1 selective blocker",
+    "mechanism": "Reduces heart rate and myocardial contractility through beta-1 blockade.",
+    "uses": [
+      "Hypertension",
+      "angina",
+      "selected arrhythmias"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Metoprolol",
+    "system": "CVS",
+    "class": "Beta-1 selective blocker",
+    "mechanism": "Reduces sympathetic cardiac stimulation through beta-1 blockade.",
+    "uses": [
+      "Hypertension",
+      "angina",
+      "heart failure",
+      "arrhythmias"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Bisoprolol",
+    "system": "CVS",
+    "class": "Beta-1 selective blocker",
+    "mechanism": "Selectively blocks beta-1 adrenergic receptors.",
+    "uses": [
+      "Hypertension",
+      "heart failure"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Propranolol",
+    "system": "CVS",
+    "class": "Nonselective beta blocker",
+    "mechanism": "Blocks beta-1 and beta-2 adrenergic receptors.",
+    "uses": [
+      "Hypertension",
+      "angina",
+      "arrhythmias",
+      "migraine prevention",
+      "tremor"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Carvedilol",
+    "system": "CVS",
+    "class": "Beta blocker with alpha-1 blockade",
+    "mechanism": "Blocks beta receptors and alpha-1 receptors, reducing cardiac workload and vascular resistance.",
+    "uses": [
+      "Heart failure",
+      "hypertension"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Nebivolol",
+    "system": "CVS",
+    "class": "Beta-1 selective blocker",
+    "mechanism": "Beta-1 blockade with nitric-oxide-mediated vasodilatory activity.",
+    "uses": [
+      "Hypertension"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Labetalol",
+    "system": "CVS",
+    "class": "Alpha/beta blocker",
+    "mechanism": "Blocks alpha-1 and beta adrenergic receptors.",
+    "uses": [
+      "Hypertension",
+      "severe hypertension in selected settings"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Methyldopa",
+    "system": "CVS",
+    "class": "Centrally acting sympatholytic",
+    "mechanism": "Converted to an active metabolite that reduces central sympathetic outflow.",
+    "uses": [
+      "Hypertension",
+      "pregnancy-associated hypertension"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Clonidine",
+    "system": "CVS",
+    "class": "Central alpha-2 agonist",
+    "mechanism": "Reduces central sympathetic outflow.",
+    "uses": [
+      "Hypertension",
+      "selected other indications"
+    ],
+    "routes": [
+      "Oral",
+      "Transdermal"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Hydrochlorothiazide",
+    "system": "CVS",
+    "class": "Thiazide diuretic",
+    "mechanism": "Inhibits sodium-chloride reabsorption in the distal convoluted tubule.",
+    "uses": [
+      "Hypertension",
+      "edema"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Chlorthalidone",
+    "system": "CVS",
+    "class": "Thiazide-like diuretic",
+    "mechanism": "Inhibits sodium-chloride reabsorption in the distal nephron.",
+    "uses": [
+      "Hypertension",
+      "edema"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Indapamide",
+    "system": "CVS",
+    "class": "Thiazide-like diuretic",
+    "mechanism": "Promotes natriuresis and lowers vascular resistance.",
+    "uses": [
+      "Hypertension",
+      "edema"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Spironolactone",
+    "system": "CVS",
+    "class": "Aldosterone antagonist",
+    "mechanism": "Blocks mineralocorticoid receptors, reducing sodium retention and potassium loss.",
+    "uses": [
+      "Heart failure",
+      "hyperaldosteronism",
+      "hypertension",
+      "edema"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Eplerenone",
+    "system": "CVS",
+    "class": "Selective aldosterone antagonist",
+    "mechanism": "Blocks mineralocorticoid receptors.",
+    "uses": [
+      "Heart failure",
+      "hypertension"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Amiloride",
+    "system": "CVS",
+    "class": "Potassium-sparing diuretic",
+    "mechanism": "Blocks epithelial sodium channels in the distal nephron.",
+    "uses": [
+      "Hypertension",
+      "edema"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Torsemide",
+    "system": "CVS",
+    "class": "Loop diuretic",
+    "mechanism": "Inhibits sodium and chloride reabsorption in the thick ascending limb.",
+    "uses": [
+      "Edema",
+      "hypertension"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Bumetanide",
+    "system": "CVS",
+    "class": "Loop diuretic",
+    "mechanism": "Inhibits the Na-K-2Cl cotransporter.",
+    "uses": [
+      "Edema"
+    ],
+    "routes": [
+      "Oral",
       "Intravenous",
       "Intramuscular"
     ],
     "dosage": {
-      "adult": [
-        {
-          "indication": "Usual adult infections",
-          "dose": "1–2 g once daily, or divided into two doses",
-          "maximum": "4 g/day"
-        },
-        {
-          "indication": "Uncomplicated gonococcal infection",
-          "dose": "Use current local/CDC guideline-based ceftriaxone dose; historical labels may differ",
-          "maximum": "Guideline dependent"
-        },
-        {
-          "indication": "Surgical prophylaxis",
-          "dose": "1 g intravenously as a single dose 1/2–2 hours before surgery",
-          "maximum": "Single dose"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Skin and skin-structure infections",
-          "dose": "50–75 mg/kg/day once daily or divided twice daily",
-          "maximum": "2 g/day"
-        },
-        {
-          "indication": "Acute bacterial otitis media",
-          "dose": "50 mg/kg intramuscularly as a single dose",
-          "maximum": "1 g"
-        },
-        {
-          "indication": "Serious infections other than meningitis",
-          "dose": "50–75 mg/kg/day divided every 12 hours",
-          "maximum": "2 g/day"
-        },
-        {
-          "indication": "Meningitis",
-          "dose": "Initial 100 mg/kg, followed by 100 mg/kg/day once daily or divided every 12 hours",
-          "maximum": "4 g/day"
-        }
-      ],
-      "duration": [
-        "Usual duration: 4–14 days depending on infection and clinical response.",
-        "Meningitis: usual duration 7–14 days.",
-        "For Streptococcus pyogenes infections, treatment should continue for at least 10 days."
-      ],
-      "renalAdjustment": "No dosage adjustment is generally necessary for renal impairment when used according to labeling; severe combined renal and hepatic impairment requires particular caution.",
-      "hepaticAdjustment": "No dosage adjustment is generally necessary for hepatic impairment when used according to labeling; severe combined renal and hepatic impairment requires particular caution.",
-      "reference": "DailyMed ceftriaxone prescribing information"
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
     },
-    "contraindications": [
-      "Known serious hypersensitivity to ceftriaxone or relevant cephalosporins",
-      "Contraindicated in certain neonates with hyperbilirubinemia",
-      "Contraindicated in neonates requiring or expected to require calcium-containing IV solutions"
-    ],
-    "adverseEffects": [
-      "Diarrhea",
-      "Rash",
-      "Hypersensitivity reactions",
-      "Biliary complications/pseudolithiasis",
-      "Rare hemolytic anemia"
-    ],
-    "interactions": [
-      "Important compatibility precautions with calcium-containing IV solutions in neonates",
-      "Warfarin effect may change in susceptible patients"
-    ],
-    "monitoring": [
-      "Clinical response",
-      "Allergic reactions",
-      "Renal and hepatic status when clinically appropriate",
-      "Consider coagulation status in patients at risk of vitamin K deficiency"
-    ],
-    "source": "DailyMed ceftriaxone prescribing information"
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
   },
   {
-    "name": "Metformin",
-    "class": "Biguanide antidiabetic",
-    "mechanism": "Reduces hepatic glucose production, decreases intestinal glucose absorption to a lesser extent, and improves insulin sensitivity and peripheral glucose utilization.",
+    "name": "Digoxin",
+    "system": "CVS",
+    "class": "Cardiac glycoside",
+    "mechanism": "Inhibits Na/K ATPase and increases vagal activity.",
     "uses": [
-      "Type 2 diabetes mellitus",
-      "Improving glycemic control with diet and exercise"
+      "Heart failure",
+      "selected atrial fibrillation"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Amiodarone",
+    "system": "CVS",
+    "class": "Class III antiarrhythmic",
+    "mechanism": "Blocks multiple cardiac ion channels and prolongs repolarization.",
+    "uses": [
+      "Atrial and ventricular arrhythmias"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Lidocaine",
+    "system": "CVS",
+    "class": "Class Ib antiarrhythmic; local anesthetic",
+    "mechanism": "Blocks voltage-gated sodium channels.",
+    "uses": [
+      "Selected ventricular arrhythmias",
+      "local anesthesia"
+    ],
+    "routes": [
+      "Intravenous",
+      "Local"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Adenosine",
+    "system": "CVS",
+    "class": "Antiarrhythmic",
+    "mechanism": "Transiently slows AV nodal conduction.",
+    "uses": [
+      "Paroxysmal supraventricular tachycardia"
+    ],
+    "routes": [
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Flecainide",
+    "system": "CVS",
+    "class": "Class Ic antiarrhythmic",
+    "mechanism": "Potent sodium-channel blockade slows cardiac conduction.",
+    "uses": [
+      "Selected supraventricular arrhythmias"
     ],
     "routes": [
       "Oral"
     ],
     "dosage": {
-      "adult": [
-        {
-          "indication": "Type 2 diabetes mellitus",
-          "dose": "500 mg twice daily or 850 mg once daily with meals; titrate according to response and formulation",
-          "maximum": "2,550 mg/day for immediate-release tablets in the cited labeling"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Type 2 diabetes mellitus in children ≥10 years",
-          "dose": "500 mg twice daily with meals; increase by 500 mg weekly as tolerated",
-          "maximum": "2,000 mg/day in divided doses"
-        }
-      ],
-      "duration": [
-        "Long-term therapy when clinically indicated; reassess glycemic control and tolerability regularly."
-      ],
-      "renalAdjustment": "Assess eGFR before initiation. Do not use if eGFR <30 mL/min/1.73 m²; initiation is not recommended at eGFR 30–45 mL/min/1.73 m².",
-      "hepaticAdjustment": "Generally avoid in significant hepatic impairment because of lactic acidosis risk.",
-      "reference": "DailyMed metformin prescribing information"
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
     },
-    "contraindications": [
-      "eGFR below 30 mL/min/1.73 m²",
-      "Acute or chronic metabolic acidosis including diabetic ketoacidosis",
-      "Serious hypersensitivity to metformin"
-    ],
-    "adverseEffects": [
-      "Diarrhea",
-      "Nausea",
-      "Abdominal discomfort",
-      "Vitamin B12 deficiency with long-term use",
-      "Rare lactic acidosis"
-    ],
-    "interactions": [
-      "Cationic drugs eliminated by renal tubular secretion can increase metformin exposure",
-      "Carbonic anhydrase inhibitors may increase metabolic acidosis risk",
-      "Iodinated contrast procedures may require temporary interruption depending on renal function and clinical circumstances"
-    ],
-    "monitoring": [
-      "Blood glucose/HbA1c",
-      "eGFR",
-      "Vitamin B12 during long-term therapy when clinically appropriate",
-      "GI tolerance"
-    ],
-    "source": "DailyMed metformin labeling"
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
   },
   {
-    "name": "Insulin",
-    "class": "Peptide hormone; antidiabetic agent",
-    "mechanism": "Activates insulin receptors, increasing glucose uptake and utilization while suppressing hepatic glucose production and promoting anabolic storage of carbohydrate, fat, and protein.",
+    "name": "Sotalol",
+    "system": "CVS",
+    "class": "Class III antiarrhythmic; beta blocker",
+    "mechanism": "Combines beta blockade with potassium-channel blockade.",
     "uses": [
-      "Type 1 diabetes mellitus",
-      "Type 2 diabetes mellitus when insulin is required",
-      "Hyperglycemic emergencies using appropriate insulin protocols",
-      "Perioperative or inpatient glycemic management when indicated"
+      "Selected atrial and ventricular arrhythmias"
     ],
     "routes": [
-      "Subcutaneous",
-      "Intravenous for selected formulations and clinical situations"
+      "Oral"
     ],
     "dosage": {
-      "adult": [
-        {
-          "indication": "Individualized diabetes treatment",
-          "dose": "Individualize according to insulin formulation, meals, glucose monitoring, insulin sensitivity, and clinical situation",
-          "maximum": "No single fixed maximum; dosing is individualized"
-        },
-        {
-          "indication": "Insulin infusion for selected acute-care situations",
-          "dose": "Use an institution-specific protocol and the exact insulin formulation's prescribing information",
-          "maximum": "Protocol dependent"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Type 1 diabetes mellitus",
-          "dose": "Individualize total daily insulin requirement and divide among basal and prandial components",
-          "maximum": "No single fixed maximum; individualized"
-        },
-        {
-          "indication": "Type 2 diabetes mellitus when insulin is required",
-          "dose": "Individualize according to glucose response and treatment regimen",
-          "maximum": "No single fixed maximum; individualized"
-        }
-      ],
-      "duration": [
-        "Insulin therapy is individualized and may be lifelong depending on the condition.",
-        "Different insulin formulations have different onset, peak, and duration."
-      ],
-      "renalAdjustment": "Insulin requirements may decrease with renal impairment; monitor glucose closely and individualize dosing.",
-      "hepaticAdjustment": "Insulin requirements may change with hepatic impairment; monitor glucose closely and individualize dosing.",
-      "reference": "DailyMed prescribing information for the specific insulin formulation"
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
     },
-    "contraindications": [
-      "Hypoglycemia",
-      "Hypersensitivity to the specific insulin formulation or excipients"
-    ],
-    "adverseEffects": [
-      "Hypoglycemia",
-      "Weight gain",
-      "Injection-site reactions",
-      "Lipodystrophy",
-      "Hypokalemia"
-    ],
-    "interactions": [
-      "Beta-blockers may mask some symptoms of hypoglycemia",
-      "Corticosteroids may increase glucose requirements",
-      "Other glucose-lowering drugs may increase hypoglycemia risk"
-    ],
-    "monitoring": [
-      "Capillary/continuous glucose monitoring",
-      "HbA1c",
-      "Hypoglycemia",
-      "Potassium when clinically indicated",
-      "Injection sites"
-    ],
-    "source": "DailyMed insulin labeling; formulation-specific information is required"
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
   },
   {
-    "name": "Furosemide",
-    "class": "Loop diuretic",
-    "mechanism": "Inhibits the Na-K-2Cl cotransporter in the thick ascending limb of the loop of Henle, producing potent natriuresis and diuresis.",
+    "name": "Atorvastatin",
+    "system": "CVS",
+    "class": "HMG-CoA reductase inhibitor",
+    "mechanism": "Reduces hepatic cholesterol synthesis and increases LDL clearance.",
     "uses": [
-      "Edema associated with heart failure, hepatic disease, or renal disease",
-      "Hypertension"
+      "Hyperlipidemia",
+      "cardiovascular risk reduction"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Rosuvastatin",
+    "system": "CVS",
+    "class": "HMG-CoA reductase inhibitor",
+    "mechanism": "Reduces hepatic cholesterol synthesis and increases LDL receptor activity.",
+    "uses": [
+      "Hyperlipidemia",
+      "cardiovascular risk reduction"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Simvastatin",
+    "system": "CVS",
+    "class": "HMG-CoA reductase inhibitor",
+    "mechanism": "Reduces hepatic cholesterol synthesis and LDL levels.",
+    "uses": [
+      "Hyperlipidemia",
+      "cardiovascular risk reduction"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Pravastatin",
+    "system": "CVS",
+    "class": "HMG-CoA reductase inhibitor",
+    "mechanism": "Reduces hepatic cholesterol synthesis.",
+    "uses": [
+      "Hyperlipidemia",
+      "cardiovascular risk reduction"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Fenofibrate",
+    "system": "CVS",
+    "class": "Fibrate",
+    "mechanism": "Activates PPAR-alpha and improves triglyceride metabolism.",
+    "uses": [
+      "Hypertriglyceridemia",
+      "mixed dyslipidemia"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Ezetimibe",
+    "system": "CVS",
+    "class": "Cholesterol absorption inhibitor",
+    "mechanism": "Reduces intestinal cholesterol absorption.",
+    "uses": [
+      "Hypercholesterolemia"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Aspirin",
+    "system": "CVS",
+    "class": "Antiplatelet; salicylate",
+    "mechanism": "Irreversibly inhibits platelet cyclooxygenase and thromboxane production.",
+    "uses": [
+      "Secondary cardiovascular prevention",
+      "pain",
+      "fever"
+    ],
+    "routes": [
+      "Oral",
+      "Rectal"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Clopidogrel",
+    "system": "CVS",
+    "class": "P2Y12 platelet inhibitor",
+    "mechanism": "Irreversibly inhibits platelet P2Y12 receptors after activation.",
+    "uses": [
+      "Acute coronary syndrome",
+      "secondary prevention of atherothrombosis"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Ticagrelor",
+    "system": "CVS",
+    "class": "P2Y12 platelet inhibitor",
+    "mechanism": "Reversibly inhibits platelet P2Y12 receptors.",
+    "uses": [
+      "Acute coronary syndrome",
+      "secondary prevention"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Warfarin",
+    "system": "CVS",
+    "class": "Vitamin K antagonist anticoagulant",
+    "mechanism": "Reduces synthesis of vitamin-K-dependent clotting factors.",
+    "uses": [
+      "Thromboembolism prevention and treatment",
+      "selected mechanical valves"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Apixaban",
+    "system": "CVS",
+    "class": "Direct factor Xa inhibitor",
+    "mechanism": "Directly inhibits factor Xa.",
+    "uses": [
+      "Atrial fibrillation stroke prevention",
+      "venous thromboembolism"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Rivaroxaban",
+    "system": "CVS",
+    "class": "Direct factor Xa inhibitor",
+    "mechanism": "Directly inhibits factor Xa.",
+    "uses": [
+      "Atrial fibrillation stroke prevention",
+      "venous thromboembolism",
+      "selected cardiovascular indications"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Dabigatran",
+    "system": "CVS",
+    "class": "Direct thrombin inhibitor",
+    "mechanism": "Directly inhibits thrombin.",
+    "uses": [
+      "Atrial fibrillation stroke prevention",
+      "venous thromboembolism"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Heparin",
+    "system": "CVS",
+    "class": "Unfractionated anticoagulant",
+    "mechanism": "Enhances antithrombin activity against thrombin and factor Xa.",
+    "uses": [
+      "Thrombosis treatment and prevention",
+      "acute coronary syndromes",
+      "anticoagulation"
+    ],
+    "routes": [
+      "Intravenous",
+      "Subcutaneous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Enoxaparin",
+    "system": "CVS",
+    "class": "Low-molecular-weight heparin",
+    "mechanism": "Enhances antithrombin activity with predominant factor Xa inhibition.",
+    "uses": [
+      "Venous thromboembolism",
+      "acute coronary syndromes"
+    ],
+    "routes": [
+      "Subcutaneous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Pantoprazole",
+    "system": "GIT",
+    "class": "Proton pump inhibitor",
+    "mechanism": "Irreversibly inhibits the gastric H/K ATPase proton pump.",
+    "uses": [
+      "GERD",
+      "peptic ulcer disease",
+      "acid hypersecretion"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Esomeprazole",
+    "system": "GIT",
+    "class": "Proton pump inhibitor",
+    "mechanism": "Irreversibly inhibits gastric proton pumps.",
+    "uses": [
+      "GERD",
+      "erosive esophagitis",
+      "acid-related disorders"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Lansoprazole",
+    "system": "GIT",
+    "class": "Proton pump inhibitor",
+    "mechanism": "Suppresses gastric acid secretion by inhibiting the proton pump.",
+    "uses": [
+      "GERD",
+      "peptic ulcer disease"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Rabeprazole",
+    "system": "GIT",
+    "class": "Proton pump inhibitor",
+    "mechanism": "Inhibits the gastric H/K ATPase.",
+    "uses": [
+      "GERD",
+      "peptic ulcer disease",
+      "H. pylori regimens"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Famotidine",
+    "system": "GIT",
+    "class": "H2-receptor antagonist",
+    "mechanism": "Blocks histamine H2 receptors on gastric parietal cells.",
+    "uses": [
+      "GERD",
+      "peptic ulcer disease",
+      "dyspepsia"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Sucralfate",
+    "system": "GIT",
+    "class": "Mucosal protective agent",
+    "mechanism": "Forms a protective barrier over ulcerated mucosa.",
+    "uses": [
+      "Peptic ulcer disease"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Bismuth subsalicylate",
+    "system": "GIT",
+    "class": "Bismuth compound",
+    "mechanism": "Provides mucosal protection and antimicrobial effects in the gastrointestinal tract.",
+    "uses": [
+      "Diarrhea",
+      "dyspepsia",
+      "H. pylori regimens"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Domperidone",
+    "system": "GIT",
+    "class": "Dopamine D2 antagonist; prokinetic",
+    "mechanism": "Blocks peripheral dopamine D2 receptors and promotes upper GI motility.",
+    "uses": [
+      "Nausea/vomiting",
+      "selected motility disorders"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Metoclopramide",
+    "system": "GIT",
+    "class": "Dopamine antagonist; prokinetic",
+    "mechanism": "Blocks dopamine receptors and enhances upper GI motility.",
+    "uses": [
+      "Nausea/vomiting",
+      "gastroparesis"
     ],
     "routes": [
       "Oral",
       "Intravenous",
-      "Intramuscular in selected products"
+      "Intramuscular"
     ],
     "dosage": {
-      "adult": [
-        {
-          "indication": "Edema",
-          "dose": "20–80 mg orally as an initial single dose; may be repeated or titrated according to response",
-          "maximum": "Up to 600 mg/day may be used in clinically severe edematous states under careful supervision"
-        },
-        {
-          "indication": "Hypertension",
-          "dose": "80 mg/day initially, usually divided as 40 mg twice daily, then adjust to response",
-          "maximum": "Individualized"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Edema",
-          "dose": "2 mg/kg orally as an initial single dose; if response is inadequate, increase by 1–2 mg/kg no sooner than 6–8 hours later",
-          "maximum": "Doses >6 mg/kg are not recommended for routine oral pediatric dosing"
-        }
-      ],
-      "duration": [
-        "Individualize according to response and underlying disease."
-      ],
-      "renalAdjustment": "Dose response may be reduced in renal impairment; careful titration and monitoring of fluid/electrolytes are required.",
-      "hepaticAdjustment": "Use cautiously in severe hepatic disease because rapid electrolyte/fluid changes can precipitate complications.",
-      "reference": "DailyMed furosemide prescribing information"
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
     },
-    "contraindications": [
-      "Anuria",
-      "Hypersensitivity to furosemide"
-    ],
-    "adverseEffects": [
-      "Hypokalemia",
-      "Hyponatremia",
-      "Dehydration",
-      "Hypotension",
-      "Renal dysfunction",
-      "Ototoxicity with high or rapid parenteral dosing"
-    ],
-    "interactions": [
-      "NSAIDs may reduce diuretic effect and increase renal risk",
-      "Digoxin toxicity risk can increase with hypokalemia",
-      "Aminoglycosides may increase ototoxicity risk"
-    ],
-    "monitoring": [
-      "Blood pressure",
-      "Weight/fluid balance",
-      "Serum electrolytes",
-      "Renal function",
-      "Clinical response"
-    ],
-    "source": "DailyMed furosemide labeling"
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
   },
   {
-    "name": "Omeprazole",
-    "class": "Proton pump inhibitor",
-    "mechanism": "Irreversibly inhibits the gastric H+/K+-ATPase proton pump in gastric parietal cells, suppressing gastric acid secretion.",
+    "name": "Ondansetron",
+    "system": "GIT",
+    "class": "5-HT3 receptor antagonist",
+    "mechanism": "Blocks serotonin 5-HT3 receptors involved in vomiting pathways.",
     "uses": [
-      "GERD",
-      "Erosive esophagitis",
-      "Duodenal and gastric ulcer disease in appropriate regimens",
-      "H. pylori eradication regimens with antibiotics",
-      "Pathological hypersecretory conditions"
+      "Nausea and vomiting"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous",
+      "Intramuscular"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Granisetron",
+    "system": "GIT",
+    "class": "5-HT3 receptor antagonist",
+    "mechanism": "Blocks serotonin 5-HT3 receptors.",
+    "uses": [
+      "Chemotherapy-associated nausea and vomiting",
+      "postoperative nausea"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous",
+      "Transdermal"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Prochlorperazine",
+    "system": "GIT",
+    "class": "Phenothiazine antiemetic",
+    "mechanism": "Dopamine receptor blockade in the vomiting center and chemoreceptor trigger zone.",
+    "uses": [
+      "Severe nausea and vomiting",
+      "selected vertigo"
+    ],
+    "routes": [
+      "Oral",
+      "Intramuscular",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Promethazine",
+    "system": "GIT",
+    "class": "H1 antihistamine/antiemetic",
+    "mechanism": "Blocks histamine H1 receptors and has anticholinergic effects.",
+    "uses": [
+      "Nausea/vomiting",
+      "motion sickness",
+      "allergy"
+    ],
+    "routes": [
+      "Oral",
+      "Intramuscular",
+      "Rectal"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Loperamide",
+    "system": "GIT",
+    "class": "Peripheral opioid antidiarrheal",
+    "mechanism": "Activates intestinal opioid receptors and slows intestinal transit.",
+    "uses": [
+      "Acute and chronic noninfectious diarrhea"
     ],
     "routes": [
       "Oral"
     ],
     "dosage": {
-      "adult": [
-        {
-          "indication": "Symptomatic GERD",
-          "dose": "20 mg once daily",
-          "maximum": "Follow indication-specific labeling"
-        },
-        {
-          "indication": "Erosive esophagitis due to acid-mediated GERD",
-          "dose": "20 mg once daily for 4–8 weeks",
-          "maximum": "Follow indication-specific labeling"
-        },
-        {
-          "indication": "Pathological hypersecretory conditions",
-          "dose": "Starting dose 60 mg once daily; adjust to patient needs",
-          "maximum": "Doses above 80 mg/day should be divided; much higher doses have been used under specialist supervision"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Symptomatic GERD, age 1–16 years",
-          "dose": "5–20 mg once daily according to body weight",
-          "maximum": "Weight- and indication-specific"
-        },
-        {
-          "indication": "Erosive esophagitis, age 1–16 years",
-          "dose": "5–20 mg once daily according to body weight",
-          "maximum": "Weight- and indication-specific"
-        }
-      ],
-      "duration": [
-        "GERD treatment is generally limited to the shortest appropriate course; erosive esophagitis commonly requires 4–8 weeks.",
-        "Long-term maintenance requires periodic reassessment."
-      ],
-      "renalAdjustment": "No routine renal dose adjustment is generally required.",
-      "hepaticAdjustment": "Dose reduction may be appropriate in hepatic impairment for some indications; follow product-specific labeling.",
-      "reference": "DailyMed omeprazole delayed-release capsule prescribing information"
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
     },
-    "contraindications": [
-      "Known hypersensitivity to omeprazole or substituted benzimidazoles"
-    ],
-    "adverseEffects": [
-      "Headache",
-      "Abdominal pain",
-      "Diarrhea",
-      "Nausea",
-      "Long-term risks may include hypomagnesemia, vitamin B12 deficiency, and certain infections"
-    ],
-    "interactions": [
-      "Clopidogrel interaction can reduce antiplatelet activation",
-      "Warfarin effect may change",
-      "Drugs requiring acidic gastric pH for absorption may be affected"
-    ],
-    "monitoring": [
-      "Clinical symptom response",
-      "Magnesium/B12 when long-term therapy or risk factors are present",
-      "Alarm symptoms requiring evaluation"
-    ],
-    "source": "DailyMed omeprazole labeling"
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
   },
   {
-    "name": "Salbutamol",
-    "class": "Short-acting beta2-adrenergic agonist (SABA)",
-    "mechanism": "Stimulates beta2-adrenergic receptors in bronchial smooth muscle, producing bronchodilation.",
+    "name": "Racecadotril",
+    "system": "GIT",
+    "class": "Antisecretory antidiarrheal",
+    "mechanism": "Reduces intestinal hypersecretion through enkephalinase inhibition.",
     "uses": [
-      "Acute relief or prevention of bronchospasm in reversible obstructive airway disease",
-      "Prevention of exercise-induced bronchospasm"
+      "Acute diarrhea"
     ],
     "routes": [
-      "Inhalation"
+      "Oral"
     ],
     "dosage": {
-      "adult": [
-        {
-          "indication": "Bronchospasm",
-          "dose": "2 inhalations every 4–6 hours; in some patients 1 inhalation every 4 hours may be sufficient",
-          "maximum": "More frequent administration or more inhalations than recommended are not advised without medical direction"
-        },
-        {
-          "indication": "Exercise-induced bronchospasm",
-          "dose": "2 inhalations 15–30 minutes before exercise",
-          "maximum": "Follow product labeling"
-        }
-      ],
-      "pediatric": [
-        {
-          "indication": "Bronchospasm, age ≥4 years",
-          "dose": "2 inhalations every 4–6 hours; in some patients 1 inhalation every 4 hours may be sufficient",
-          "maximum": "More frequent administration or more inhalations than recommended are not advised"
-        },
-        {
-          "indication": "Exercise-induced bronchospasm, age ≥4 years",
-          "dose": "2 inhalations 15–30 minutes before exercise",
-          "maximum": "Follow product labeling"
-        }
-      ],
-      "duration": [
-        "Use according to asthma/airway-disease treatment plan; frequent need for rescue medication requires clinical reassessment."
-      ],
-      "renalAdjustment": "No routine adjustment for inhaled albuterol/salbutamol is generally specified.",
-      "hepaticAdjustment": "No routine adjustment is generally specified for inhaled salbutamol.",
-      "reference": "DailyMed albuterol sulfate inhalation aerosol prescribing information"
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
     },
-    "contraindications": [
-      "Hypersensitivity to albuterol/salbutamol or formulation components"
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Lactulose",
+    "system": "GIT",
+    "class": "Osmotic laxative",
+    "mechanism": "Metabolized in the colon to acids that draw water into the bowel.",
+    "uses": [
+      "Constipation",
+      "hepatic encephalopathy"
     ],
-    "adverseEffects": [
-      "Tremor",
-      "Palpitations",
-      "Tachycardia",
-      "Headache",
-      "Hypokalemia",
-      "Paradoxical bronchospasm"
+    "routes": [
+      "Oral",
+      "Rectal"
     ],
-    "interactions": [
-      "Nonselective beta-blockers may antagonize bronchodilation",
-      "Other sympathomimetics may increase cardiovascular effects",
-      "Diuretics may worsen hypokalemia"
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Polyethylene glycol",
+    "system": "GIT",
+    "class": "Osmotic laxative",
+    "mechanism": "Retains water in the intestinal lumen.",
+    "uses": [
+      "Constipation",
+      "bowel preparation depending on formulation"
     ],
-    "monitoring": [
-      "Symptom relief and rescue-inhaler frequency",
-      "Heart rate",
-      "Potassium when high-dose therapy is used",
-      "Clinical response"
+    "routes": [
+      "Oral"
     ],
-    "source": "DailyMed albuterol sulfate inhalation aerosol labeling"
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Bisacodyl",
+    "system": "GIT",
+    "class": "Stimulant laxative",
+    "mechanism": "Stimulates colonic motility and secretion.",
+    "uses": [
+      "Constipation",
+      "bowel preparation"
+    ],
+    "routes": [
+      "Oral",
+      "Rectal"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Senna",
+    "system": "GIT",
+    "class": "Stimulant laxative",
+    "mechanism": "Stimulates colonic motility and secretion.",
+    "uses": [
+      "Constipation"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Magnesium hydroxide",
+    "system": "GIT",
+    "class": "Saline/osmotic laxative",
+    "mechanism": "Retains water in the intestinal lumen.",
+    "uses": [
+      "Constipation",
+      "antacid use"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Sodium picosulfate",
+    "system": "GIT",
+    "class": "Stimulant laxative",
+    "mechanism": "Stimulates colonic peristalsis after bacterial activation.",
+    "uses": [
+      "Constipation",
+      "bowel preparation"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Psyllium",
+    "system": "GIT",
+    "class": "Bulk-forming laxative",
+    "mechanism": "Absorbs water and increases stool bulk.",
+    "uses": [
+      "Constipation"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Dicyclomine",
+    "system": "GIT",
+    "class": "Anticholinergic antispasmodic",
+    "mechanism": "Reduces gastrointestinal smooth-muscle spasm through muscarinic blockade.",
+    "uses": [
+      "Irritable bowel syndrome",
+      "intestinal spasm"
+    ],
+    "routes": [
+      "Oral",
+      "Intramuscular"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Hyoscine butylbromide",
+    "system": "GIT",
+    "class": "Anticholinergic antispasmodic",
+    "mechanism": "Reduces smooth-muscle spasm through peripheral muscarinic blockade.",
+    "uses": [
+      "Abdominal and urinary tract spasm"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous",
+      "Intramuscular"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Mebeverine",
+    "system": "GIT",
+    "class": "Antispasmodic",
+    "mechanism": "Directly relaxes intestinal smooth muscle.",
+    "uses": [
+      "Irritable bowel syndrome",
+      "intestinal spasm"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Mesalazine",
+    "system": "GIT",
+    "class": "5-aminosalicylate",
+    "mechanism": "Acts locally on intestinal mucosa to reduce inflammatory mediators.",
+    "uses": [
+      "Ulcerative colitis",
+      "selected inflammatory bowel disease"
+    ],
+    "routes": [
+      "Oral",
+      "Rectal"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Sulfasalazine",
+    "system": "GIT",
+    "class": "5-aminosalicylate prodrug",
+    "mechanism": "Colonic bacteria release 5-aminosalicylic acid, reducing intestinal inflammation.",
+    "uses": [
+      "Ulcerative colitis",
+      "rheumatoid arthritis"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Budesonide",
+    "system": "GIT",
+    "class": "Glucocorticoid",
+    "mechanism": "Locally suppresses inflammatory gene transcription.",
+    "uses": [
+      "Inflammatory bowel disease",
+      "selected GI disorders"
+    ],
+    "routes": [
+      "Oral",
+      "Rectal"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Prednisolone",
+    "system": "GIT",
+    "class": "Glucocorticoid",
+    "mechanism": "Suppresses inflammatory and immune responses.",
+    "uses": [
+      "Inflammatory bowel disease",
+      "other inflammatory conditions"
+    ],
+    "routes": [
+      "Oral",
+      "Rectal"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Azathioprine",
+    "system": "GIT",
+    "class": "Immunosuppressant",
+    "mechanism": "Inhibits purine synthesis and lymphocyte proliferation.",
+    "uses": [
+      "Inflammatory bowel disease",
+      "immunosuppression"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Infliximab",
+    "system": "GIT",
+    "class": "TNF inhibitor",
+    "mechanism": "Neutralizes tumor necrosis factor-alpha.",
+    "uses": [
+      "Crohn disease",
+      "ulcerative colitis",
+      "other inflammatory diseases"
+    ],
+    "routes": [
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Adalimumab",
+    "system": "GIT",
+    "class": "TNF inhibitor",
+    "mechanism": "Neutralizes tumor necrosis factor-alpha.",
+    "uses": [
+      "Crohn disease",
+      "ulcerative colitis",
+      "inflammatory diseases"
+    ],
+    "routes": [
+      "Subcutaneous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Ursodeoxycholic acid",
+    "system": "GIT",
+    "class": "Bile acid",
+    "mechanism": "Modifies bile composition and improves bile flow in selected disorders.",
+    "uses": [
+      "Cholestatic liver disease",
+      "selected gallstone disorders"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Silymarin",
+    "system": "GIT",
+    "class": "Hepatoprotective herbal preparation",
+    "mechanism": "Mechanism and clinical benefit depend on preparation; evidence varies.",
+    "uses": [
+      "Used in some settings for liver disorders"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Rifaximin",
+    "system": "GIT",
+    "class": "Rifamycin antibiotic",
+    "mechanism": "Inhibits bacterial RNA synthesis and has low systemic absorption.",
+    "uses": [
+      "Hepatic encephalopathy",
+      "selected diarrheal disorders"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Metronidazole",
+    "system": "GIT",
+    "class": "Nitroimidazole antimicrobial",
+    "mechanism": "Damages DNA after reduction in susceptible anaerobic organisms and protozoa.",
+    "uses": [
+      "Anaerobic infections",
+      "protozoal infections",
+      "selected GI infections"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous",
+      "Rectal"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Tinidazole",
+    "system": "GIT",
+    "class": "Nitroimidazole antimicrobial",
+    "mechanism": "Damages DNA in susceptible anaerobic organisms and protozoa.",
+    "uses": [
+      "Protozoal and anaerobic infections"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Albendazole",
+    "system": "GIT",
+    "class": "Anthelmintic",
+    "mechanism": "Inhibits parasite microtubule formation.",
+    "uses": [
+      "Intestinal helminth infections",
+      "tissue helminth infections"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Mebendazole",
+    "system": "GIT",
+    "class": "Anthelmintic",
+    "mechanism": "Disrupts parasite microtubules and glucose utilization.",
+    "uses": [
+      "Intestinal helminth infections"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Orlistat",
+    "system": "GIT",
+    "class": "Gastrointestinal lipase inhibitor",
+    "mechanism": "Inhibits gastric and pancreatic lipases, reducing dietary fat absorption.",
+    "uses": [
+      "Obesity management"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Pancrelipase",
+    "system": "GIT",
+    "class": "Pancreatic enzyme replacement",
+    "mechanism": "Provides lipase, protease, and amylase activity in the intestine.",
+    "uses": [
+      "Pancreatic exocrine insufficiency"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Simethicone",
+    "system": "GIT",
+    "class": "Antiflatulent",
+    "mechanism": "Reduces surface tension of gas bubbles in the GI tract.",
+    "uses": [
+      "Bloating",
+      "symptomatic gas"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Aluminium hydroxide",
+    "system": "GIT",
+    "class": "Antacid",
+    "mechanism": "Neutralizes gastric acid.",
+    "uses": [
+      "Dyspepsia",
+      "acid-related symptoms"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Magnesium trisilicate",
+    "system": "GIT",
+    "class": "Antacid",
+    "mechanism": "Neutralizes gastric acid.",
+    "uses": [
+      "Dyspepsia",
+      "acid-related symptoms"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Calcium carbonate",
+    "system": "GIT",
+    "class": "Antacid",
+    "mechanism": "Neutralizes gastric acid.",
+    "uses": [
+      "Heartburn",
+      "dyspepsia",
+      "calcium supplementation"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Sodium bicarbonate",
+    "system": "GIT",
+    "class": "Antacid",
+    "mechanism": "Neutralizes gastric acid.",
+    "uses": [
+      "Acid-related symptoms",
+      "selected uses"
+    ],
+    "routes": [
+      "Oral",
+      "Intravenous"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Baclofen",
+    "system": "GIT",
+    "class": "GABA-B agonist; antispastic",
+    "mechanism": "Reduces excitatory neurotransmission through GABA-B receptor activation.",
+    "uses": [
+      "Spasticity",
+      "selected esophageal motility uses"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Misoprostol",
+    "system": "GIT",
+    "class": "Prostaglandin analogue",
+    "mechanism": "Reduces gastric acid secretion and increases mucosal protection.",
+    "uses": [
+      "NSAID-ulcer prevention",
+      "obstetric indications"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Alverine",
+    "system": "GIT",
+    "class": "Antispasmodic",
+    "mechanism": "Relaxes intestinal smooth muscle.",
+    "uses": [
+      "Irritable bowel syndrome",
+      "GI spasm"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Itopride",
+    "system": "GIT",
+    "class": "Prokinetic dopamine antagonist",
+    "mechanism": "Enhances GI motility and gastric emptying through dopamine antagonism and acetylcholinesterase inhibition.",
+    "uses": [
+      "Functional dyspepsia",
+      "motility symptoms"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Mosapride",
+    "system": "GIT",
+    "class": "Prokinetic 5-HT4 agonist",
+    "mechanism": "Enhances cholinergic activity and GI motility.",
+    "uses": [
+      "Functional dyspepsia",
+      "reflux/motility symptoms"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
+  },
+  {
+    "name": "Levosulpiride",
+    "system": "GIT",
+    "class": "Dopamine D2 antagonist; prokinetic",
+    "mechanism": "Promotes upper GI motility through dopamine D2 antagonism.",
+    "uses": [
+      "Dyspepsia",
+      "nausea",
+      "gastroparesis symptoms"
+    ],
+    "routes": [
+      "Oral"
+    ],
+    "dosage": {
+      "adult": [],
+      "pediatric": [],
+      "duration": [],
+      "renalAdjustment": "",
+      "hepaticAdjustment": "",
+      "reference": "FDA/DailyMed label fallback; verify the specific formulation and indication."
+    },
+    "contraindications": [],
+    "adverseEffects": [],
+    "interactions": [],
+    "monitoring": [],
+    "source": "PharmaAI catalog + FDA/DailyMed fallback"
   }
 ]
