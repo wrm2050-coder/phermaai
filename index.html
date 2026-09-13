@@ -22,6 +22,9 @@ body {
   color: #17212b;
 }
 
+
+/* HEADER */
+
 header {
   background: #0b6b68;
   color: white;
@@ -38,11 +41,17 @@ header p {
   margin: 8px 0 0;
 }
 
+
+/* MAIN CONTAINER */
+
 .container {
   max-width: 850px;
   margin: 30px auto;
   padding: 20px;
 }
+
+
+/* SEARCH CARD */
 
 .search-card {
   background: white;
@@ -57,6 +66,9 @@ header p {
   gap: 10px;
 }
 
+
+/* INPUT */
+
 input {
   flex: 1;
   padding: 15px;
@@ -64,6 +76,9 @@ input {
   border-radius: 9px;
   font-size: 17px;
 }
+
+
+/* BUTTON */
 
 button {
   padding: 15px 22px;
@@ -79,6 +94,9 @@ button:hover {
   opacity: 0.9;
 }
 
+
+/* DROPDOWNS */
+
 select {
   width: 100%;
   padding: 13px;
@@ -89,6 +107,9 @@ select {
   font-size: 16px;
   background: white;
 }
+
+
+/* DRUG CARD */
 
 .card {
   background: white;
@@ -103,6 +124,9 @@ select {
   font-size: 29px;
 }
 
+
+/* INFORMATION SECTIONS */
+
 .section {
   margin-top: 24px;
 }
@@ -113,14 +137,25 @@ select {
   font-size: 19px;
 }
 
+.section h4 {
+  margin-top: 22px;
+  color: #34495e;
+}
+
 .section p {
   line-height: 1.6;
 }
+
+
+/* LISTS */
 
 ul {
   padding-left: 22px;
   line-height: 1.7;
 }
+
+
+/* SOURCE */
 
 .source {
   margin-top: 25px;
@@ -129,6 +164,9 @@ ul {
   font-size: 14px;
   color: #555;
 }
+
+
+/* WARNING */
 
 .warning {
   margin-top: 20px;
@@ -139,10 +177,16 @@ ul {
   line-height: 1.5;
 }
 
+
+/* NOT FOUND */
+
 .not-found {
   text-align: center;
   padding: 25px;
 }
+
+
+/* DOSE RESULT */
 
 .dose-result {
   background: #eef8f7;
@@ -151,6 +195,9 @@ ul {
   margin-top: 5px;
   margin-bottom: 20px;
 }
+
+
+/* MOBILE */
 
 @media (max-width: 600px) {
 
@@ -170,6 +217,10 @@ ul {
     padding: 20px;
   }
 
+  header h1 {
+    font-size: 28px;
+  }
+
 }
 
 </style>
@@ -179,6 +230,8 @@ ul {
 
 <body>
 
+
+<!-- HEADER -->
 
 <header>
 
@@ -191,8 +244,13 @@ ul {
 </header>
 
 
+
+<!-- MAIN -->
+
 <div class="container">
 
+
+  <!-- SEARCH -->
 
   <div class="search-card">
 
@@ -213,8 +271,14 @@ ul {
   </div>
 
 
+
+  <!-- RESULTS -->
+
   <div id="result"></div>
 
+
+
+  <!-- WARNING -->
 
   <div class="warning">
 
@@ -234,9 +298,9 @@ ul {
 <script>
 
 
-/* =========================
+/* =====================================
    GLOBAL VARIABLES
-========================= */
+===================================== */
 
 let drugs = [];
 
@@ -244,9 +308,9 @@ let currentDrug = null;
 
 
 
-/* =========================
+/* =====================================
    LOAD DRUG DATABASE
-========================= */
+===================================== */
 
 fetch("drugs.json")
 
@@ -277,15 +341,18 @@ fetch("drugs.json")
 
   .catch(error => {
 
-    console.error(error);
+    console.error(
+      "Database error:",
+      error
+    );
 
   });
 
 
 
-/* =========================
+/* =====================================
    SEARCH DRUG
-========================= */
+===================================== */
 
 function searchDrug() {
 
@@ -302,14 +369,17 @@ function searchDrug() {
     document.getElementById("result");
 
 
-  if (!searchText) {
+  /* EMPTY SEARCH */
 
+  if (!searchText) {
 
     result.innerHTML = `
 
       <div class="card not-found">
 
-        <h2>Search for a drug</h2>
+        <h2>
+          Search for a drug
+        </h2>
 
         <p>
           Enter a generic drug name above.
@@ -319,12 +389,13 @@ function searchDrug() {
 
     `;
 
-
     return;
 
   }
 
 
+
+  /* FIND DRUG */
 
   const drug = drugs.find(
 
@@ -335,14 +406,17 @@ function searchDrug() {
 
 
 
-  if (!drug) {
+  /* DRUG NOT FOUND */
 
+  if (!drug) {
 
     result.innerHTML = `
 
       <div class="card not-found">
 
-        <h2>Drug not found</h2>
+        <h2>
+          Drug not found
+        </h2>
 
         <p>
           Try one of the available drugs:
@@ -365,26 +439,28 @@ function searchDrug() {
 
     `;
 
-
     return;
 
   }
 
 
 
+  /* SAVE CURRENT DRUG */
+
   currentDrug = drug;
 
 
 
-  /* =========================
-     DISPLAY DRUG INFORMATION
-  ========================= */
+  /* =====================================
+     DISPLAY DRUG
+  ===================================== */
 
   result.innerHTML = `
 
-
     <div class="card">
 
+
+      <!-- DRUG NAME -->
 
       <h2>
         ${drug.name}
@@ -447,9 +523,9 @@ function searchDrug() {
 
 
 
-      <!-- =========================
+      <!-- =================================
            DOSAGE
-      ========================== -->
+      ================================== -->
 
       ${
         drug.dosage
@@ -462,6 +538,9 @@ function searchDrug() {
           💊 Dosage & Administration
         </h3>
 
+
+
+        <!-- PATIENT GROUP -->
 
         <label for="patientGroup">
 
@@ -489,6 +568,8 @@ function searchDrug() {
 
 
 
+        <!-- INDICATION -->
+
         <label for="doseIndication">
 
           <strong>
@@ -507,9 +588,13 @@ function searchDrug() {
 
 
 
+        <!-- SELECTED DOSE -->
+
         <div id="doseResult"></div>
 
 
+
+        <!-- DURATION -->
 
         <h4>
           Duration
@@ -529,6 +614,8 @@ function searchDrug() {
 
 
 
+        <!-- RENAL -->
+
         <h4>
           Renal adjustment
         </h4>
@@ -539,6 +626,8 @@ function searchDrug() {
         </p>
 
 
+
+        <!-- HEPATIC -->
 
         <h4>
           Hepatic adjustment
@@ -551,9 +640,12 @@ function searchDrug() {
 
 
 
+        <!-- DOSING SOURCE -->
+
         <p class="source">
 
           📚
+
           <strong>
             Dosing reference:
           </strong>
@@ -571,7 +663,9 @@ function searchDrug() {
 
 
 
-      <!-- CONTRAINDICATIONS -->
+      <!-- =================================
+           CONTRAINDICATIONS
+      ================================== -->
 
       <div class="section">
 
@@ -597,7 +691,9 @@ function searchDrug() {
 
 
 
-      <!-- ADVERSE EFFECTS -->
+      <!-- =================================
+           ADVERSE EFFECTS
+      ================================== -->
 
       <div class="section">
 
@@ -623,7 +719,9 @@ function searchDrug() {
 
 
 
-      <!-- INTERACTIONS -->
+      <!-- =================================
+           INTERACTIONS
+      ================================== -->
 
       <div class="section">
 
@@ -649,7 +747,9 @@ function searchDrug() {
 
 
 
-      <!-- MONITORING -->
+      <!-- =================================
+           MONITORING
+      ================================== -->
 
       <div class="section">
 
@@ -675,7 +775,9 @@ function searchDrug() {
 
 
 
-      <!-- SOURCE -->
+      <!-- =================================
+           SOURCE
+      ================================== -->
 
       <div class="section">
 
@@ -683,6 +785,7 @@ function searchDrug() {
         <p class="source">
 
           📚
+
           <strong>
             Source:
           </strong>
@@ -697,14 +800,13 @@ function searchDrug() {
 
     </div>
 
-
   `;
 
 
 
-  /* =========================
-     START DOSE SELECTOR
-  ========================== */
+  /* =====================================
+     INITIALIZE DOSAGE
+  ===================================== */
 
   if (drug.dosage) {
 
@@ -712,14 +814,13 @@ function searchDrug() {
 
   }
 
-
 }
 
 
 
-/* =========================
+/* =====================================
    POPULATE INDICATION DROPDOWN
-========================= */
+===================================== */
 
 function populateDoseIndications() {
 
@@ -767,6 +868,8 @@ function populateDoseIndications() {
 
 
 
+  /* CLEAR OLD OPTIONS */
+
   doseIndication.innerHTML = "";
 
 
@@ -778,6 +881,8 @@ function populateDoseIndications() {
   }
 
 
+
+  /* ADD INDICATIONS */
 
   doses.forEach(
     (item, index) => {
@@ -807,15 +912,17 @@ function populateDoseIndications() {
 
 
 
+  /* SHOW FIRST DOSE */
+
   updateDoseResult();
 
 }
 
 
 
-/* =========================
-   SHOW SELECTED DOSE
-========================= */
+/* =====================================
+   UPDATE DOSE RESULT
+===================================== */
 
 function updateDoseResult() {
 
@@ -939,9 +1046,9 @@ function updateDoseResult() {
 
 
 
-/* =========================
+/* =====================================
    ENTER KEY SEARCH
-========================= */
+===================================== */
 
 document
   .getElementById("drugSearch")
@@ -962,6 +1069,7 @@ document
 
 
 </script>
+
 
 </body>
 
