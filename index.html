@@ -1,116 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PharmaAI</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PharmaAI</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f8fb;
-      color: #17212b;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f8fb;
+  color: #17212b;
+}
 
-    header {
-      background: #0b6b68;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
+header {
+  background: #0b6b68;
+  color: white;
+  padding: 25px 20px;
+  text-align: center;
+}
 
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 32px;
-    }
+header h1 {
+  margin: 0;
+  font-size: 30px;
+}
 
-    header p {
-      margin: 0;
-      opacity: 0.9;
-    }
+header p {
+  margin: 8px 0 0;
+}
 
-    .container {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
+.container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+}
 
-    .search-box {
-      background: white;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
 
-    input {
-      width: 100%;
-      padding: 15px;
-      font-size: 17px;
-      border: 1px solid #ccd6dd;
-      border-radius: 10px;
-      margin-bottom: 12px;
-    }
+input {
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
 
-    button {
-      width: 100%;
-      padding: 15px;
-      font-size: 17px;
-      border: none;
-      border-radius: 10px;
-      background: #0b6b68;
-      color: white;
-      cursor: pointer;
-    }
+button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #0b6b68;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    button:hover {
-      background: #095452;
-    }
+button:hover {
+  opacity: 0.9;
+}
 
-    #result {
-      margin-top: 25px;
-    }
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  margin-bottom: 20px;
+}
 
-    .card {
-      background: white;
-      padding: 22px;
-      margin-bottom: 15px;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-    }
+.card h2 {
+  color: #0b6b68;
+  margin-top: 0;
+}
 
-    .card h2 {
-      color: #0b6b68;
-      margin-top: 0;
-    }
+.card h3 {
+  margin-bottom: 5px;
+}
 
-    .section {
-      margin-top: 18px;
-    }
+ul {
+  padding-left: 20px;
+}
 
-    .section h3 {
-      margin-bottom: 5px;
-      color: #34495e;
-    }
+.warning {
+  background: #fff4d6;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: 20px;
+}
 
-    .warning {
-      background: #fff3cd;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .not-found {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-    }
-  </style>
+#result {
+  display: none;
+}
+</style>
 </head>
 
 <body>
@@ -123,134 +112,75 @@
 <div class="container">
 
   <div class="search-box">
-
     <input
       type="text"
-      id="drugInput"
-      placeholder="Enter a drug name e.g. Paracetamol"
+      id="drugSearch"
+      placeholder="Search a drug e.g. Paracetamol"
     >
-
-    <button onclick="searchDrug()">
-      Search Drug
-    </button>
-
+    <button onclick="searchDrug()">Search</button>
   </div>
 
   <div id="result"></div>
+
+  <div class="warning">
+    ⚠️ <strong>Educational use only.</strong><br>
+    This tool is for pharmacology learning and should not be used as a substitute
+    for prescribing information or professional medical advice.
+  </div>
 
 </div>
 
 <script>
 
-const drugs = {
+let drugs = [];
 
-  paracetamol: {
-    name: "Paracetamol",
-    class: "Analgesic / Antipyretic",
-
-    indication:
-      "Used for relief of mild to moderate pain and reduction of fever.",
-
-    route:
-      "Oral, intravenous or rectal depending on the formulation and clinical situation.",
-
-    contraindication:
-      "Hypersensitivity to paracetamol. Severe hepatic impairment requires particular caution.",
-
-    adverse:
-      "Usually well tolerated at recommended doses. Overdose can cause severe liver injury.",
-
-    monitoring:
-      "Pay attention to total daily dose and risk factors for liver injury."
-  },
-
-  amoxicillin: {
-    name: "Amoxicillin",
-    class: "Penicillin antibiotic",
-
-    indication:
-      "Used for susceptible bacterial infections when an appropriate antibiotic is indicated.",
-
-    route:
-      "Usually administered orally; other formulations may be used depending on the clinical situation.",
-
-    contraindication:
-      "History of serious immediate hypersensitivity to penicillins or relevant beta-lactam antibiotics.",
-
-    adverse:
-      "Diarrhea, nausea, rash and hypersensitivity reactions may occur.",
-
-    monitoring:
-      "Monitor clinical response, allergic reactions and significant adverse effects."
-  },
-
-  metformin: {
-    name: "Metformin",
-    class: "Biguanide antidiabetic",
-
-    indication:
-      "Used mainly in the management of type 2 diabetes along with lifestyle measures.",
-
-    route:
-      "Oral.",
-
-    contraindication:
-      "Severe renal impairment and certain acute conditions associated with increased risk of lactic acidosis.",
-
-    adverse:
-      "Gastrointestinal symptoms are common. Long-term use may be associated with vitamin B12 deficiency.",
-
-    monitoring:
-      "Renal function, glycemic control and gastrointestinal tolerability."
-  }
-
-};
+/* Load drug database */
+fetch("drugs.json")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Could not load drug database");
+    }
+    return response.json();
+  })
+  .then(data => {
+    drugs = data;
+    console.log("Drug database loaded:", drugs.length);
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
 
 function searchDrug() {
 
-  const input =
-    document.getElementById("drugInput").value
-    .trim()
-    .toLowerCase();
+  const searchText =
+    document.getElementById("drugSearch").value.trim().toLowerCase();
 
   const result =
     document.getElementById("result");
 
-  if (input === "") {
-
-    result.innerHTML =
-      '<div class="not-found">Please enter a drug name.</div>';
-
+  if (!searchText) {
+    result.style.display = "block";
+    result.innerHTML = "<div class='card'>Please enter a drug name.</div>";
     return;
   }
 
-  const drug = drugs[input];
+  const drug = drugs.find(
+    d => d.name.toLowerCase() === searchText
+  );
 
   if (!drug) {
-
+    result.style.display = "block";
     result.innerHTML = `
-      <div class="not-found">
-
+      <div class="card">
         <h2>Drug not found</h2>
-
-        <p>
-          This drug is not yet included in our prototype database.
-        </p>
-
-        <p>
-          Try:
-          <strong>Paracetamol</strong>,
-          <strong>Amoxicillin</strong> or
-          <strong>Metformin</strong>.
-        </p>
-
+        <p>Try searching for Paracetamol, Amoxicillin, or Metformin.</p>
       </div>
     `;
-
     return;
   }
 
+  result.style.display = "block";
 
   result.innerHTML = `
 
@@ -258,73 +188,54 @@ function searchDrug() {
 
       <h2>${drug.name}</h2>
 
+      <h3>Drug class</h3>
+      <p>${drug.class}</p>
+
+      <h3>When is it given?</h3>
+      <ul>
+        ${drug.uses.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+
+      <h3>Route</h3>
+      <ul>
+        ${drug.routes.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+
+      <h3>Contraindications / major cautions</h3>
+      <ul>
+        ${drug.contraindications.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+
+      <h3>Adverse effects</h3>
+      <ul>
+        ${drug.adverseEffects.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+
+      <h3>Monitoring</h3>
+      <ul>
+        ${drug.monitoring.map(item => `<li>${item}</li>`).join("")}
+      </ul>
+
       <p>
-        <strong>Drug class:</strong>
-        ${drug.class}
+        <strong>Source:</strong> ${drug.source}
       </p>
-
-
-      <div class="section">
-
-        <h3>🩺 When is it given?</h3>
-
-        <p>${drug.indication}</p>
-
-      </div>
-
-
-      <div class="section">
-
-        <h3>💉 Route</h3>
-
-        <p>${drug.route}</p>
-
-      </div>
-
-
-      <div class="section">
-
-        <h3>⚠️ Contraindications / major cautions</h3>
-
-        <p>${drug.contraindication}</p>
-
-      </div>
-
-
-      <div class="section">
-
-        <h3>🚨 Adverse effects</h3>
-
-        <p>${drug.adverse}</p>
-
-      </div>
-
-
-      <div class="section">
-
-        <h3>🔬 Monitoring</h3>
-
-        <p>${drug.monitoring}</p>
-
-      </div>
-
-
-      <div class="warning">
-
-        <strong>Educational use only.</strong><br>
-
-        This prototype is for pharmacology learning.
-        It should not be used as a substitute for an
-        authoritative drug reference, prescribing information,
-        clinical guidelines or supervision by a qualified clinician.
-
-      </div>
 
     </div>
 
   `;
-
 }
+
+
+/* Allow pressing Enter to search */
+document
+  .getElementById("drugSearch")
+  .addEventListener("keypress", function(event) {
+
+    if (event.key === "Enter") {
+      searchDrug();
+    }
+
+  });
 
 </script>
 
