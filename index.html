@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PharmaAI</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -74,6 +79,17 @@ button:hover {
   opacity: 0.9;
 }
 
+select {
+  width: 100%;
+  padding: 13px;
+  margin-top: 8px;
+  margin-bottom: 18px;
+  border: 1px solid #ccd6dd;
+  border-radius: 9px;
+  font-size: 16px;
+  background: white;
+}
+
 .card {
   background: white;
   padding: 25px;
@@ -128,6 +144,14 @@ ul {
   padding: 25px;
 }
 
+.dose-result {
+  background: #eef8f7;
+  padding: 16px;
+  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
 @media (max-width: 600px) {
 
   .search-box {
@@ -145,18 +169,30 @@ ul {
   .card {
     padding: 20px;
   }
+
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
+
   <h1>💊 PharmaAI</h1>
-  <p>Pharmacology learning simulator for medical students</p>
+
+  <p>
+    Pharmacology learning simulator for medical students
+  </p>
+
 </header>
 
+
 <div class="container">
+
 
   <div class="search-card">
 
@@ -176,7 +212,9 @@ ul {
 
   </div>
 
+
   <div id="result"></div>
+
 
   <div class="warning">
 
@@ -188,22 +226,38 @@ ul {
 
   </div>
 
+
 </div>
+
+
 
 <script>
 
+
+/* =========================
+   GLOBAL VARIABLES
+========================= */
+
 let drugs = [];
+
 let currentDrug = null;
 
 
-/* Load database */
+
+/* =========================
+   LOAD DRUG DATABASE
+========================= */
 
 fetch("drugs.json")
 
   .then(response => {
 
     if (!response.ok) {
-      throw new Error("Database could not be loaded");
+
+      throw new Error(
+        "Database could not be loaded"
+      );
+
     }
 
     return response.json();
@@ -214,7 +268,10 @@ fetch("drugs.json")
 
     drugs = data;
 
-    console.log("Loaded drugs:", drugs.length);
+    console.log(
+      "Loaded drugs:",
+      drugs.length
+    );
 
   })
 
@@ -225,9 +282,13 @@ fetch("drugs.json")
   });
 
 
-/* Search drug */
+
+/* =========================
+   SEARCH DRUG
+========================= */
 
 function searchDrug() {
+
 
   const searchText =
     document
@@ -236,34 +297,49 @@ function searchDrug() {
       .trim()
       .toLowerCase();
 
+
   const result =
     document.getElementById("result");
 
 
   if (!searchText) {
 
+
     result.innerHTML = `
+
       <div class="card not-found">
+
         <h2>Search for a drug</h2>
-        <p>Enter a generic drug name above.</p>
+
+        <p>
+          Enter a generic drug name above.
+        </p>
+
       </div>
+
     `;
+
 
     return;
 
   }
 
 
+
   const drug = drugs.find(
 
-    d => d.name.toLowerCase() === searchText
+    d =>
+      d.name.toLowerCase() === searchText
 
   );
 
 
+
   if (!drug) {
 
+
     result.innerHTML = `
+
       <div class="card not-found">
 
         <h2>Drug not found</h2>
@@ -273,53 +349,96 @@ function searchDrug() {
         </p>
 
         <p>
-          Paracetamol • Ibuprofen • Amoxicillin •
-          Azithromycin • Ceftriaxone • Metformin •
-          Insulin • Furosemide • Omeprazole • Salbutamol
+          Paracetamol •
+          Ibuprofen •
+          Amoxicillin •
+          Azithromycin •
+          Ceftriaxone •
+          Metformin •
+          Insulin •
+          Furosemide •
+          Omeprazole •
+          Salbutamol
         </p>
 
       </div>
+
     `;
+
 
     return;
 
-    }
+  }
+
+
 
   currentDrug = drug;
 
+
+
+  /* =========================
+     DISPLAY DRUG INFORMATION
+  ========================= */
+
   result.innerHTML = `
+
 
     <div class="card">
 
-      <h2>${drug.name}</h2>
 
+      <h2>
+        ${drug.name}
+      </h2>
+
+
+
+      <!-- DRUG CLASS -->
 
       <div class="section">
 
-        <h3>💊 Drug class</h3>
+        <h3>
+          💊 Drug class
+        </h3>
 
-        <p>${drug.class}</p>
+        <p>
+          ${drug.class}
+        </p>
 
       </div>
 
 
+
+      <!-- MECHANISM -->
+
       <div class="section">
 
-        <h3>🧬 Mechanism of action</h3>
+        <h3>
+          🧬 Mechanism of action
+        </h3>
 
-        <p>${drug.mechanism}</p>
+        <p>
+          ${drug.mechanism}
+        </p>
 
       </div>
 
 
+
+      <!-- USES -->
+
       <div class="section">
 
-        <h3>🎯 Indications / uses</h3>
+        <h3>
+          🎯 Indications / uses
+        </h3>
 
         <ul>
 
           ${drug.uses
-            .map(item => `<li>${item}</li>`)
+            .map(
+              item =>
+                `<li>${item}</li>`
+            )
             .join("")}
 
         </ul>
@@ -327,225 +446,523 @@ function searchDrug() {
       </div>
 
 
-      <${drug.dosage ? `
 
-<div class="section">
+      <!-- =========================
+           DOSAGE
+      ========================== -->
 
-  <h3>💊 Dosage & Administration</h3>
-
-  <label for="patientGroup"><strong>Patient group</strong></label>
-
-  <select id="patientGroup" onchange="populateDoseIndications()">
-    <option value="adult">Adult</option>
-    <option value="pediatric">Pediatric</option>
-  </select>
-
-  <label for="doseIndication"><strong>Indication</strong></label>
-
-  <select id="doseIndication" onchange="updateDoseResult()">
-  </select>
-
-  <div id="doseResult"></div>
-
-  <h4>Duration</h4>
-  <ul>
-    ${drug.dosage.duration.map(item => `<li>${item}</li>`).join("")}
-  </ul>
-
-  <h4>Renal adjustment</h4>
-  <p>${drug.dosage.renalAdjustment}</p>
-
-  <h4>Hepatic adjustment</h4>
-  <p>${drug.dosage.hepaticAdjustment}</p>
-
-  <p class="source">
-    📚 <strong>Dosing reference:</strong>
-    ${drug.dosage.reference}
-  </p>
-
-</div>
-
-` : ""}
-    📚 <strong>Dosing reference:</strong>
-    ${drug.dosage.reference}
-  </p>
-
-</div>
-
-` : ""}
-
+      ${
+        drug.dosage
+          ? `
 
       <div class="section">
 
-        <h3>⚠️ Contraindications / major cautions</h3>
+
+        <h3>
+          💊 Dosage & Administration
+        </h3>
+
+
+        <label for="patientGroup">
+
+          <strong>
+            Patient group
+          </strong>
+
+        </label>
+
+
+        <select
+          id="patientGroup"
+          onchange="populateDoseIndications()"
+        >
+
+          <option value="adult">
+            Adult
+          </option>
+
+          <option value="pediatric">
+            Pediatric
+          </option>
+
+        </select>
+
+
+
+        <label for="doseIndication">
+
+          <strong>
+            Indication
+          </strong>
+
+        </label>
+
+
+        <select
+          id="doseIndication"
+          onchange="updateDoseResult()"
+        >
+
+        </select>
+
+
+
+        <div id="doseResult"></div>
+
+
+
+        <h4>
+          Duration
+        </h4>
+
+
+        <ul>
+
+          ${drug.dosage.duration
+            .map(
+              item =>
+                `<li>${item}</li>`
+            )
+            .join("")}
+
+        </ul>
+
+
+
+        <h4>
+          Renal adjustment
+        </h4>
+
+
+        <p>
+          ${drug.dosage.renalAdjustment}
+        </p>
+
+
+
+        <h4>
+          Hepatic adjustment
+        </h4>
+
+
+        <p>
+          ${drug.dosage.hepaticAdjustment}
+        </p>
+
+
+
+        <p class="source">
+
+          📚
+          <strong>
+            Dosing reference:
+          </strong>
+
+          ${drug.dosage.reference}
+
+        </p>
+
+
+      </div>
+
+      `
+          : ""
+      }
+
+
+
+      <!-- CONTRAINDICATIONS -->
+
+      <div class="section">
+
+
+        <h3>
+          ⚠️ Contraindications / major cautions
+        </h3>
+
 
         <ul>
 
           ${drug.contraindications
-            .map(item => `<li>${item}</li>`)
+            .map(
+              item =>
+                `<li>${item}</li>`
+            )
             .join("")}
 
         </ul>
 
+
       </div>
 
 
+
+      <!-- ADVERSE EFFECTS -->
+
       <div class="section">
 
-        <h3>🚨 Adverse effects</h3>
+
+        <h3>
+          🚨 Adverse effects
+        </h3>
+
 
         <ul>
 
           ${drug.adverseEffects
-            .map(item => `<li>${item}</li>`)
+            .map(
+              item =>
+                `<li>${item}</li>`
+            )
             .join("")}
 
         </ul>
 
+
       </div>
 
 
+
+      <!-- INTERACTIONS -->
+
       <div class="section">
 
-        <h3>🔄 Drug interactions</h3>
+
+        <h3>
+          🔄 Drug interactions
+        </h3>
+
 
         <ul>
 
           ${drug.interactions
-            .map(item => `<li>${item}</li>`)
+            .map(
+              item =>
+                `<li>${item}</li>`
+            )
             .join("")}
 
         </ul>
 
+
       </div>
 
 
+
+      <!-- MONITORING -->
+
       <div class="section">
-/* Dose selector functions */
 
-function populateDoseIndications() {
 
-  if (!currentDrug || !currentDrug.dosage) return;
+        <h3>
+          🧪 Monitoring
+        </h3>
 
-  const group = document.getElementById("patientGroup").value;
-  const indicationSelect = document.getElementById("doseIndication");
-  const doses = currentDrug.dosage[group];
-
-  
-       <h3>🧪 Monitoring</h3>
 
         <ul>
 
           ${drug.monitoring
-            .map(item => `<li>${item}</li>`)
+            .map(
+              item =>
+                `<li>${item}</li>`
+            )
             .join("")}
 
         </ul>
 
+
       </div>
 
-}
-
-                            
 
 
-  if (!currentDrug || !currentDrug.dosage) return;
+      <!-- SOURCE -->
 
-  const group = document.getElementById("patientGroup").value;
-  const indicationSelect = document.getElementById("doseIndication");
-  const result = document.getElementById("doseResult");
-  const doses = currentDrug.dosage[group];
+      <div class="section">
 
-  const selected =
-    doses[Number(indicationSelect.value) || 0];
 
-  result.innerHTML = `
-    <div style="
-      background:#eef8f7;
-      padding:16px;
-      border-radius:10px;
-      margin-bottom:20px;
-    ">
+        <p class="source">
 
-      <p>
-        <strong>💊 Dose:</strong>
-        ${selected.dose}
-      </p>
+          📚
+          <strong>
+            Source:
+          </strong>
 
-      <p>
-        <strong>Maximum:</strong>
-        ${selected.maximum}
-      </p>
+          ${drug.source}
+
+        </p>
+
+
+      </div>
+
 
     </div>
+
+
   `;
+
+
+
+  /* =========================
+     START DOSE SELECTOR
+  ========================== */
+
+  if (drug.dosage) {
+
+    populateDoseIndications();
+
+  }
+
+
 }
+
+
+
+/* =========================
+   POPULATE INDICATION DROPDOWN
+========================= */
+
 function populateDoseIndications() {
-  const patientGroup = document.getElementById("patientGroup");
-  const doseIndication = document.getElementById("doseIndication");
 
-  if (!patientGroup || !doseIndication) return;
 
-  const group = patientGroup.value;
-  const doses = drugs.find(
-    d => d.name.toLowerCase() === document.getElementById("drugInput").value.trim().toLowerCase()
-  )?.dosage?.[group];
+  if (
+    !currentDrug ||
+    !currentDrug.dosage
+  ) {
+
+    return;
+
+  }
+
+
+
+  const patientGroup =
+    document.getElementById(
+      "patientGroup"
+    );
+
+
+  const doseIndication =
+    document.getElementById(
+      "doseIndication"
+    );
+
+
+  if (
+    !patientGroup ||
+    !doseIndication
+  ) {
+
+    return;
+
+  }
+
+
+
+  const group =
+    patientGroup.value;
+
+
+  const doses =
+    currentDrug.dosage[group];
+
+
 
   doseIndication.innerHTML = "";
 
-  if (!doses) return;
 
-  doses.forEach((item, index) => {
-    const option = document.createElement("option");
-    option.value = index;
-    option.textContent = item.indication;
-    doseIndication.appendChild(option);
-  });
 
-  updateDoseResult();
-}
+  if (!doses) {
 
-function updateDoseResult() {
-  const patientGroup = document.getElementById("patientGroup");
-  const doseIndication = document.getElementById("doseIndication");
-  const doseResult = document.getElementById("doseResult");
+    return;
 
-  if (!patientGroup || !doseIndication || !doseResult) return;
+  }
 
-  const drug = drugs.find(
-    d => d.name.toLowerCase() === document.getElementById("drugInput").value.trim().toLowerCase()
+
+
+  doses.forEach(
+    (item, index) => {
+
+
+      const option =
+        document.createElement(
+          "option"
+        );
+
+
+      option.value =
+        index;
+
+
+      option.textContent =
+        item.indication;
+
+
+      doseIndication.appendChild(
+        option
+      );
+
+
+    }
   );
 
-  if (!drug || !drug.dosage) return;
 
-  const doses = drug.dosage[patientGroup.value];
-  const item = doses[doseIndication.value];
 
-  if (!item) return;
+  updateDoseResult();
+
+}
+
+
+
+/* =========================
+   SHOW SELECTED DOSE
+========================= */
+
+function updateDoseResult() {
+
+
+  if (
+    !currentDrug ||
+    !currentDrug.dosage
+  ) {
+
+    return;
+
+  }
+
+
+
+  const patientGroup =
+    document.getElementById(
+      "patientGroup"
+    );
+
+
+  const doseIndication =
+    document.getElementById(
+      "doseIndication"
+    );
+
+
+  const doseResult =
+    document.getElementById(
+      "doseResult"
+    );
+
+
+  if (
+    !patientGroup ||
+    !doseIndication ||
+    !doseResult
+  ) {
+
+    return;
+
+  }
+
+
+
+  const doses =
+    currentDrug.dosage[
+      patientGroup.value
+    ];
+
+
+
+  if (!doses) {
+
+    return;
+
+  }
+
+
+
+  const selected =
+    doses[
+      Number(
+        doseIndication.value
+      )
+    ];
+
+
+
+  if (!selected) {
+
+    return;
+
+  }
+
+
 
   doseResult.innerHTML = `
-    <div class="section">
-      <strong>${item.indication}</strong>
-      <p><strong>Dose:</strong> ${item.dose}</p>
-      <p><strong>Maximum:</strong> ${item.maximum}</p>
+
+    <div class="dose-result">
+
+
+      <p>
+
+        <strong>
+          Indication:
+        </strong>
+
+        ${selected.indication}
+
+      </p>
+
+
+      <p>
+
+        <strong>
+          💊 Dose:
+        </strong>
+
+        ${selected.dose}
+
+      </p>
+
+
+      <p>
+
+        <strong>
+          Maximum:
+        </strong>
+
+        ${selected.maximum}
+
+      </p>
+
+
     </div>
+
   `;
+
 }
-  /* Enter key search */
+
+
+
+/* =========================
+   ENTER KEY SEARCH
+========================= */
 
 document
   .getElementById("drugSearch")
-  .addEventListener("keypress", function(event) {
+  .addEventListener(
+    "keypress",
+    function(event) {
 
-    if (event.key === "Enter") {
+      if (
+        event.key === "Enter"
+      ) {
 
-      searchDrug();
+        searchDrug();
+
+      }
 
     }
+  );
 
-  });
 
 </script>
 
 </body>
+
 </html>
