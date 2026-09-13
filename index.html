@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PharmaAI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      color: #17212b;
+    }
+
+    header {
+      background: #0b6b68;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+
+    header p {
+      margin: 0;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .search-box {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      font-size: 17px;
+      border: 1px solid #ccd6dd;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      font-size: 17px;
+      border: none;
+      border-radius: 10px;
+      background: #0b6b68;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #095452;
+    }
+
+    #result {
+      margin-top: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      margin-bottom: 15px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    }
+
+    .card h2 {
+      color: #0b6b68;
+      margin-top: 0;
+    }
+
+    .section {
+      margin-top: 18px;
+    }
+
+    .section h3 {
+      margin-bottom: 5px;
+      color: #34495e;
+    }
+
+    .warning {
+      background: #fff3cd;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .not-found {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>💊 PharmaAI</h1>
+  <p>Pharmacology learning simulator for medical students</p>
+</header>
+
+<div class="container">
+
+  <div class="search-box">
+
+    <input
+      type="text"
+      id="drugInput"
+      placeholder="Enter a drug name e.g. Paracetamol"
+    >
+
+    <button onclick="searchDrug()">
+      Search Drug
+    </button>
+
+  </div>
+
+  <div id="result"></div>
+
+</div>
+
+<script>
+
+const drugs = {
+
+  paracetamol: {
+    name: "Paracetamol",
+    class: "Analgesic / Antipyretic",
+
+    indication:
+      "Used for relief of mild to moderate pain and reduction of fever.",
+
+    route:
+      "Oral, intravenous or rectal depending on the formulation and clinical situation.",
+
+    contraindication:
+      "Hypersensitivity to paracetamol. Severe hepatic impairment requires particular caution.",
+
+    adverse:
+      "Usually well tolerated at recommended doses. Overdose can cause severe liver injury.",
+
+    monitoring:
+      "Pay attention to total daily dose and risk factors for liver injury."
+  },
+
+  amoxicillin: {
+    name: "Amoxicillin",
+    class: "Penicillin antibiotic",
+
+    indication:
+      "Used for susceptible bacterial infections when an appropriate antibiotic is indicated.",
+
+    route:
+      "Usually administered orally; other formulations may be used depending on the clinical situation.",
+
+    contraindication:
+      "History of serious immediate hypersensitivity to penicillins or relevant beta-lactam antibiotics.",
+
+    adverse:
+      "Diarrhea, nausea, rash and hypersensitivity reactions may occur.",
+
+    monitoring:
+      "Monitor clinical response, allergic reactions and significant adverse effects."
+  },
+
+  metformin: {
+    name: "Metformin",
+    class: "Biguanide antidiabetic",
+
+    indication:
+      "Used mainly in the management of type 2 diabetes along with lifestyle measures.",
+
+    route:
+      "Oral.",
+
+    contraindication:
+      "Severe renal impairment and certain acute conditions associated with increased risk of lactic acidosis.",
+
+    adverse:
+      "Gastrointestinal symptoms are common. Long-term use may be associated with vitamin B12 deficiency.",
+
+    monitoring:
+      "Renal function, glycemic control and gastrointestinal tolerability."
+  }
+
+};
+
+
+function searchDrug() {
+
+  const input =
+    document.getElementById("drugInput").value
+    .trim()
+    .toLowerCase();
+
+  const result =
+    document.getElementById("result");
+
+  if (input === "") {
+
+    result.innerHTML =
+      '<div class="not-found">Please enter a drug name.</div>';
+
+    return;
+  }
+
+  const drug = drugs[input];
+
+  if (!drug) {
+
+    result.innerHTML = `
+      <div class="not-found">
+
+        <h2>Drug not found</h2>
+
+        <p>
+          This drug is not yet included in our prototype database.
+        </p>
+
+        <p>
+          Try:
+          <strong>Paracetamol</strong>,
+          <strong>Amoxicillin</strong> or
+          <strong>Metformin</strong>.
+        </p>
+
+      </div>
+    `;
+
+    return;
+  }
+
+
+  result.innerHTML = `
+
+    <div class="card">
+
+      <h2>${drug.name}</h2>
+
+      <p>
+        <strong>Drug class:</strong>
+        ${drug.class}
+      </p>
+
+
+      <div class="section">
+
+        <h3>🩺 When is it given?</h3>
+
+        <p>${drug.indication}</p>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>💉 Route</h3>
+
+        <p>${drug.route}</p>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>⚠️ Contraindications / major cautions</h3>
+
+        <p>${drug.contraindication}</p>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>🚨 Adverse effects</h3>
+
+        <p>${drug.adverse}</p>
+
+      </div>
+
+
+      <div class="section">
+
+        <h3>🔬 Monitoring</h3>
+
+        <p>${drug.monitoring}</p>
+
+      </div>
+
+
+      <div class="warning">
+
+        <strong>Educational use only.</strong><br>
+
+        This prototype is for pharmacology learning.
+        It should not be used as a substitute for an
+        authoritative drug reference, prescribing information,
+        clinical guidelines or supervision by a qualified clinician.
+
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+</script>
+
+</body>
+</html>
