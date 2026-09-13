@@ -193,6 +193,7 @@ ul {
 <script>
 
 let drugs = [];
+let currentDrug = null;
 
 
 /* Load database */
@@ -282,8 +283,9 @@ function searchDrug() {
 
     return;
 
-  }
+    }
 
+  currentDrug = drug;
 
   result.innerHTML = `
 
@@ -343,27 +345,20 @@ function searchDrug() {
 
   <h3>💊 Dosage & Administration</h3>
 
-  <h4>Adult</h4>
-  <ul>
-    ${drug.dosage.adult.map(item => `
-      <li>
-        <strong>${item.indication}</strong><br>
-        Dose: ${item.dose}<br>
-        Maximum: ${item.maximum}
-      </li>
-    `).join("")}
-  </ul>
+  <label for="patientGroup"><strong>Patient group</strong></label>
 
-  <h4>Pediatric</h4>
-  <ul>
-    ${drug.dosage.pediatric.map(item => `
-      <li>
-        <strong>${item.indication}</strong><br>
-        Dose: ${item.dose}<br>
-        Maximum: ${item.maximum}
-      </li>
-    `).join("")}
-  </ul>
+  <select id="patientGroup" onchange="populateDoseIndications()">
+    <option value="adult">Adult</option>
+    <option value="pediatric">Pediatric</option>
+  </select>
+
+  <label for="doseIndication"><strong>Indication</strong></label>
+
+  <select id="doseIndication" onchange="updateDoseResult()">
+  </select>
+
+  <div id="doseResult">
+  </div>
 
   <h4>Duration</h4>
   <ul>
@@ -432,8 +427,18 @@ function searchDrug() {
 
 
       <div class="section">
+/* Dose selector functions */
 
-        <h3>🧪 Monitoring</h3>
+function populateDoseIndications() {
+
+  if (!currentDrug || !currentDrug.dosage) return;
+
+  const group = document.getElementById("patientGroup").value;
+  const indicationSelect = document.getElementById("doseIndication");
+  const doses = currentDrug.dosage[group];
+
+  
+       <h3>🧪 Monitoring</h3>
 
         <ul>
 
@@ -445,21 +450,61 @@ function searchDrug() {
 
       </div>
 
-
-      <div class="source">
-
-        📚 <strong>Reference:</strong>
-        ${drug.source}
-
-      </div>
-
-    </div>
-
-  `;
-
 }
 
+                            
+/* Dose selector functions */
 
+function populateDoseIndications() {
+
+  if (!currentDrug || !currentDrug.dosage) return;
+
+  const group = document.getElementById("patientGroup").value;
+  const indicationSelect = document.getElementById("doseIndication");
+  const doses = currentDrug.dosage[group];
+
+  indicationSelect.innerHTML = doses
+    .map((item, index) =>
+      `<option value="${index}">${item.indication}</option>`
+    )
+    .join("");
+
+  updateDoseResult();
+}
+
+function updateDoseResult() {
+
+  if (!currentDrug || !currentDrug.dosage) return;
+
+  const group = document.getElementById("patientGroup").value;
+  const indicationSelect = document.getElementById("doseIndication");
+  const result = document.getElementById("doseResult");
+  const doses = currentDrug.dosage[group];
+
+  const selected =
+    doses[Number(indicationSelect.value) || 0];
+
+  result.innerHTML = `
+    <div style="
+      background:#eef8f7;
+      padding:16px;
+      border-radius:10px;
+      margin-bottom:20px;
+    ">
+
+      <p>
+        <strong>💊 Dose:</strong>
+        ${selected.dose}
+      </p>
+
+      <p>
+        <strong>Maximum:</strong>
+        ${selected.maximum}
+      </p>
+
+    </div>
+  `;
+}
 /* Enter key search */
 
 document
